@@ -109,6 +109,9 @@
 
 <script setup>
 import { icons } from "@/assets/icons";
+import first_win from "@/assets/Images/first_win.png";
+import sec_winner from "@/assets/Images/sec_winner.png";
+import third_win from "@/assets/Images/third_win.png";
 const skills = [
   "App Design",
   "Dashboard UI",
@@ -126,17 +129,17 @@ const services = [
   {
     title: "$1,000",
     description: "Exclusive Highest Discount on Your Project Deal",
-    icon: "/src/assets/Images/first_win.png",
+    icon: first_win,
   },
   {
     title: "$500",
     description: "Special Discount for Your Innovative Project",
-    icon: "/src/assets/Images/sec_winner.png",
+    icon: sec_winner,
   },
   {
     title: "$251",
     description: "Great Savings on Your Upcoming Project",
-    icon: "/src/assets/Images/third_win.png",
+    icon: third_win,
   },
 ];
 
