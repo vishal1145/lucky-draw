@@ -16,11 +16,7 @@ export function useToast() {
       isVisible.value = false;
     }, toastDuration);
   };
-  console.log( isVisible,
-    message,
-    type,
-    duration,
-    showToast);
+
   return {
     isVisible,
     message,

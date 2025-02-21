@@ -85,7 +85,6 @@ const getAllUser = async () => {
       });
     }
   } catch (err) {
-    console.error("API Error:", err);
     toast.showToast({
       message: "Server Error. Please try again.",
       type: "error",
@@ -112,12 +111,6 @@ const getAnnounceDate = async () => {
 
       getAnnouncementDays.value = date.format("D"); // 21
       getAnnouncementData.value = date.format("MMM YYYY");
-
-      console.log(
-        "hjhjhjjh",
-        getAnnouncementData.value,
-        getAnnouncementDays.value
-      );
     } else {
       toast.showToast({
         message: "Error fetching announce date",
@@ -126,7 +119,6 @@ const getAnnounceDate = async () => {
       });
     }
   } catch (err) {
-    console.error("API Error:", err);
     toast.showToast({
       message: "Server Error. Please try again.",
       type: "error",
@@ -140,7 +132,6 @@ const getAnnounceDate = async () => {
 const startParty = () => {
   confettiItems.value = Array.from({ length: 300 }, (_, index) => index);
 
-  console.log(" gsdf", confettiItems.value);
   applyDynamicStyles();
 };
 

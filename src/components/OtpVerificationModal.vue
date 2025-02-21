@@ -238,7 +238,6 @@ const verifyOtp = async () => {
       error.value = "Invalid OTP. Please try again.";
     }
   } catch (err) {
-    console.error("API Error:", err);
     toast.showToast({
       message: "Verification failed. Please try again",
       type: "error",

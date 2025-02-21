@@ -491,7 +491,6 @@ const handleSubmit = async () => {
       "register/initiate",
       requestData
     );
-    console.log("fdhhjfg", response);
     if (!response.error) {
       showOtpModal.value = true;
       toast.showToast({
@@ -509,7 +508,6 @@ const handleSubmit = async () => {
       });
     }
   } catch (error) {
-    console.error("API Error:", error);
     toast.showToast({
       message: "Failed to submit form. Please try again.",
       type: "error",
@@ -542,8 +540,6 @@ const handleImageClick = () => {
 const onImageChange = (event) => {
   const file = event.target.files[0];
   if (file) {
-    console.log("Selected file:", file);
-
     // Create preview URL
     const reader = new FileReader();
     reader.onload = (e) => {
