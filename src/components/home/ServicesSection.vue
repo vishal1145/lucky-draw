@@ -1,0 +1,200 @@
+<template>
+  <!-- Marquee section -->
+  <section class="bg-lime-500 py-2 px-2 relative z-30 overflow-hidden">
+    <div class="relative flex overflow-x-hidden">
+      <!-- First marquee visible on all screens -->
+      <div class="py-3 animate-marquee w-full">
+        <div
+          class="inline-flex items-center space-x-3 sm:space-x-4 md:space-x-8 mx-2 md:mx-4 whitespace-nowrap"
+        >
+          <div
+            v-for="(skill, index) in skills"
+            :key="`skill1-${index}`"
+            class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+          >
+            <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
+            <div>{{ skill }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second marquee only visible on medium screens and up -->
+      <div class="absolute top-0 py-3 animate-marquee2 w-full hidden md:block">
+        <div
+          class="inline-flex items-center space-x-3 sm:space-x-4 md:space-x-8 mx-2 md:mx-4 whitespace-nowrap"
+        >
+          <div
+            v-for="(skill, index) in skills"
+            :key="`skill2-${index}`"
+            class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+          >
+            <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
+            <div>{{ skill }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main section -->
+  <section class="bg-indigo-600 px-4 sm:px-8 md:px-16 lg:px-32 py-8 md:py-16">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-12"
+    >
+      <!-- Title section -->
+      <div class="text-white text-center md:text-left mb-6 md:mb-0">
+        <h2 class="text-xl md:text-2xl font-medium">--- Prizes</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold">
+          Winner <span class="text-lime-500"> Prizes</span>
+        </h2>
+      </div>
+
+      <!-- Button section -->
+      <div class="flex items-center relative justify-center md:justify-end">
+        <button
+          class="flex items-center pl-1 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
+        >
+          <div
+            class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600"
+            v-html="icons.arrowDown"
+          ></div>
+        </button>
+
+        <button
+          class="flex items-center px-6 py-2.5 bg-lime-500 text-white rounded-full font-medium hover:bg-lime-600 whitespace-nowrap ml-2 md:ml-0"
+          @click="scrollToContactSection"
+          style="margin-left: -2em"
+        >
+          Participate Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="flex flex-col lg:flex-row justify-center gap-6 md:gap-8">
+      <div
+        v-for="service in services"
+        :key="service.title"
+        class="bg-indigo-400 w-full lg:w-80 rounded-full md:rounded-full px-6 sm:px-8 md:px-16 py-8 md:py-16 text-center shadow-lg transform transition-transform hover:-translate-y-2"
+      >
+        <div
+          class="bg-white w-16 h-16 md:w-25 md:h-25 rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <div
+            class="text-indigo-600 flex items-center justify-center w-12 h-12 md:w-20 md:h-20 rounded-full"
+          >
+            <img
+              :src="service.icon"
+              alt="Service Icon"
+              class="w-full h-full object-cover rounded-full"
+            />
+          </div>
+        </div>
+        <h3 class="text-2xl md:text-[2em] font-bold text-white mb-2">
+          {{ service.title }}
+        </h3>
+        <p class="text-base md:text-lg text-white mb-4">
+          {{ service.description }}
+        </p>
+        <div
+          class="text-white font-medium cursor-pointer underline py-2.5 px-6 hover:bg-indigo-600 rounded-full transition-colors duration-300 text-sm md:text-base inline-block"
+          @click="scrollToContactSection"
+        >
+          Participate Now
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import { icons } from "@/assets/icons";
+const skills = [
+  "App Design",
+  "Dashboard UI",
+  "Wireframe",
+  "User Research",
+  "UX/UI Design",
+  "Mobile Apps",
+  "Web Design",
+  // "Brand Identity",
+  // "User Testing",
+  // "Prototyping",
+];
+
+const services = [
+  {
+    title: "$1,000",
+    description: "Exclusive Highest Discount on Your Project Deal",
+    icon: "/src/assets/Images/first_win.png",
+  },
+  {
+    title: "$500",
+    description: "Special Discount for Your Innovative Project",
+    icon: "/src/assets/Images/sec_winner.png",
+  },
+  {
+    title: "$251",
+    description: "Great Savings on Your Upcoming Project",
+    icon: "/src/assets/Images/third_win.png",
+  },
+];
+
+const scrollToContactSection = () => {
+  const contactSection = document.getElementById("contact-section");
+  if (contactSection) {
+    contactSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
+</script>
+
+<style scoped>
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  min-width: 100%;
+  /*  width: 100%;
+  display: flex;
+
+  overflow: hidden;
+  white-space: nowrap;  Ensure items are in a single line */
+}
+
+.animate-marquee2 {
+  animation: marquee2 25s linear infinite;
+  min-width: 100%;
+}
+
+.bg-indigo-600 {
+  background-color: #4f46e5;
+}
+
+@media (min-width: 767px) and (max-width: 900px) {
+  /* Styles for screens between 0 and 503px */
+  .item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+}
+</style>
