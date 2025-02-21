@@ -13,7 +13,7 @@ export default defineConfig({
      tailwindcss(),
   ],
    server: {
-   host: '0.0.0.0', // Allow external access (needed for ngrok)
+   host: true, // Allow external access (needed for ngrok)
     port: 8080, // Make sure ngrok is tunneling this port
     strictPort: true, // Prevent Vite from switching ports
     cors: true,  // Prevent auto-changing ports
