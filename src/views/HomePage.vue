@@ -17,7 +17,7 @@
         :noOfUser="noOfUser"
         :allUserRegistered="allUserRegistered"
       />
-      <ServicesSection />
+      <ServicesSection selectedWinners="[]" />
       <ExperienceSection
         :getAnnouncementDays="getAnnouncementDays"
         :getAnnouncementData="getAnnouncementData"
@@ -39,11 +39,13 @@ import EducationWorkSection from "@/components/home/EducationWorkSection.vue";
 import ContactSection from "@/components/home/ContactSection.vue";
 import Footer from "@/components/Footer.vue";
 import moment from "moment";
+import { useRouter } from "vue-router";
 
 import { ref, reactive, onMounted } from "vue";
 import { useToast } from "@/composables/useToast";
 import apiService from "@/core/api/api-service";
 // import toast from "@/utils/toast"; // Import toast service
+const router = useRouter();
 const toast = useToast();
 const noOfUser = ref("0");
 const getAnnouncementData = ref("");
@@ -108,6 +110,13 @@ const getAnnounceDate = async () => {
         responseData.announcement_date,
         "YYYY-MM-DD HH:mm:ss"
       );
+      const now = moment();
+      if (date.isBefore(now)) {
+        router.push("/result");
+        console.log("Expired");
+      } else {
+        console.log("Not Expired");
+      }
 
       getAnnouncementDays.value = date.format("D"); // 21
       getAnnouncementData.value = date.format("MMM YYYY");

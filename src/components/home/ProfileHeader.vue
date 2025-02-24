@@ -10,7 +10,7 @@
         {{ noOfUser }} +
       </h1>
       <h4 class="font-semibold p-0 m-0 text-sm sm:text-xl text-gray-400 mb-2">
-        Happy Clients
+        Registered
       </h4>
       <div class="flex -space-x-2">
         <div v-for="i in allUserRegistered.splice(0, 3)" :key="i">
@@ -30,24 +30,30 @@
           </template>
         </div>
         <div
-          class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 border-2 border-white flex items-center justify-center text-xs text-gray-600"
+          v-if="fromResult != 'Result'"
+          @click="scrollToContactSection"
+          class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 border-2 border-white cursor-pointer flex items-center justify-center text-xs text-gray-600"
         >
           +
         </div>
       </div>
     </div>
 
-    <div class="absolute top-2 right-4 sm:right-8 lg:right-32">
+    <div class="absolute top-2 right-4 sm:right-8 lg:right-32 z-50">
       <img
+        @click="redirectToAlgoFolks"
         src="/src/assets/Images/logo.png"
         alt="Logo"
-        class="h-12 sm:h-16 lg:h-20 w-auto rounded-full"
+        class="h-12 sm:h-16 lg:h-20 w-auto rounded-full cursor-pointer"
       />
     </div>
 
     <!-- Header Text -->
     <div class="absolute top-0 text-center w-full px-4">
-      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+      <h1
+        class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight"
+        @click="clickForNew"
+      >
         I'm <span class="text-indigo-600 underline decoration-2">Jenny</span>,
       </h1>
       <h2
@@ -88,7 +94,7 @@
             class="px-4 sm:px-6 py-2.5 btn-padding bg-indigo-600 text-white rounded-full cursor-pointer flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors"
             @click="scrollToContactSection"
           >
-            Participate Now
+            {{ fromResult != "Result" ? "Participate Now" : "Result" }}
             <div
               class="w-6 sm:w-7 h-6 sm:h-7 rounded-full bg-lime-500 border-2 border-lime-500 flex items-center justify-center text-xs text-white"
               v-html="icons.arrowDown"
@@ -98,21 +104,22 @@
             class="px-6 sm:px-10 py-2.5 bg-white btn-padding border border-dark-200 text-gray-800 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-colors"
           >
             <div class="flex justify-center space-x-3 sm:space-x-6">
+              <div
+                @click="shareOnWhatsApp"
+                class="hover:text-gray-300 transition-colors cursor-pointer"
+                v-html="socialIcons.whatsapp"
+              ></div>
               <a
                 href="#"
+                @click="shareOnFacebook"
                 class="hover:text-gray-300 transition-colors"
                 v-html="socialIcons.facebook"
               ></a>
-              <a
+              <!-- <a
                 href="#"
                 class="hover:text-gray-300 transition-colors"
-                v-html="socialIcons.github"
-              ></a>
-              <a
-                href="#"
-                class="hover:text-gray-300 transition-colors"
-                v-html="socialIcons.twitter"
-              ></a>
+                v-html="socialIcons.facebook"
+              ></a> -->
             </div>
             <!-- Hire Me -->
           </button>
@@ -127,22 +134,106 @@ import { socialIcons } from "@/assets/icons/socialIcons";
 import { ref, onMounted } from "vue";
 import { icons } from "@/assets/icons";
 import profileImage from "@/assets/Images/profile.png";
+import { useRouter } from "vue-router";
 
-defineProps({
+const props = defineProps({
   noOfUser: String,
   allUserRegistered: Array,
+  fromResult: String,
 });
-
+const currentURL = encodeURIComponent(window.location.href);
+const message = encodeURIComponent("Check this and register now!");
+const router = useRouter();
 const loading = ref(false);
 
 const scrollToContactSection = () => {
-  const contactSection = document.getElementById("contact-section");
+  let contactSection = "";
+  if (props.fromResult !== "Result") {
+    contactSection = document.getElementById("contact-section");
+  } else {
+    contactSection = document.getElementById("result-section");
+  }
   if (contactSection) {
     contactSection.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   }
+};
+// WhatsApp Share
+const shareOnWhatsApp = () => {
+  const whatsappURL = `https://wa.me/?text=${message} ${currentURL}`;
+  window.open(whatsappURL, "_blank");
+
+  const whatsappMessage = `Hey! Check out this referral link: ${currentURL}`;
+  const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
+  // Open WhatsApp with the message
+  const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener");
+
+  // If opening WhatsApp using URI scheme fails, open WhatsApp Web
+  if (
+    !whatsappWindow ||
+    !whatsappWindow.closed ||
+    typeof whatsappWindow.closed == "undefined"
+  ) {
+    const whatsappWebUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    // Open WhatsApp Web in a new tab
+    window.open(whatsappWebUrl, "_blank", "noopener");
+  }
+};
+
+// Instagram Share (Instagram does not allow direct URL sharing, but you can use stories)
+const shareOnInstagram = () => {
+  const instagramUrl = "https://www.instagram.com/direct/inbox/";
+
+  // Open the link in a new tab
+  window.open(instagramUrl, "_blank", "noopener");
+  // const currentURL = window.location.href;
+  // navigator.clipboard.writeText(currentURL).then(() => {
+  //   alert("Link copied! Open Instagram and paste it in a post or story.");
+  // });
+};
+
+// Facebook Share
+const shareOnFacebook = () => {
+  // const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
+  // window.open(facebookURL, "_blank");
+
+  const facebookMessage = `Hey! Check out this referral link: ${currentURL}`;
+
+  // Open Facebook Messenger with the message
+  const facebookWindow = window.open(
+    `fb-messenger://share?link=${encodeURIComponent(
+      facebookMessage
+    )}&app_id=123456789`,
+    "_blank"
+  );
+  if (
+    !facebookWindow ||
+    !facebookWindow.closed ||
+    typeof facebookWindow.closed == "undefined"
+  ) {
+    // const facebookWebUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(facebookMessage)}`;
+    const facebookWebUrl = `https://www.facebook.com/send?text=${encodeURIComponent(
+      facebookMessage
+    )}`;
+
+    window.open(facebookWebUrl, "_blank", "noopener");
+  }
+};
+const redirectToAlgoFolks = () => {
+  window.open("https://algofolks.com/", "_blank");
+  // window.location.href = "https://algofolks.com/";
+};
+
+const clickForNew = () => {
+  router.push("/result");
 };
 </script>
 
@@ -154,8 +245,8 @@ const scrollToContactSection = () => {
   mix-blend-mode: multiply;
 }
 
-.relativre[data-v-0527c9ee] {
-  clip-path: polygon(18% 0%, 100% 0, 87% 96%, -2% 100%);
+.relativre {
+  clip-path: polygon(18% 0%, 100% 0, 89% 96%, -2% 100%);
 }
 
 .relative-second {

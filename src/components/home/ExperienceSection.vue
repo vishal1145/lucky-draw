@@ -60,19 +60,22 @@
       <div class="flex justify-center lg:justify-start gap-8 mb-6">
         <div class="text-center lg:text-left">
           <div class="text-2xl lg:text-3xl font-bold text-indigo-600">
-            {{ noOfUser }}+
+            {{ noOfUser }} +
           </div>
           <div class="text-gray-500 text-lg lg:text-xl">Registered</div>
         </div>
-        <div class="text-center lg:text-left">
+        <!-- <div class="text-center lg:text-left">
           <div class="text-2xl lg:text-3xl font-bold text-indigo-600">50+</div>
           <div class="text-gray-500 text-lg lg:text-xl">Industry Covered</div>
-        </div>
+        </div> -->
       </div>
       <div
         class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 relative"
       >
-        <div class="flex items-center relative justify-center md:justify-end">
+        <div
+          class="flex items-center relative justify-center md:justify-end"
+          v-if="fromResult != 'Result'"
+        >
           <button
             class="flex items-center pl-1 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
           >
@@ -83,11 +86,11 @@
           </button>
 
           <button
-            class="flex items-center px-6 py-2.5 bg-lime-500 text-white rounded-full font-medium hover:bg-lime-600 whitespace-nowrap ml-2 md:ml-0"
+            class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap ml-2 md:ml-0"
             @click="scrollToContactSection"
             style="margin-left: -2em"
           >
-            Participate Now
+            {{ fromResult != "Result" ? "Participate Now" : "Result" }}
           </button>
         </div>
         <!-- <div class="flex">
@@ -109,11 +112,11 @@
           </button>
         </div> -->
 
-        <img
+        <!-- <img
           :src="signImage"
           alt="Signature"
           class="h-8 w-20 mt-3 sm:mt-0 sm:ml-8"
-        />
+        /> -->
       </div>
     </div>
   </section>
@@ -135,15 +138,21 @@ import { icons } from "@/assets/icons";
 import signImage from "@/assets/Images/sig.png";
 // Add any necessary script setup here
 
-defineProps({
+const props = defineProps({
   noOfUser: String,
   allUserRegistered: Array,
   getAnnouncementDays: String,
   getAnnouncementData: String,
+  fromResult: String,
 });
 
 const scrollToContactSection = () => {
-  const contactSection = document.getElementById("contact-section");
+  let contactSection = "";
+  if (props.fromResult != "Result") {
+    contactSection = document.getElementById("contact-section");
+  } else {
+    contactSection = document.getElementById("result-section");
+  }
   if (contactSection) {
     contactSection.scrollIntoView({
       behavior: "smooth",

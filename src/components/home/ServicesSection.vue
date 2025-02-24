@@ -61,17 +61,20 @@
         </button>
 
         <button
-          class="flex items-center px-6 py-2.5 bg-lime-500 text-white rounded-full font-medium hover:bg-lime-600 whitespace-nowrap ml-2 md:ml-0"
+          class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap ml-2 md:ml-0"
           @click="scrollToContactSection"
           style="margin-left: -2em"
         >
-          Participate Now
+          {{ fromResult != "Result" ? "Participate Now" : "Result" }}
         </button>
       </div>
     </div>
 
     <!-- Services Grid -->
-    <div class="flex flex-col lg:flex-row justify-center gap-6 md:gap-8">
+    <div
+      class="flex flex-col lg:flex-row justify-center gap-6 md:gap-8"
+      id="result-section"
+    >
       <div
         v-for="service in services"
         :key="service.title"
@@ -97,10 +100,62 @@
           {{ service.description }}
         </p>
         <div
+          v-if="fromResult == 'Result'"
+          class="border-b-2 border-dotted border-white w-full my-4"
+        ></div>
+
+        <div class="flex flex-col">
+          <div
+            v-if="
+              fromResult == 'Result' &&
+              service.selectedWinner &&
+              service.selectedWinner.image != null
+            "
+            class="w-17 h-17 rounded-full bg-gray-100 border-2 border-white cursor-pointer flex items-center justify-center text-xs text-gray-600"
+          >
+            <img
+              :src="service.selectedWinner.image"
+              alt=""
+              class="w-full h-full object-cover rounded-full"
+            />
+
+            <p class="m-0 p-0" v-if="service.selectedWinner.image == null">=</p>
+          </div>
+          <div v-else class="self-center">
+            <div
+              v-if="fromResult == 'Result'"
+              class="w-17 h-17 rounded-full text-center bg-gray-100 border-2 border-white flex items-center justify-center text-xs text-gray-60 mb-2"
+            >
+              <!-- ❌ -->
+              <img
+                :src="profileImage"
+                alt=""
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+          </div>
+
+          <h4
+            v-if="service.selectedWinner && service.selectedWinner.name"
+            class="m-0 p-0 text-xl font-bold text-white"
+          >
+            {{ service.selectedWinner.name }}
+          </h4>
+          <h4
+            v-if="service.selectedWinner && service.selectedWinner.name"
+            class="m-0 p-0 text-xl font-bold text-white"
+          >
+            <span class="text-gray-600"
+              >({{ service.selectedWinner.country }})</span
+            >
+          </h4>
+        </div>
+        <div
+          v-if="fromResult != 'Result'"
           class="text-white font-medium cursor-pointer underline py-2.5 px-6 hover:bg-indigo-600 rounded-full transition-colors duration-300 text-sm md:text-base inline-block"
           @click="scrollToContactSection"
         >
-          Participate Now
+          {{ fromResult != "Result" ? "Participate Now" : "" }}
         </div>
       </div>
     </div>
@@ -108,24 +163,19 @@
 </template>
 
 <script setup>
+import { ref, reactive, onMounted } from "vue";
 import { icons } from "@/assets/icons";
 import first_win from "@/assets/Images/first_win.png";
 import sec_winner from "@/assets/Images/sec_winner.png";
 import third_win from "@/assets/Images/third_win.png";
-const skills = [
-  "App Design",
-  "Dashboard UI",
-  "Wireframe",
-  "User Research",
-  "UX/UI Design",
-  "Mobile Apps",
-  "Web Design",
-  // "Brand Identity",
-  // "User Testing",
-  // "Prototyping",
-];
+import profileImage from "@/assets/Images/profile.png";
 
-const services = [
+const props = defineProps({
+  fromResult: String,
+  selectedWinners: Array,
+});
+
+const services = ref([
   {
     title: "$1,000",
     description: "Exclusive Highest Discount on Your Project Deal",
@@ -141,10 +191,36 @@ const services = [
     description: "Great Savings on Your Upcoming Project",
     icon: third_win,
   },
+]);
+
+onMounted(() => {
+  if (props.selectedWinners.length > 0) {
+    services.value = services.value.map((service, index) => ({
+      ...service,
+      selectedWinner: props.selectedWinners[index] || null, // Add selectedWinner based on index
+    }));
+  }
+});
+const skills = [
+  "App Design",
+  "Dashboard UI",
+  "Wireframe",
+  "User Research",
+  "UX/UI Design",
+  "Mobile Apps",
+  "Web Design",
+  // "Brand Identity",
+  // "User Testing",
+  // "Prototyping",
 ];
 
 const scrollToContactSection = () => {
-  const contactSection = document.getElementById("contact-section");
+  let contactSection = "";
+  if (props.fromResult !== "Result") {
+    contactSection = document.getElementById("contact-section");
+  } else {
+    contactSection = document.getElementById("result-section");
+  }
   if (contactSection) {
     contactSection.scrollIntoView({
       behavior: "smooth",

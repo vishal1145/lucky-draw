@@ -2,7 +2,7 @@
   <section id="contact-section" class="w-full">
     <div class="text-center p-4">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold">
-        <span class="text-indigo-600">Contact us!</span>
+        <span class="text-indigo-600">Register!</span>
       </h2>
     </div>
   </section>
@@ -10,7 +10,10 @@
   <section
     class="flex flex-col lg:flex-row w-full min-h-[600px] my-4 md:my-6 lg:my-10 px-4 md:px-8 lg:px-32"
   >
-    <div class="bg-indigo-600 p-4 md:p-8 lg:p-16 w-full rounded-2xl">
+    <div
+      class="bg-indigo-600 p-4 md:p-8 lg:p-16 w-full rounded-2xl bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/src/assets/Images/gradient_bg.png')"
+    >
       <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 text-center">
         LET'S WORK TOGETHER
       </h2>
@@ -26,6 +29,7 @@
             type="text"
             maxlength="30"
             v-model="formData.name"
+            @input="capitalizeFirstLetter"
             placeholder="Your name"
             :class="[
               'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
@@ -552,6 +556,10 @@ const onImageChange = (event) => {
 
 const handleChange = (event) => {
   formData.technologies = event.toString();
+};
+const capitalizeFirstLetter = (event) => {
+  const inputValue = event.target.value;
+  formData.name = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
 };
 </script>
 
