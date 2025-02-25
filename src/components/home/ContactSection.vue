@@ -12,7 +12,7 @@
   >
     <div
       class="bg-indigo-600 p-4 md:p-8 lg:p-16 w-full rounded-2xl bg-cover bg-center bg-no-repeat"
-      style="background-image: url('/src/assets/Images/gradient_bg.png')"
+      :style="{ backgroundImage: `url(${bgImage})` }"
     >
       <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 text-center">
         LET'S WORK TOGETHER
@@ -224,6 +224,7 @@ import { ref, reactive, defineEmits, onMounted, getCurrentInstance } from "vue";
 import Multiselect from "vue-multiselect";
 import { quillEditor } from "vue3-quill";
 import "quill/dist/quill.snow.css";
+import bgImage from "@/assets/Images/gradient_bg.png";
 import Quill from "quill"; // Manually import Quill
 // import "quill/dist/quill.snow.css";
 

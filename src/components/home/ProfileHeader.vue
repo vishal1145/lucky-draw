@@ -50,10 +50,7 @@
 
     <!-- Header Text -->
     <div class="absolute top-0 text-center w-full px-4">
-      <h1
-        class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight"
-        @click="clickForNew"
-      >
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
         I'm <span class="text-indigo-600 underline decoration-2">Jenny</span>,
       </h1>
       <h2
@@ -230,10 +227,6 @@ const shareOnFacebook = () => {
 const redirectToAlgoFolks = () => {
   window.open("https://algofolks.com/", "_blank");
   // window.location.href = "https://algofolks.com/";
-};
-
-const clickForNew = () => {
-  router.push("/result");
 };
 </script>
 

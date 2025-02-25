@@ -112,7 +112,7 @@ const getAnnounceDate = async () => {
       );
       const now = moment();
       if (date.isBefore(now)) {
-        router.push("/result");
+        router.push("/announce-result");
         console.log("Expired");
       } else {
         console.log("Not Expired");

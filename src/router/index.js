@@ -23,8 +23,8 @@ const router = createRouter({
       component: ContactPage
     },
      {
-      path: '/result',
-      name: 'result',
+      path: '/announce-result',
+      name: 'announce-result',
       component: ResultAnnounce
     }
   ]
