@@ -124,6 +124,42 @@
       </div>
     </div>
   </div>
+  <!-- Marquee section -->
+  <section class="bg-lime-500 py-2 px-2 relative z-30 overflow-hidden">
+    <div class="relative flex overflow-x-hidden">
+      <!-- First marquee visible on all screens -->
+      <div class="py-3 animate-marquee w-full">
+        <div
+          class="inline-flex items-center space-x-3 sm:space-x-4 md:space-x-8 mx-2 md:mx-4 whitespace-nowrap"
+        >
+          <div
+            v-for="(skill, index) in skills"
+            :key="`skill1-${index}`"
+            class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+          >
+            <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
+            <div>{{ skill }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second marquee only visible on medium screens and up -->
+      <div class="absolute top-0 py-3 animate-marquee2 w-full hidden md:block">
+        <div
+          class="inline-flex items-center space-x-3 sm:space-x-4 md:space-x-8 mx-2 md:mx-4 whitespace-nowrap"
+        >
+          <div
+            v-for="(skill, index) in skills"
+            :key="`skill2-${index}`"
+            class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+          >
+            <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
+            <div>{{ skill }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -142,6 +178,19 @@ const currentURL = encodeURIComponent(window.location.href);
 const message = encodeURIComponent("Check this and register now!");
 const router = useRouter();
 const loading = ref(false);
+
+const skills = [
+  "App Design",
+  "Dashboard UI",
+  "Wireframe",
+  "User Research",
+  "UX/UI Design",
+  "Mobile Apps",
+  "Web Design",
+  // "Brand Identity",
+  // "User Testing",
+  // "Prototyping",
+];
 
 const scrollToContactSection = () => {
   let contactSection = "";
@@ -293,4 +342,37 @@ button {
     height: 360px;
   }
 } */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  min-width: 100%;
+  /*  width: 100%;
+  display: flex;
+
+  overflow: hidden;
+  white-space: nowrap;  Ensure items are in a single line */
+}
+
+.animate-marquee2 {
+  animation: marquee2 25s linear infinite;
+  min-width: 100%;
+}
 </style>
