@@ -394,9 +394,10 @@ const validatePhoneNumber = () => {
     selectedCountry.value.iso
   ); // Change "IN" to your country code
 
-  console.log(selectedCountry.value.iso);
   if (!phoneNumber || !phoneNumber.isValid()) {
     errors.phone = "Please enter a valid phone number";
+  } else {
+    errors.phone = "";
   }
 };
 
@@ -416,11 +417,10 @@ const validateForm = () => {
   if (!formData.phone.trim()) {
     errors.phone = "Phone number is required";
     isValid = false;
+  } else if (formData.phone.length < 10) {
+    errors.phone = "Please enter a valid phone number";
+    isValid = false;
   }
-  // else if (!validatePhone(formData.phone)) {
-  //   errors.phone = "Please enter a valid phone number";
-  //   isValid = false;
-  // }
 
   // Email validation
   if (!formData.email.trim()) {
