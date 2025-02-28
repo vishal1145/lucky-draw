@@ -22,7 +22,7 @@
           :key="name"
           href="#"
           @click="clickOnIcons(name)"
-          class="hover:text-gray-900 transition-colors p-2 sm:p-0"
+          class="hover:text-indigo-600 transition-colors cursor-pointer p-2 sm:p-0"
           v-html="icon"
         ></a>
       </div>

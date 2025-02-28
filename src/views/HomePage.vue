@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-indigo-100 font-roboto w-full">
-    <div class="max-w mx-auto">
+    <div class="max-w-full mx-auto">
       <!-- <div v-if="loading" class="loader-overlay">
         <div class="loader"></div>
       </div> -->

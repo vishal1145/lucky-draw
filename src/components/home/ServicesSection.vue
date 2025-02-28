@@ -15,7 +15,7 @@
       <!-- Button section -->
       <div class="flex items-center relative justify-center md:justify-end">
         <button
-          class="flex items-center pl-1 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
+          class="flex items-center pl-2 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
         >
           <div
             class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600"
@@ -115,7 +115,7 @@
         </div>
         <div
           v-if="fromResult != 'Result'"
-          class="text-white font-medium cursor-pointer underline py-2.5 px-6 hover:bg-indigo-600 rounded-full transition-colors duration-300 text-sm md:text-base inline-block"
+          class="text-indigo-600 font-medium cursor-pointer underline py-2.5 px-6 hover:text-white transition-colors duration-300 text-sm md:text-base inline-block"
           @click="scrollToContactSection"
         >
           {{ fromResult != "Result" ? "Participate Now" : "" }}

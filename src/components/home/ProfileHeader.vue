@@ -1,13 +1,12 @@
 <template>
-  <div
-    class="flex relative flex-col items-center justify-center pt-3 px-4 sm:px-6 lg:px-8"
-  >
+  <div class="flex relative flex-col items-center justify-center px-4 lg:px-8">
     <!-- Client Count -->
     <div
       class="flex items-start flex-col justify-start absolute left-4 sm:left-8 md:left-16 lg:left-32 bottom-17 sm:bottom-10 z-30"
     >
       <h1 class="text-2xl sm:text-4xl font-bold text-gray-500 p-0 m-0">
-        {{ noOfUser }} +
+        {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
+        }}<sup>+</sup>
       </h1>
       <h4 class="font-semibold p-0 m-0 text-sm sm:text-xl text-gray-400 mb-2">
         Registered
@@ -49,7 +48,7 @@
     </div>
 
     <!-- Header Text -->
-    <div class="absolute top-0 text-center w-full px-4">
+    <div class="absolute top-3 text-center w-full px-4">
       <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
         I'm <span class="text-indigo-600 underline decoration-2">Jenny</span>,
       </h1>
@@ -64,7 +63,7 @@
     <div class="w-full text-center flex justify-center mt-24 sm:mt-16">
       <!-- Profile Image Section -->
       <div
-        class="relative w-full sm:w-[470px] h-[400px] sm:h-[470px] flex justify-center"
+        class="relative w-full relative-height sm:w-[470px] h-[400px] sm:h-[470px] flex justify-center"
       >
         <!-- Background Shape -->
         <div
@@ -88,7 +87,7 @@
           class="flex flex-col for-button sm:flex-row bg-white justify-center gap-2 sm:gap-4 absolute -bottom-20 sm:bottom-4 z-30 p-2 rounded-full w-full sm:w-auto"
         >
           <button
-            class="px-4 sm:px-6 py-2.5 btn-padding bg-indigo-600 text-white rounded-full cursor-pointer flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors"
+            class="px-1 sm:px-4 py-2.5 btn-padding bg-indigo-600 text-white rounded-full cursor-pointer flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors"
             @click="scrollToContactSection"
           >
             {{ fromResult != "Result" ? "Participate Now" : "Result" }}
@@ -98,7 +97,7 @@
             ></div>
           </button>
           <button
-            class="px-6 sm:px-10 py-2.5 bg-white btn-padding border border-dark-200 text-gray-800 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-colors"
+            class="px-4 py-2.5 bg-white btn-padding border border-dark-200 text-gray-800 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-colors"
           >
             <div class="flex justify-center space-x-3 sm:space-x-6">
               <div
@@ -184,9 +183,9 @@ const skills = [
   "Dashboard UI",
   "Wireframe",
   "User Research",
-  "UX/UI Design",
-  "Mobile Apps",
-  "Web Design",
+  // "UX/UI Design",
+  // "Mobile Apps",
+  // "Web Design",
   // "Brand Identity",
   // "User Testing",
   // "Prototyping",
@@ -303,19 +302,19 @@ button {
 }
 
 @media (max-width: 640px) {
-  .relative {
+  .relative-height {
     height: 260px;
   }
   .for-button {
     display: flex;
     flex-direction: row;
     width: auto;
-    bottom: 3.5em;
+    bottom: 0.5em;
   }
 
   .btn-padding {
     font-size: 12px;
-    padding: 0.5em 2em 0.5em 2em;
+    padding: 0.5em 1em 0.5em 1em;
   }
 
   img.absolute {
@@ -374,5 +373,8 @@ button {
 .animate-marquee2 {
   animation: marquee2 25s linear infinite;
   min-width: 100%;
+}
+sup {
+  top: -0.4em;
 }
 </style>

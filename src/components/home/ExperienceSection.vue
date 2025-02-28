@@ -15,9 +15,13 @@
       <h1
         class="text-[340px] font-bold absolute -right-10 -top-20 for-text-size"
       >
-        {{ getAnnouncementDays }}
+        {{
+          getAnnouncementDays.toString().length === 1
+            ? `0${getAnnouncementDays}`
+            : getAnnouncementDays
+        }}
       </h1>
-      <div class="text-2xl absolute right-5 bottom-5">
+      <div class="text-2xl absolute right-5 bottom-5 font-bold">
         {{ getAnnouncementData }}
       </div>
       <!-- </div> -->
@@ -60,9 +64,12 @@
       <div class="flex justify-center lg:justify-start gap-8 mb-6">
         <div class="text-center lg:text-left">
           <div class="text-2xl lg:text-3xl font-bold text-indigo-600">
-            {{ noOfUser }} +
+            {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
+            }}<sup>+</sup>
           </div>
-          <div class="text-gray-500 text-lg lg:text-xl">Registered</div>
+          <div class="text-gray-500 text-lg font-bold lg:text-xl">
+            Registered
+          </div>
         </div>
         <!-- <div class="text-center lg:text-left">
           <div class="text-2xl lg:text-3xl font-bold text-indigo-600">50+</div>
@@ -77,7 +84,7 @@
           v-if="fromResult != 'Result'"
         >
           <button
-            class="flex items-center pl-1 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
+            class="flex items-center pl-2 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
           >
             <div
               class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600"
@@ -162,7 +169,7 @@ const scrollToContactSection = () => {
 };
 </script>
 
-<style scoped>
+<style>
 @media (min-width: 600px) and (max-width: 1023px) {
   /* Styles for screens between 0 and 503px */
   .left-container {
@@ -176,8 +183,11 @@ const scrollToContactSection = () => {
   }
   .ans-date-size {
     font-size: 22px;
-    left: 5em;
+    left: 10%;
   }
+}
+sup {
+  top: -0.4em;
 }
 /* Add any additional styles here */
 </style>
