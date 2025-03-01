@@ -631,4 +631,10 @@ select::-ms-expand {
 .ql-editor .ql-blank {
   color: red !important; /* Change to any color */
 }
+
+/* Change the placeholder color */
+.ql-editor.ql-blank::before {
+  color: #a5b4fc; /* Change this to your desired color */
+  content: "Insert content here ..."; /* Ensure the placeholder text is shown */
+}
 </style>
