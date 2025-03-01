@@ -141,17 +141,18 @@ const props = defineProps({
 const services = ref([
   {
     title: "$1,000",
-    description: "Exclusive Highest Discount on Your Project Deal",
+    description: "Congrats! Exclusive Highest Discount on Your Project Deal",
     icon: first_win,
   },
   {
     title: "$500",
-    description: "Special Discount for Your Innovative Project",
+    description:
+      "Congratulations! Special Discount for Your Innovative Project",
     icon: sec_winner,
   },
   {
     title: "$251",
-    description: "Great Savings on Your Upcoming Project",
+    description: "Congratulations! Great Savings on Your Upcoming Project",
     icon: third_win,
   },
 ]);

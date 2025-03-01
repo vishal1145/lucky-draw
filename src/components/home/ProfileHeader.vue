@@ -75,7 +75,7 @@
         <img
           :src="profileImage"
           alt="Jenny"
-          class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[360px] h-[320px] sm:h-[390px] object-cover object-top rounded-2xl"
+          class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[360px] h-[320px] sm:h-[390px] object-cover object-top rounded-t-2xl"
         />
 
         <div
@@ -180,7 +180,7 @@
 import { socialIcons } from "@/assets/icons/socialIcons";
 import { ref, onMounted } from "vue";
 import { icons } from "@/assets/icons";
-import profileImage from "@/assets/Images/profile.png";
+import profileImage from "@/assets/Images/profile_img-removebg-preview.png";
 import { useRouter } from "vue-router";
 
 const props = defineProps({
