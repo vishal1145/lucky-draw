@@ -4,16 +4,16 @@
   >
     <!-- Left Section (Experience Box) -->
     <div
-      class="bg-indigo-600 left-container text-indigo-100 w-full lg:w-1/2 h-98 rounded-lg relative mb-8 lg:mb-0"
+      class="bg-indigo-600 left-container text-indigo-100 w-full lg:w-1/2 h-72 sm:h-98 rounded-lg relative mb-8 lg:mb-0"
     >
       <div
-        class="transform -rotate-90 text-4xl font-semibold absolute left-12 bottom-0 top-0 ans-date-size"
+        class="transform -rotate-90 text-2xl sm:text-4xl font-semibold absolute left-12 bottom-0 top-0 ans-date-size"
       >
         ANNOUNCE &nbsp; DATE
       </div>
       <!-- <div class="absolute right-0 top--30"> -->
       <h1
-        class="text-[340px] font-bold absolute -right-10 -top-20 for-text-size"
+        class="text-[250px] sm:text-[320px] font-bold absolute right-0 sm:-right-10 -top-15 for-text-size"
       >
         {{
           getAnnouncementDays.toString().length === 1
@@ -63,7 +63,7 @@
       </p>
       <div class="flex justify-center lg:justify-start gap-8 mb-6">
         <div class="text-center lg:text-left">
-          <div class="text-2xl lg:text-3xl font-bold text-indigo-600">
+          <div class="text-3xl lg:text-5xl font-bold text-indigo-600">
             {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
             }}<sup>+</sup>
           </div>
@@ -176,14 +176,16 @@ const scrollToContactSection = () => {
     width: 70%;
   }
 }
-@media (max-width: 396px) {
+@media (max-width: 640px) {
   .for-text-size {
-    top: 10px;
+    top: -49px;
     font-size: 230px;
   }
+}
+@media (max-width: 396px) {
   .ans-date-size {
     font-size: 22px;
-    left: 10%;
+    /*  left: 10%; */
   }
 }
 sup {

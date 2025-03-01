@@ -126,15 +126,14 @@
   <!-- Marquee section -->
   <section class="bg-lime-500 py-2 px-2 relative z-30 overflow-hidden">
     <div class="relative flex overflow-x-hidden">
-      <!-- First marquee visible on all screens -->
-      <div class="py-3 animate-marquee w-full">
-        <div
-          class="inline-flex items-center space-x-3 sm:space-x-4 md:space-x-8 mx-2 md:mx-4 whitespace-nowrap"
-        >
+      <!-- First Marquee visible on all screens -->
+      <div class="py-3 w-full">
+        <div class="inline-flex items-center whitespace-nowrap animate-marquee">
           <div
-            v-for="(skill, index) in skills"
-            :key="`skill1-${index}`"
+            v-for="(skill, index) in repeatedSkills"
+            :key="`skill-${index}`"
             class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+            style="margin-right: 20px"
           >
             <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
             <div>{{ skill }}</div>
@@ -142,15 +141,31 @@
         </div>
       </div>
 
-      <!-- Second marquee only visible on medium screens and up -->
-      <div class="absolute top-0 py-3 animate-marquee2 w-full hidden md:block">
+      <!-- Second Marquee visible simultaneously -->
+      <div class="py-3 w-full" style="margin-left: 7em">
         <div
-          class="inline-flex items-center space-x-3 sm:space-x-4 md:space-x-8 mx-2 md:mx-4 whitespace-nowrap"
+          class="inline-flex items-center whitespace-nowrap animate-marquee2"
         >
           <div
-            v-for="(skill, index) in skills"
+            v-for="(skill, index) in repeatedSkills"
             :key="`skill2-${index}`"
             class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+            style="margin-right: 20px"
+          >
+            <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
+            <div>{{ skill }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="py-3 w-full" style="margin-left: 7em">
+        <div
+          class="inline-flex items-center whitespace-nowrap animate-marquee2"
+        >
+          <div
+            v-for="(skill, index) in repeatedSkills"
+            :key="`skill2-${index}`"
+            class="flex items-center text-[10px] sm:text-xs md:text-sm font-medium text-black"
+            style="margin-right: 20px"
           >
             <span class="mr-1 md:mr-2 text-indigo-800">✦</span>
             <div>{{ skill }}</div>
@@ -183,13 +198,16 @@ const skills = [
   "Dashboard UI",
   "Wireframe",
   "User Research",
-  // "UX/UI Design",
+  "UX/UI Design",
   // "Mobile Apps",
   // "Web Design",
   // "Brand Identity",
   // "User Testing",
   // "Prototyping",
 ];
+
+// Repeat the skills multiple times to ensure no gaps
+const repeatedSkills = [...skills]; // Adjust the number of repetitions as needed
 
 const scrollToContactSection = () => {
   let contactSection = "";
@@ -353,26 +371,21 @@ button {
 
 @keyframes marquee2 {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
 }
 
 .animate-marquee {
   animation: marquee 25s linear infinite;
-  min-width: 100%;
-  /*  width: 100%;
-  display: flex;
-
-  overflow: hidden;
-  white-space: nowrap;  Ensure items are in a single line */
+  width: calc(100% + 50px);
 }
 
 .animate-marquee2 {
   animation: marquee2 25s linear infinite;
-  min-width: 100%;
+  width: calc(100% + 50px);
 }
 sup {
   top: -0.4em;

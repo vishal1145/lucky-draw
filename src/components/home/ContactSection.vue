@@ -432,16 +432,27 @@ const validateForm = () => {
   }
 
   // Message validation
-  if (!formData.message.trim()) {
+  // if (!formData.message.trim()) {
+  //   errors.message = "Message is required";
+  //   isValid = false;
+  // }
+  const plainText = stripHtml(formData.message);
+  if (!plainText.trim()) {
     errors.message = "Message is required";
     isValid = false;
+    formData.message = ""; // Reset input
   }
+
   if (!formData.technologies) {
     errors.technologies = "Technologies is required";
     isValid = false;
   }
 
   return isValid;
+};
+
+const stripHtml = (html) => {
+  return html.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
 };
 
 const handleSubmit = async () => {
@@ -476,7 +487,7 @@ const handleSubmit = async () => {
     if (!response.error) {
       showOtpModal.value = true;
       toast.showToast({
-        message: "Otp submitted successfully!",
+        message: "OTP sent successfully!",
         type: "success",
         duration: 3000,
       });
