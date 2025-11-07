@@ -76,17 +76,13 @@ const getAllUser = async () => {
   try {
     const response = await apiService.getCall("users");
 
-    if (!response.isError) {
+    console.log("response", response )
+
+    if (response.users) {
       noOfUser.value = response.no_of_users.toString();
       allUserRegistered.value = response.users;
-    } else {
-      toast.showToast({
-        message: "Error fetching users.",
-        type: "error",
-        duration: 4000,
-      });
     }
-  } catch (err) {
+    } catch (err) {
     toast.showToast({
       message: "Server Error. Please try again.",
       type: "error",
@@ -103,7 +99,7 @@ const getAnnounceDate = async () => {
     const response = await apiService.getCall("announcement");
     // console.log(response);
 
-    if (!response.isError) {
+    if (response.status == "success") {
       var responseData = response.data.find((item) => item.status == "active");
 
       const date = moment(

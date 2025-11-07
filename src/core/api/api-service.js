@@ -91,7 +91,7 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'https://lucky-draw.algofolks.com/api/';
+const BASE_URL = 'https://be-lucky-draw.onrender.com/api/';
 
 class ApiService {
   constructor() {
