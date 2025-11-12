@@ -50,13 +50,15 @@
     <!-- Header Text -->
     <div class="absolute top-3 text-center w-full px-4">
       <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-        I'm <span class="text-indigo-600 underline decoration-2">Jenny</span>,
+        I'm <span class="text-indigo-600 underline decoration-2">AlgoFolks</span>,
       </h1>
       <h2
         class="text-xl sm:text-4xl lg:text-5xl text-gray-800 font-bold tracking-widest"
       >
-        Product Designer
+        Celebrating Customer Loyalty
       </h2>
+      <p class="text-gray-600 my-4 text-lg lg:text-xl text-center "> Participate in our Lucky Draw and enjoy exclusive rewards designed to thank you.
+</p>
     </div>
 
     <!-- Main Content Container -->
@@ -105,12 +107,12 @@
                 class="hover:text-gray-300 transition-colors cursor-pointer"
                 v-html="socialIcons.whatsapp"
               ></div>
-              <a
+              <!-- <a
                 href="#"
                 @click="shareOnFacebook"
                 class="hover:text-gray-300 transition-colors"
                 v-html="socialIcons.facebook"
-              ></a>
+              ></a> -->
               <!-- <a
                 href="#"
                 class="hover:text-gray-300 transition-colors"

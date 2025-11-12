@@ -16,7 +16,7 @@
       </div> -->
 
       <!-- Social Media Links -->
-      <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
+      <!-- <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
         <a
           v-for="(icon, name) in socialIcons"
           :key="name"
@@ -25,7 +25,7 @@
           class="hover:text-indigo-600 transition-colors cursor-pointer p-2 sm:p-0"
           v-html="icon"
         ></a>
-      </div>
+      </div> -->
 
       <!-- Copyright -->
       <div class="text-center text-xs sm:text-sm text-gray-600 px-4">

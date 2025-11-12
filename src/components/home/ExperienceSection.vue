@@ -51,15 +51,17 @@
       <h3
         class="text-lg lg:text-xl font-semibold text-gray-500 mb-2 text-center lg:text-left"
       >
-        ⇤ About Me
+        ⇤ About Event
       </h3>
 
-      <h2 class="text-3xl lg:text-5xl font-bold mb-4 text-center lg:text-left">
+      <!-- <h2 class="text-3xl lg:text-5xl font-bold mb-4 text-center lg:text-left">
         Who is <span class="text-indigo-600">Jenny Alexander?</span>
+      </h2> -->
+      <h2 class="text-3xl lg:text-5xl font-bold mb-4 text-center lg:text-left">
+        Why We’re <span class="text-indigo-600">Organizing </span>This?
       </h2>
       <p class="text-gray-600 mb-6 text-lg lg:text-xl text-center lg:text-left">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+         We believe in rewarding loyalty. This event encourages engagement and gives every participant an opportunity to benefit from attractive discounts and prizes.
       </p>
       <div class="flex justify-center lg:justify-start gap-8 mb-6">
         <div class="text-center lg:text-left">

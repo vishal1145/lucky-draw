@@ -23,7 +23,7 @@
             </svg>
           </div>
           <h3 class="ml-3 text-lg sm:text-xl font-semibold text-indigo-600">
-            Education
+            Service-Based Pricing
           </h3>
         </div>
         <ul class="space-y-3 sm:space-y-4">
@@ -71,7 +71,7 @@
             </svg>
           </div>
           <h3 class="ml-3 text-lg sm:text-xl font-semibold text-indigo-600">
-            Developers
+            Developer-Based Pricing
           </h3>
         </div>
         <ul class="space-y-3 sm:space-y-4">
@@ -103,37 +103,37 @@
 <script setup>
 const educations = [
   {
-    institution: "Junior Developer",
-    degree: " Building Skills and Gaining Experience in Tech",
-    years: "$10 - $12",
+    institution: "Basic Development Plan",
+    degree: "Empowering Your Business with Scalable Solutions! Perfect for startups and small businesses looking for reliable development services.",
+    years: "$999.00",
   },
   {
-    institution: "Senior Developers",
-    degree: "Solving Complex Problems and Mentoring Others",
-    years: "$12 - $15",
+    institution: "Professional Development Plan",
+    degree: "Unleash the Power of Advanced Features! Designed for growing businesses seeking robust and high-performing solutions.",
+    years: "$2999.00",
   },
   {
-    institution: "Team Lead",
-    degree: " Managing Projects and Leading Development Teams",
-    years: "$18 - $20",
+    institution: "Enterprise Custom Plan",
+    degree: "Tailored to Meet Your Unique Business Needs! Perfect for enterprises requiring large-scale, highly customized solutions.",
+    years: "Custom Pricing",
   },
 ];
 
 const workExperiences = [
   {
-    company: "Web Developer",
-    position: "Frontend, Full-Stack, E-Commerce, CMS",
-    years: "$250 - $500",
+    company: "Basic Developer Plan",
+    position: "Get Started with Reliable Development Support! Ideal for small projects or quick tasks.",
+    years: "$10/hour",
   },
   {
-    company: "App Development",
-    position: "Mobile, Cross-Platform, API, UI/UX, PWA",
-    years: "$500 - $1000",
+    company: "Professional Developer Plan",
+    position: "Scale Your Projects with Skilled Developers! Perfect for mid-sized projects requiring advanced expertise.",
+    years: "$15/hour",
   },
   {
-    company: "Gen AI / ML Development ",
-    position: "AI, Machine Learning, NLP, Automation",
-    years: "$1000 +",
+    company: "Dedicated Developer Plan",
+    position: "Hire Dedicated Developers for Your Business! Ideal for long-term projects and consistent support.",
+    years: "$2,000/month",
   },
 ];
 </script>

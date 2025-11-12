@@ -23,52 +23,38 @@
 
       <!-- Contact Form -->
       <form @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6">
-        <!-- Name Input -->
-        <div>
-          <input
-            type="text"
-            maxlength="30"
-            v-model="formData.name"
-            @input="capitalizeFirstLetter"
-            placeholder="Your name"
-            :class="[
-              'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
-              errors.name ? 'ring-2 ring-red-400' : 'focus:ring-white',
-            ]"
-          />
-          <span
-            v-if="errors.name"
-            class="text-xs md:text-sm text-red-300 mt-1"
-            >{{ errors.name }}</span
-          >
-        </div>
+        <!-- Profile Image + Name, Email, and Phone Section -->
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6 w-full items-stretch">
+          <!-- Profile Image Section -->
+          <div class="flex flex-col items-center justify-between gap-4 md:gap-6 w-full md:w-auto md:self-stretch">
+            <!-- Hidden File Input -->
+            <input
+              id="imgIconId"
+              type="file"
+              accept="image/*"
+              @change="onImageChange"
+              class="hidden"
+            />
 
-        <!-- Phone Input with Country Code -->
-        <div>
-          <div class="flex gap-2">
-            <!-- Country Selector -->
-            <div class="relative w-20 md:w-24">
-              <select
-                v-model="selectedCountry"
-                class="w-full px-1 md:px-2 py-2 md:py-3 bg-indigo-500/30 text-white rounded-lg focus:outline-none focus:ring-2 appearance-none cursor-pointer text-sm md:text-base"
+            <!-- Profile Image Container -->
+            <div class="relative">
+              <!-- Preview Image or Placeholder -->
+              <div
+                class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-indigo-400 shadow-xl bg-indigo-500/20 flex items-center justify-center"
                 :class="[
-                  errors.phone ? 'ring-2 ring-red-400' : 'focus:ring-white',
+                  errors.profileImg ? 'ring-2 ring-red-400' : '',
                 ]"
               >
-                <option
-                  v-for="country in countries"
-                  :key="country.code"
-                  :value="country"
-                  class="bg-indigo-600 text-white"
-                >
-                  {{ country.flag }} {{ country.code }}
-                </option>
-              </select>
-              <div
-                class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white"
-              >
+                <img
+                  v-if="profileImg"
+                  :src="profileImg"
+                  class="w-full h-full object-cover"
+                  alt="Profile Preview"
+                />
+                <!-- Placeholder Icon when no image -->
                 <svg
-                  class="w-3 h-3 md:w-4 md:h-4"
+                  v-else
+                  class="w-6 h-6 md:w-8 md:h-8 text-indigo-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -77,87 +63,161 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M19 9l-7 7-7-7"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
+                <!-- Overlay for change option when image exists -->
+                <div
+                  v-if="profileImg"
+                  class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                  @click.stop="handleImageClick"
+                >
+                  <span class="text-white text-xs font-medium">Change</span>
+                </div>
+              </div>
+              <!-- Error message for profile image -->
+              <span
+                v-if="errors.profileImg"
+                class="text-xs md:text-sm text-red-300 mt-1 block text-center"
+                >{{ errors.profileImg }}</span
+              >
+            </div>
+
+            <!-- Clickable Button -->
+            <div
+              :class="[
+                'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white rounded-lg flex justify-center items-center focus:outline-none focus:ring-2 cursor-pointer text-sm md:text-base transition-all hover:bg-indigo-500/50 hover:shadow-lg',
+                errors.profileImg ? 'ring-2 ring-red-400' : 'focus:ring-white',
+              ]"
+              @click="handleImageClick"
+            >
+              <svg
+                class="w-3 h-3 md:w-4 md:h-4 mr-1.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              {{ profileImg ? "Change Profile Image" : "Select Profile Image" }}
+            </div>
+          </div>
+
+          <!-- Name, Email, and Phone Section -->
+          <div class="flex flex-col justify-between gap-2 md:gap-3 flex-1 w-full">
+            <!-- Row 1: Name and Email -->
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+              <!-- Name Input -->
+              <div class="flex-1">
+                <input
+                  type="text"
+                  maxlength="30"
+                  v-model="formData.name"
+                  @input="capitalizeFirstLetter"
+                  placeholder="Your name"
+                  :class="[
+                    'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
+                    errors.name ? 'ring-2 ring-red-400' : 'focus:ring-white',
+                  ]"
+                />
+                <span
+                  v-if="errors.name"
+                  class="text-xs md:text-sm text-red-300 mt-1 block"
+                  >{{ errors.name }}</span
+                >
+              </div>
+
+              <!-- Email Input -->
+              <div class="flex-1">
+                <input
+                  type="email"
+                  v-model="formData.email"
+                  placeholder="Your email"
+                  maxlength="30"
+                  :class="[
+                    'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base ',
+                    errors.email ? 'ring-2 ring-red-400' : 'focus:ring-white',
+                  ]"
+                  size="10"
+                />
+                <span
+                  v-if="errors.email"
+                  class="text-xs md:text-sm text-red-300 mt-1 block"
+                  >{{ errors.email }}</span
+                >
               </div>
             </div>
 
-            <!-- Phone Number Input -->
-            <input
-              type="tel"
-              v-model="formData.phone"
-              placeholder="Phone number"
-              maxlength="10"
-              :class="[
-                'flex-1 px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
-                errors.phone ? 'ring-2 ring-red-400' : 'focus:ring-white',
-              ]"
-              @input="validatePhoneNumber"
-            />
+            <!-- Row 2: Phone Input with Country Code -->
+            <div>
+              <div class="flex gap-2">
+                <!-- Country Selector -->
+                <div class="relative w-20 md:w-24">
+                  <select
+                    v-model="selectedCountry"
+                    class="w-full px-1 md:px-2 py-2 md:py-3 bg-indigo-500/30 text-white rounded-lg focus:outline-none focus:ring-2 appearance-none cursor-pointer text-sm md:text-base"
+                    :class="[
+                      errors.phone ? 'ring-2 ring-red-400' : 'focus:ring-white',
+                    ]"
+                  >
+                    <option
+                      v-for="country in countries"
+                      :key="country.code"
+                      :value="country"
+                      class="bg-indigo-600 text-white"
+                    >
+                      {{ country.flag }} {{ country.code }}
+                    </option>
+                  </select>
+                  <div
+                    class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white"
+                  >
+                    <svg
+                      class="w-3 h-3 md:w-4 md:h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Phone Number Input -->
+                <input
+                  type="tel"
+                  v-model="formData.phone"
+                  placeholder="Phone number"
+                  maxlength="10"
+                  :class="[
+                    'flex-1 px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
+                    errors.phone ? 'ring-2 ring-red-400' : 'focus:ring-white',
+                  ]"
+                  @input="validatePhoneNumber"
+                />
+              </div>
+              <span
+                v-if="errors.phone"
+                class="text-xs md:text-sm text-red-300 mt-1 block"
+                >{{ errors.phone }}</span
+              >
+            </div>
           </div>
-          <!--  @input="formData.phone = formData.phone.toString().slice(0, 10)"
- -->
-          <span
-            v-if="errors.phone"
-            class="text-xs md:text-sm text-red-300 mt-1"
-            >{{ errors.phone }}</span
-          >
         </div>
 
-        <!-- Email Input -->
-        <div>
-          <input
-            type="email"
-            v-model="formData.email"
-            placeholder="Your email"
-            maxlength="30"
-            :class="[
-              'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base ',
-              errors.email ? 'ring-2 ring-red-400' : 'focus:ring-white',
-            ]"
-            size="10"
-          />
-          <span
-            v-if="errors.email"
-            class="text-xs md:text-sm text-red-300 mt-1"
-            >{{ errors.email }}</span
-          >
-        </div>
-
-        <div class="flex flex-col md:flex-row gap-4 w-full">
-          <!-- Hidden File Input -->
-          <input
-            id="imgIconId"
-            type="file"
-            accept="image/*"
-            @change="onImageChange"
-            class="hidden"
-          />
-
-          <!-- Clickable Div -->
-          <div
-            :class="[
-              'w-full md:w-48 px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg flex justify-center items-center align-center focus:outline-none focus:ring-2 cursor-pointer text-sm md:text-base',
-              errors.profileImg ? 'ring-2 ring-red-400' : 'focus:ring-white',
-            ]"
-            @click="handleImageClick"
-          >
-            {{ profileImg ? "Change Profile Image" : "Select Profile Image" }}
-          </div>
-
-          <!-- Preview Image -->
-          <img
-            v-if="profileImg"
-            :src="profileImg"
-            class="w-12 h-12 md:w-14 md:h-14 object-cover rounded-lg"
-            alt="Profile Preview"
-          />
-        </div>
-
-        <div>
+        <!-- Row 3: Technologies (Full Width) -->
+        <div class="w-full">
           <multiselect
-            class="placeholder-gray-900"
             :class="[
               'w-full bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
               errors.technologies ? 'ring-2 ring-red-400' : 'focus:ring-white',
@@ -170,7 +230,7 @@
           ></multiselect>
           <span
             v-if="errors.technologies"
-            class="text-xs md:text-sm text-red-300 mt-1"
+            class="text-xs md:text-sm text-red-300 mt-1 block"
             >{{ errors.technologies }}</span
           >
         </div>
@@ -603,17 +663,33 @@ select::-ms-expand {
 .ql-container.ql-snow {
   border: 1px solid #4f46e5 !important;
   color: white;
-  height: 250px;
+  height: 300px;
+  min-height: 300px;
+}
+
+.multiselect {
+  min-height: auto !important;
 }
 
 .multiselect .multiselect__tags {
-  min-height: 40px;
-  display: block;
-  padding: 8px 40px 0 8px;
-  border-radius: 5px;
+  min-height: 42px !important;
+  height: auto !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 40px 8px 12px !important;
+  border-radius: 8px;
   border: 1px solid transparent !important;
   background: transparent !important;
   color: white;
+  gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .multiselect .multiselect__tags {
+    min-height: 48px !important;
+    padding: 12px 40px 12px 16px !important;
+  }
 }
 
 .multiselect__content-wrapper {
@@ -622,11 +698,115 @@ select::-ms-expand {
   border: 1px solid transparent !important;
 }
 .multiselect__tag {
-  background: transparent;
+  background: rgba(99, 102, 241, 0.4) !important;
+  color: white !important;
+  border: 1px solid rgba(129, 140, 248, 0.5) !important;
+  border-radius: 6px !important;
+  padding: 4px 4px 4px 8px !important;
+  margin: 0 4px 0 0 !important;
+  font-size: 0.875rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+
+.multiselect__tag:hover {
+  background: rgba(99, 102, 241, 0.6) !important;
+  border-color: rgba(129, 140, 248, 0.8) !important;
+}
+
+.multiselect__tag-icon {
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+  opacity: 0.9 !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 0 0 6px !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  position: relative !important;
+}
+
+.multiselect__tag-icon:hover {
+  opacity: 1 !important;
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.2) !important;
+}
+
+.multiselect__tag-icon:after {
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  line-height: 16px !important;
+  display: block !important;
+  text-align: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.multiselect__tag-icon:hover:after {
+  color: #ef4444 !important;
+  transform: translate(-50%, -50%) scale(1.1) !important;
+}
+
+.multiselect__tag > *:not(.multiselect__tag-icon) {
+  margin-right: 6px !important;
+  padding-right: 0 !important;
+}
+
+.multiselect__tag span,
+.multiselect__tag strong {
+  margin-right: 6px !important;
+  padding-right: 0 !important;
+  display: inline-block !important;
+}
+
+.multiselect__tag .multiselect__tag-icon {
+  order: 2 !important;
 }
 .multiselect__input,
 .multiselect__single {
   background: transparent;
+  color: white !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
+  line-height: 1.5 !important;
+}
+
+.multiselect__input {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.multiselect__placeholder {
+  color: rgba(199, 210, 254, 0.8) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+.multiselect__input::placeholder {
+  color: rgba(199, 210, 254, 0.8) !important;
 }
 .ql-editor .ql-blank {
   color: red !important; /* Change to any color */
