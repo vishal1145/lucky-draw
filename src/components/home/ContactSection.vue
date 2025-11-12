@@ -26,7 +26,7 @@
         <!-- Profile Image + Name, Email, and Phone Section -->
         <div class="flex flex-col md:flex-row gap-4 md:gap-6 w-full items-stretch">
           <!-- Profile Image Section -->
-          <div class="flex flex-col items-center justify-between gap-4 md:gap-6 w-full md:w-auto md:self-stretch">
+          <div class="flex flex-col items-center justify-between gap-2 w-full md:w-auto md:self-stretch">
             <!-- Hidden File Input -->
             <input
               id="imgIconId"
@@ -40,7 +40,7 @@
             <div class="relative">
               <!-- Preview Image or Placeholder -->
               <div
-                class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-indigo-400 shadow-xl bg-indigo-500/20 flex items-center justify-center"
+                class="relative w-16 h-16 md:w-18 md:h-18 rounded-full overflow-hidden border-2 border-indigo-400 shadow-xl bg-indigo-500/20 flex items-center justify-center"
                 :class="[
                   errors.profileImg ? 'ring-2 ring-red-400' : '',
                 ]"
