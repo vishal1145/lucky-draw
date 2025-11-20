@@ -57,8 +57,8 @@
       >
         Celebrating Customer Loyalty
       </h2>
-      <p class="text-gray-600 my-4 text-lg lg:text-xl text-center "> Participate in our Lucky Draw and enjoy exclusive rewards designed to thank you.
-</p>
+      <!-- <p class="text-gray-600 my-4 text-lg lg:text-xl text-center "> Participate in our Lucky Draw and enjoy exclusive rewards designed to thank you.
+</p> -->
     </div>
 
     <!-- Main Content Container -->
