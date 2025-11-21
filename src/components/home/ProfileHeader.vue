@@ -92,11 +92,18 @@
             class="px-1 sm:px-4 py-2.5 btn-padding bg-indigo-600 text-white rounded-full cursor-pointer flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors"
             @click="scrollToContactSection"
           >
-            {{ fromResult != "Result" ? "Participate Now" : "Result" }}
-            <div
+            <div class="flex flex-col items-center">
+              <span class="whitespace-nowrap">
+                {{ fromResult != "Result" ? "Participate Now — Get Rewards + Discounts on Services" : "Result" }}
+              </span>
+              <span v-if="fromResult != 'Result'" class="text-[10px] sm:text-xs text-white/80 mt-0.5">
+                Free participation. Limited entries.
+              </span>
+            </div>
+            <!-- <div
               class="w-6 sm:w-7 h-6 sm:h-7 rounded-full bg-lime-500 border-2 border-lime-500 flex items-center justify-center text-xs text-white"
               v-html="icons.arrowDown"
-            ></div>
+            ></div> -->
           </button>
           <button
             class="px-4 py-2.5 bg-white btn-padding border border-dark-200 text-gray-800 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-colors"
@@ -126,9 +133,8 @@
     </div>
   </div>
   <!-- Marquee section -->
-  <section class="bg-lime-500 py-2 px-2 relative z-30 overflow-hidden">
+  <!-- <section class="bg-lime-500 py-2 px-2 relative z-30 overflow-hidden">
     <div class="relative flex overflow-x-hidden">
-      <!-- First Marquee visible on all screens -->
       <div class="py-3 w-full">
         <div class="inline-flex items-center whitespace-nowrap animate-marquee">
           <div
@@ -143,7 +149,6 @@
         </div>
       </div>
 
-      <!-- Second Marquee visible simultaneously -->
       <div class="py-3 w-full" style="margin-left: 7em">
         <div
           class="inline-flex items-center whitespace-nowrap animate-marquee2"
@@ -175,7 +180,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 </template>
 
 <script setup>

@@ -19,7 +19,7 @@
             Winner <span class="text-lime-400 bg-gradient-to-r from-lime-400 to-green-400 bg-clip-text text-transparent">Prizes</span>
           </h2>
           <p class="text-indigo-200 mt-3 text-sm md:text-base max-w-md">
-            Exciting rewards await the lucky winners!
+            Every participation increases your chance to win project credits you can use on Algofolks services.
           </p>
         </div>
 
@@ -89,6 +89,11 @@
           <!-- Description -->
           <p class="text-base md:text-lg text-indigo-50 mb-6 leading-relaxed relative z-10">
             {{ service.description }}
+          </p>
+
+          <!-- Credit Usage Info -->
+          <p class="text-sm md:text-base text-indigo-200/80 mb-6 leading-relaxed relative z-10 italic">
+            Credit can be used on any web, mobile, or AI development project.
           </p>
 
           <!-- Winner Section Divider -->

@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/lucky-draw/',
+  base: '/celebrate-customer-loyalty/',
   // lucky-draw/
   plugins: [
     vue(),

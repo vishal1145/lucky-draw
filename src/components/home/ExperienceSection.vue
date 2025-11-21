@@ -1,31 +1,35 @@
 <template>
   <section
-    class="flex flex-col lg:flex-row justify-center items-center px-4 sm:px-8 lg:px-32 py-10 lg:py-20 w-full h-full"
+    class="flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 py-10 lg:py-20 w-full h-full"
   >
-    <!-- Left Section (Experience Box) -->
-    <div
-      class="bg-indigo-600 left-container text-indigo-100 w-full lg:w-1/2 h-72 sm:h-98 rounded-lg relative mb-8 lg:mb-0"
-    >
+    <div class="flex flex-col lg:flex-row justify-center items-center w-full">
+      <!-- Left Section (Experience Box) -->
+      <div class="w-full lg:w-1/2 flex flex-col">
       <div
-        class="transform -rotate-90 text-2xl sm:text-4xl font-semibold absolute left-12 bottom-0 top-0 ans-date-size"
+        class="bg-indigo-600 left-container text-indigo-100 w-full h-72 sm:h-98 rounded-lg relative mb-8 lg:mb-0"
       >
-        ANNOUNCE &nbsp; DATE
+        <div
+          class="transform -rotate-90 text-2xl sm:text-4xl font-semibold absolute left-12 bottom-0 top-0 ans-date-size"
+        >
+          ANNOUNCE &nbsp; DATE
+        </div>
+        <!-- <div class="absolute right-0 top--30"> -->
+        <h1
+          class="text-[250px] sm:text-[320px] font-bold absolute right-0 sm:-right-10 -top-15 for-text-size"
+        >
+          {{
+            getAnnouncementDays.toString().length === 1
+              ? `0${getAnnouncementDays}`
+              : getAnnouncementDays
+          }}
+        </h1>
+        <div class="text-2xl absolute right-5 bottom-5 font-bold">
+          {{ getAnnouncementData }}
+        </div>
+        <!-- </div> -->
       </div>
-      <!-- <div class="absolute right-0 top--30"> -->
-      <h1
-        class="text-[250px] sm:text-[320px] font-bold absolute right-0 sm:-right-10 -top-15 for-text-size"
-      >
-        {{
-          getAnnouncementDays.toString().length === 1
-            ? `0${getAnnouncementDays}`
-            : getAnnouncementDays
-        }}
-      </h1>
-      <div class="text-2xl absolute right-5 bottom-5 font-bold">
-        {{ getAnnouncementData }}
-      </div>
-      <!-- </div> -->
     </div>
+    
     <!-- <div
       class="bg-indigo-600 text-white w-1/2 lg:w-1/2 h-64 lg:h-98 rounded-lg relative mb-8 lg:mb-0"
     >
@@ -47,7 +51,7 @@
     </div> -->
 
     <!-- Right Section (About Info) -->
-    <div class="w-full lg:w-1/2 lg:ml-12 px-4 lg:px-0 left-container">
+    <div class="w-full lg:w-1/2 lg:ml-12 px-0 lg:px-0 left-container">
       <h3
         class="text-lg lg:text-xl font-semibold text-gray-500 mb-2 text-center lg:text-left"
       >
@@ -66,11 +70,12 @@
       <div class="flex justify-center lg:justify-start gap-8 mb-6">
         <div class="text-center lg:text-left">
           <div class="text-3xl lg:text-5xl font-bold text-indigo-600">
-            {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
-            }}<sup>+</sup>
+            <!-- {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
+            }} -->
+            100<sup>+</sup>
           </div>
           <div class="text-gray-500 text-lg font-bold lg:text-xl">
-            Registered
+             Participants Expected
           </div>
         </div>
         <!-- <div class="text-center lg:text-left">
@@ -128,11 +133,19 @@
         /> -->
       </div>
     </div>
+    </div>
+    
+    <!-- Winner Benefits Note -->
+    <div class="text-center px-4 sm:px-8 lg:px-16 mt-6 lg:mt-8 w-full">
+      <p class="text-sm sm:text-base text-gray-600 italic">
+        Winners will receive a discount code plus a free project consultation.
+      </p>
+    </div>
   </section>
 
-  <div class="text-center px-4 mt-8 lg:mt-16">
+  <div class="text-center px-4 my-8 lg:my-16">
     <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
-      -- Services & Prices
+      What You Can Use Your Reward Credits For
     </h3>
     <h2 class="text-3xl lg:text-5xl font-bold">
       Our <span class="text-indigo-600">Services & Developer Prices</span>

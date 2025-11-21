@@ -1,4 +1,38 @@
 <template>
+  <!-- Trust Bar -->
+  <section class="relative bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-50 border-t border-indigo-100 overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-400 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-400 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <!-- Trust Badge/Icon -->
+        <div class="flex items-center justify-center">
+          <div class="relative">
+            <div class="absolute inset-0 bg-indigo-400 rounded-full blur-lg opacity-30"></div>
+            <div class="relative bg-gradient-to-br from-indigo-500 to-purple-600 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Trust Text -->
+        <div class="text-center sm:text-left">
+          <p class="text-base sm:text-lg md:text-xl font-semibold text-gray-800 leading-tight">
+            Trusted by founders & businesses in 
+            <span class="text-indigo-600 font-bold">46 U.S. states</span>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="text-zinc-950 py-8 sm:py-12 lg:py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Navigation Links -->

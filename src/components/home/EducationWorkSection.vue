@@ -36,15 +36,15 @@
               <div class="font-semibold text-gray-600 text-sm sm:text-base">
                 {{ education.institution }}
               </div>
-              <div class="text-gray-500 text-xs sm:text-sm">
+              <!-- <div class="text-gray-500 text-xs sm:text-sm">
                 {{ education.degree }}
-              </div>
+              </div> -->
             </div>
-            <div
+            <!-- <div
               class="text-gray-500 bg-white px-2 py-1.5 sm:py-2 rounded text-center text-sm sm:text-base w-full sm:w-32"
             >
               {{ education.years }}
-            </div>
+            </div> -->
           </li>
         </ul>
       </div>
@@ -84,15 +84,15 @@
               <div class="font-semibold text-gray-600 text-sm sm:text-base">
                 {{ work.company }}
               </div>
-              <div class="text-gray-500 text-xs sm:text-sm">
+              <!-- <div class="text-gray-500 text-xs sm:text-sm">
                 {{ work.position }}
-              </div>
+              </div> -->
             </div>
-            <div
+            <!-- <div
               class="text-gray-500 bg-white px-2 py-1.5 sm:py-2 rounded text-center text-sm sm:text-base w-full sm:w-32"
             >
               {{ work.years }}
-            </div>
+            </div> -->
           </li>
         </ul>
       </div>
@@ -103,37 +103,37 @@
 <script setup>
 const educations = [
   {
-    institution: "Basic Development Plan",
-    degree: "Empowering Your Business with Scalable Solutions! Perfect for startups and small businesses looking for reliable development services.",
-    years: "$999.00",
+    institution: "Web & App Development",
+    // degree: "Empowering Your Business with Scalable Solutions! Perfect for startups and small businesses looking for reliable development services.",
+    // years: "$999.00",
   },
   {
-    institution: "Professional Development Plan",
-    degree: "Unleash the Power of Advanced Features! Designed for growing businesses seeking robust and high-performing solutions.",
-    years: "$2999.00",
+    institution: "AI & Chatbot Development",
+    // degree: "Unleash the Power of Advanced Features! Designed for growing businesses seeking robust and high-performing solutions.",
+    // years: "$2999.00",
   },
   {
-    institution: "Enterprise Custom Plan",
-    degree: "Tailored to Meet Your Unique Business Needs! Perfect for enterprises requiring large-scale, highly customized solutions.",
-    years: "Custom Pricing",
+    institution: "UI/UX Design",
+    // degree: "Tailored to Meet Your Unique Business Needs! Perfect for enterprises requiring large-scale, highly customized solutions.",
+    // years: "Custom Pricing",
   },
 ];
 
 const workExperiences = [
   {
-    company: "Basic Developer Plan",
-    position: "Get Started with Reliable Development Support! Ideal for small projects or quick tasks.",
-    years: "$10/hour",
+    company: "Business Automation",
+    // position: "Get Started with Reliable Development Support! Ideal for small projects or quick tasks.",
+    // years: "$10/hour",
   },
   {
-    company: "Professional Developer Plan",
-    position: "Scale Your Projects with Skilled Developers! Perfect for mid-sized projects requiring advanced expertise.",
-    years: "$15/hour",
+    company: "Custom Software",
+    // position: "Scale Your Projects with Skilled Developers! Perfect for mid-sized projects requiring advanced expertise.",
+    // years: "$15/hour",
   },
   {
-    company: "Dedicated Developer Plan",
-    position: "Hire Dedicated Developers for Your Business! Ideal for long-term projects and consistent support.",
-    years: "$2,000/month",
+    company: "API Development",
+    // position: "Hire Dedicated Developers for Your Business! Ideal for long-term projects and consistent support.",
+    // years: "$2,000/month",
   },
 ];
 </script>
