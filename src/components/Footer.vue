@@ -1,38 +1,57 @@
 <template>
   <!-- Trust Bar -->
-  <section class="relative overflow-hidden">
-    <!-- Three horizontal bands: light blue-lavender top, white middle, light blue-lavender bottom -->
-    <div class="absolute inset-0 flex flex-col">
-      <div class="h-20 sm:h-24 bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-50"></div>
-      <div class="flex-1 bg-white"></div>
-      <div class="h-20 sm:h-24 bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-50"></div>
-    </div>
+  <section class="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+    <!-- Animated background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50/80 to-indigo-50"></div>
     
-    <!-- Content in the white middle band -->
-    <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 py-10 sm:py-12">
-        <!-- Trust Badge/Icon -->
-        <div class="flex-shrink-0">
+    <!-- Decorative floating elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-indigo-200/40 rounded-full blur-2xl animate-pulse"></div>
+    <div class="absolute bottom-10 right-10 w-32 h-32 bg-purple-200/40 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-indigo-300/30 rounded-full blur-xl animate-pulse" style="animation-delay: 0.5s;"></div>
+    
+    <!-- Pattern overlay -->
+    <div class="absolute inset-0 opacity-5 pattern-dots"></div>
+    
+    <!-- Main content container -->
+    <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+        <!-- Enhanced Trust Badge/Icon with animations -->
+        <div class="flex-shrink-0 group">
           <div class="relative">
-            <!-- Shadow beneath icon -->
-            <div class="absolute inset-0 bg-gray-200 rounded-full blur-sm opacity-50"></div>
-            <!-- Icon container with gradient from indigo (left) to purple (right) -->
-            <div class="relative bg-gradient-to-r from-indigo-500 to-purple-600 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-md">
+            <!-- Outer glow ring -->
+            <div class="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 animate-pulse"></div>
+            
+            <!-- Middle ring with animation -->
+            <div class="absolute inset-0 -inset-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300 animate-spin-slow"></div>
+            
+            <!-- Icon container with enhanced gradient -->
+            <div class="relative bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-600 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <!-- Inner shine effect -->
+              <div class="absolute inset-0 rounded-full bg-white/20 blur-sm"></div>
+              <div class="absolute top-2 left-2 w-8 h-8 bg-white/30 rounded-full blur-md"></div>
+              
               <!-- Shield with checkmark -->
-              <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <svg class="relative z-10 w-10 h-10 sm:w-12 sm:h-12 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
           </div>
         </div>
         
-        <!-- Trust Text -->
-        <div class="text-center sm:text-left">
-          <p class="text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-snug">
-            Trusted by founders & businesses in 
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 font-bold">46 U.S. states</span>
+        <!-- Enhanced Trust Text with better typography -->
+        <div class="text-center sm:text-left flex-1">
+          <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+            <span class="text-gray-800">Trusted by founders & businesses in </span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 font-extrabold animate-gradient">
+              46 U.S. states
+            </span>
           </p>
         </div>
+      </div>
+      
+      <!-- Decorative bottom accent -->
+      <div class="mt-12 flex justify-center">
+        <div class="h-1 w-32 bg-gradient-to-r from-transparent via-indigo-400 to-transparent rounded-full"></div>
       </div>
     </div>
   </section>
@@ -159,7 +178,35 @@ const shareOnFacebook = () => {
 </script>
 
 <style scoped>
-/*.bg-indigo-600 {
-  background-color: #4f46e5;
-} */
+.pattern-dots {
+  background-image: radial-gradient(circle, #6366f1 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient 3s ease infinite;
+}
 </style>

@@ -65,7 +65,7 @@
     <div class="w-full text-center flex justify-center mt-24 sm:mt-16">
       <!-- Profile Image Section -->
       <div
-        class="relative w-full relative-height sm:w-[470px] h-[400px] sm:h-[470px] flex justify-center"
+        class="relative w-full relative-height sm:w-[470px] h-[500px] sm:h-[570px] flex justify-center"
       >
         <!-- Background Shape -->
         <div
@@ -77,7 +77,7 @@
         <img
           :src="profileImage"
           alt="Jenny"
-          class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[360px] h-[320px] sm:h-[390px] object-cover object-top rounded-t-2xl"
+          class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[360px] h-[400px] sm:h-[500px] object-cover object-top rounded-t-2xl"
         />
 
         <div
@@ -328,7 +328,7 @@ button {
 
 @media (max-width: 640px) {
   .relative-height {
-    height: 260px;
+    height: 350px;
   }
   .for-button {
     display: flex;
@@ -344,14 +344,14 @@ button {
 
   img.absolute {
     width: 60%;
-    height: 250px;
+    height: 350px;
   }
 }
 @media (min-width: 0px) and (max-width: 503px) {
   /* Styles for screens between 0 and 503px */
   img.absolute {
     width: 80%;
-    height: 250px;
+    height: 350px;
   }
 }
 

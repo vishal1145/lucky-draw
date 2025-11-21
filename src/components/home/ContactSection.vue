@@ -231,43 +231,23 @@
 
         <!-- Start Date Selection (Optional) -->
         <div class="w-full">
-          <div class="relative">
-            <select
-              v-model="formData.startDate"
+          <label class="block text-white text-sm md:text-base mb-3 md:mb-4">
+            When do you plan to start?
+          </label>
+          <div class="flex flex-wrap gap-3 md:gap-4">
+            <span
+              v-for="option in startDateOptions"
+              :key="option.value"
+              @click="formData.startDate = option.value"
               :class="[
-                'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white rounded-lg focus:outline-none focus:ring-2 appearance-none cursor-pointer text-sm md:text-base',
-                'focus:ring-white',
+                'inline-flex items-center justify-center px-4 md:px-6 py-2.5 md:py-3 rounded-xl text-sm md:text-base font-medium cursor-pointer transition-all duration-200 min-w-[120px] md:min-w-[140px]',
+                formData.startDate === option.value
+                  ? 'bg-indigo-400/40 text-white border-2 border-indigo-300/60 shadow-[0_0_15px_rgba(129,140,248,0.4)] backdrop-blur-sm'
+                  : 'bg-indigo-600/30 text-white border border-indigo-500/30 hover:bg-indigo-600/40 hover:border-indigo-400/50',
               ]"
             >
-              <option value="" class="bg-indigo-600 text-white">
-                When do you plan to start?
-              </option>
-              <option
-                v-for="option in startDateOptions"
-                :key="option.value"
-                :value="option.value"
-                class="bg-indigo-600 text-white"
-              >
-                {{ option.label }}
-              </option>
-            </select>
-            <div
-              class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white"
-            >
-              <svg
-                class="w-3 h-3 md:w-4 md:h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
+              {{ option.label }}
+            </span>
           </div>
         </div>
 
