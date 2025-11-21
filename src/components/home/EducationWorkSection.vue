@@ -23,10 +23,10 @@
             </svg>
           </div>
           <h3 class="ml-3 text-lg sm:text-xl font-semibold text-indigo-600">
-            Service-Based Pricing
+            Services
           </h3>
         </div>
-        <ul class="space-y-3 sm:space-y-4">
+        <ul class="space-y-3 sm:space-y-4 list-disc list-inside">
           <li
             v-for="education in educations"
             :key="education.institution"
@@ -34,7 +34,7 @@
           >
             <div class="flex-1">
               <div class="font-semibold text-gray-600 text-sm sm:text-base">
-                {{ education.institution }}
+            {{ education.institution }}
               </div>
               <!-- <div class="text-gray-500 text-xs sm:text-sm">
                 {{ education.degree }}
@@ -71,10 +71,10 @@
             </svg>
           </div>
           <h3 class="ml-3 text-lg sm:text-xl font-semibold text-indigo-600">
-            Developer-Based Pricing
+            Development Solutions
           </h3>
         </div>
-        <ul class="space-y-3 sm:space-y-4">
+        <ul class="space-y-3 sm:space-y-4 list-disc list-inside">
           <li
             v-for="work in workExperiences"
             :key="work.company"
@@ -82,7 +82,7 @@
           >
             <div class="flex-1">
               <div class="font-semibold text-gray-600 text-sm sm:text-base">
-                {{ work.company }}
+            {{ work.company }}
               </div>
               <!-- <div class="text-gray-500 text-xs sm:text-sm">
                 {{ work.position }}
