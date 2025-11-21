@@ -26,8 +26,7 @@
         <!-- Profile Image + Name, Email, and Phone Section -->
         <div class="flex flex-col md:flex-row gap-4 md:gap-6 w-full items-stretch">
           <!-- Profile Image Section -->
-          <div class="flex flex-col items-center justify-between gap-2 w-full md:w-auto md:self-stretch">
-            <!-- Hidden File Input -->
+          <!-- <div class="flex flex-col items-center justify-between gap-2 w-full md:w-auto md:self-stretch">
             <input
               id="imgIconId"
               type="file"
@@ -36,9 +35,7 @@
               class="hidden"
             />
 
-            <!-- Profile Image Container -->
             <div class="relative">
-              <!-- Preview Image or Placeholder -->
               <div
                 class="relative w-16 h-16 md:w-18 md:h-18 rounded-full overflow-hidden border-2 border-indigo-400 shadow-xl bg-indigo-500/20 flex items-center justify-center"
                 :class="[
@@ -51,7 +48,6 @@
                   class="w-full h-full object-cover"
                   alt="Profile Preview"
                 />
-                <!-- Placeholder Icon when no image -->
                 <svg
                   v-else
                   class="w-6 h-6 md:w-8 md:h-8 text-indigo-300"
@@ -66,7 +62,6 @@
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
-                <!-- Overlay for change option when image exists -->
                 <div
                   v-if="profileImg"
                   class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
@@ -75,7 +70,6 @@
                   <span class="text-white text-xs font-medium">Change</span>
                 </div>
               </div>
-              <!-- Error message for profile image -->
               <span
                 v-if="errors.profileImg"
                 class="text-xs md:text-sm text-red-300 mt-1 block text-center"
@@ -83,7 +77,6 @@
               >
             </div>
 
-            <!-- Clickable Button -->
             <div
               :class="[
                 'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white rounded-lg flex justify-center items-center focus:outline-none focus:ring-2 cursor-pointer text-sm md:text-base transition-all hover:bg-indigo-500/50 hover:shadow-lg',
@@ -106,10 +99,10 @@
               </svg>
               {{ profileImg ? "Change Profile Image" : "Select Profile Image" }}
             </div>
-          </div>
+          </div> -->
 
           <!-- Name, Email, and Phone Section -->
-          <div class="flex flex-col justify-between gap-2 md:gap-3 flex-1 w-full">
+          <div class="flex flex-col justify-between gap-4 md:gap-6 flex-1 w-full">
             <!-- Row 1: Name and Email -->
             <div class="flex flex-col md:flex-row gap-4 md:gap-6">
               <!-- Name Input -->
@@ -155,7 +148,7 @@
 
             <!-- Row 2: Phone Input with Country Code -->
             <div>
-              <div class="flex gap-2">
+              <div class="flex gap-4 md:gap-6">
                 <!-- Country Selector -->
                 <div class="relative w-20 md:w-24">
                   <select
@@ -235,6 +228,49 @@
           >
         </div>
 
+
+        <!-- Start Date Selection (Optional) -->
+        <div class="w-full">
+          <div class="relative">
+            <select
+              v-model="formData.startDate"
+              :class="[
+                'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white rounded-lg focus:outline-none focus:ring-2 appearance-none cursor-pointer text-sm md:text-base',
+                'focus:ring-white',
+              ]"
+            >
+              <option value="" class="bg-indigo-600 text-white">
+                When do you plan to start?
+              </option>
+              <option
+                v-for="option in startDateOptions"
+                :key="option.value"
+                :value="option.value"
+                class="bg-indigo-600 text-white"
+              >
+                {{ option.label }}
+              </option>
+            </select>
+            <div
+              class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white"
+            >
+              <svg
+                class="w-3 h-3 md:w-4 md:h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
         <!-- Message Input -->
         <div>
           <quill-editor
@@ -270,6 +306,13 @@
           Thank you! Your message has been sent successfully.
         </div>
       </form>
+
+      <!-- Consultation Offer Text -->
+      <div class="text-center mt-4 md:mt-6">
+        <p class="text-white text-sm md:text-base">
+          Every participant receives a free project consultation worth $99.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -331,6 +374,8 @@ const formData = reactive({
   email: "",
   message: "",
   technologies: "",
+  projectDescription: "",
+  startDate: "",
 });
 
 const errors = reactive({
@@ -346,6 +391,13 @@ const selectedTechnologies = ref([]);
 const isSubmitting = ref(false);
 const submitSuccess = ref(false);
 const showOtpModal = ref(false);
+
+// Start date options
+const startDateOptions = [
+  { label: "This week", value: "this_week" },
+  { label: "This month", value: "this_month" },
+  { label: "Not decided", value: "not_decided" },
+];
 
 const emit = defineEmits(["refreshUser"]);
 
@@ -531,6 +583,15 @@ const handleSubmit = async () => {
     technologies: formData.technologies,
     requirements: formData.message,
   };
+
+  // Add optional fields if they have values
+  if (formData.projectDescription && formData.projectDescription.trim()) {
+    requestData.project_description = formData.projectDescription.trim();
+  }
+
+  if (formData.startDate) {
+    requestData.start_date = formData.startDate;
+  }
 
   // If there's a profile image, add it to the request data
   if (formData.profileImg) {
@@ -815,6 +876,6 @@ select::-ms-expand {
 /* Change the placeholder color */
 .ql-editor.ql-blank::before {
   color: #a5b4fc; /* Change this to your desired color */
-  content: "Insert content here ..."; /* Ensure the placeholder text is shown */
+  content: "Tell us what project you have in mind ..."; /* Ensure the placeholder text is shown */
 }
 </style>

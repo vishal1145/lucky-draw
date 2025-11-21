@@ -72,7 +72,8 @@
           <div class="text-3xl lg:text-5xl font-bold text-indigo-600">
             <!-- {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
             }} -->
-            100<sup>+</sup>
+            100+
+            <!-- <sup>+</sup> -->
           </div>
           <div class="text-gray-500 text-lg font-bold lg:text-xl">
              Participants Expected
@@ -145,10 +146,10 @@
 
   <div class="text-center px-4 my-8 lg:my-16">
     <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
-      What You Can Use Your Reward Credits For
+      Our Services & Developer Prices
     </h3>
     <h2 class="text-3xl lg:text-5xl font-bold">
-      Our <span class="text-indigo-600">Services & Developer Prices</span>
+      What <span class="text-indigo-600">You Can Use Your Reward Credits For</span>
     </h2>
   </div>
 

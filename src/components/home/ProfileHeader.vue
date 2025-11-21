@@ -106,7 +106,7 @@
             ></div> -->
           </button>
           <button
-            class="px-4 py-2.5 bg-white btn-padding border border-dark-200 text-gray-800 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-colors"
+            class="px-4 py-2.5 bg-white btn-padding border-2 border-[#25D366] text-gray-800 rounded-full hover:border-[#20BA5A] hover:bg-green-50 transition-colors"
           >
             <div class="flex justify-center space-x-3 sm:space-x-6">
               <div
