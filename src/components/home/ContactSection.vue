@@ -857,5 +857,6 @@ select::-ms-expand {
 .ql-editor.ql-blank::before {
   color: #a5b4fc; /* Change this to your desired color */
   content: "Tell us what project you have in mind ..."; /* Ensure the placeholder text is shown */
+  font-weight: bold;
 }
 </style>
