@@ -146,7 +146,7 @@
 
   <div class="text-center px-4 my-8 lg:my-16">
     <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
-      Our Services & Developer
+      Our Services & Development
     </h3>
     <h2 class="text-3xl lg:text-5xl font-bold">
       What <span class="text-indigo-600">You Can Use Your Reward Credits For</span>
