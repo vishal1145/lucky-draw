@@ -208,31 +208,31 @@
           </div>
         </div>
 
-        <!-- Row 3: Technologies (Full Width) -->
+        <!-- Row 3: Industry (Full Width) -->
         <div class="w-full">
           <multiselect
             :class="[
               'w-full bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
-              errors.technologies ? 'ring-2 ring-red-400' : 'focus:ring-white',
+              errors.industry ? 'ring-2 ring-red-400' : 'focus:ring-white',
             ]"
             @update:modelValue="handleChange"
-            v-model="selectedTechnologies"
-            placeholder="Select Technologies"
-            :options="[...allTechnologies]"
+            v-model="selectedIndustries"
+            placeholder="Select Industry"
+            :options="[...allIndustries]"
             :multiple="true"
           ></multiselect>
           <span
-            v-if="errors.technologies"
+            v-if="errors.industry"
             class="text-xs md:text-sm text-red-300 mt-1 block"
-            >{{ errors.technologies }}</span
+            >{{ errors.industry }}</span
           >
         </div>
 
 
         <!-- Start Date Selection (Optional) -->
-        <div class="w-full">
-          <label class="block text-white text-sm md:text-base mb-3 md:mb-4">
-            When do you plan to start?
+        <div class="w-full flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
+          <label class="text-white text-sm md:text-base whitespace-nowrap">
+            When do you plan to start:
           </label>
           <div class="flex flex-wrap gap-3 md:gap-4">
             <span
@@ -240,7 +240,7 @@
               :key="option.value"
               @click="formData.startDate = option.value"
               :class="[
-                'inline-flex items-center justify-center px-4 md:px-6 py-2.5 md:py-3 rounded-xl text-sm md:text-base font-medium cursor-pointer transition-all duration-200 min-w-[120px] md:min-w-[140px]',
+                'inline-flex items-center justify-center px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-sm md:text-base font-medium cursor-pointer transition-all duration-200 min-w-[120px] md:min-w-[140px]',
                 formData.startDate === option.value
                   ? 'bg-indigo-400/40 text-white border-2 border-indigo-300/60 shadow-[0_0_15px_rgba(129,140,248,0.4)] backdrop-blur-sm'
                   : 'bg-indigo-600/30 text-white border border-indigo-500/30 hover:bg-indigo-600/40 hover:border-indigo-400/50',
@@ -288,8 +288,8 @@
       </form>
 
       <!-- Consultation Offer Text -->
-      <div class="text-center mt-4 md:mt-6">
-        <p class="text-white text-sm md:text-base">
+      <div class="text-center mt-4 md:mt-6 w-full">
+        <p class="inline-block text-base sm:text-lg text-white bg-indigo-600 rounded-[17px] px-4 md:px-6 py-2 md:py-2.5">
           Every participant receives a free project consultation worth $99.
         </p>
       </div>
@@ -353,7 +353,7 @@ const formData = reactive({
   phone: "",
   email: "",
   message: "",
-  technologies: "",
+  industry: "",
   projectDescription: "",
   startDate: "",
 });
@@ -363,11 +363,20 @@ const errors = reactive({
   phone: "",
   email: "",
   message: "",
-  technologies: "",
+  industry: "",
 });
 
-const allTechnologies = ref(["Flutter", "dart", "Vue.js", "Git", "Github"]);
-const selectedTechnologies = ref([]);
+const allIndustries = ref([
+  "Technology",
+  "Healthcare",
+  "Finance",
+  "Education",
+  "Retail",
+  "Manufacturing",
+  "Real Estate",
+  "Other"
+]);
+const selectedIndustries = ref([]);
 const isSubmitting = ref(false);
 const submitSuccess = ref(false);
 const showOtpModal = ref(false);
@@ -535,8 +544,8 @@ const validateForm = () => {
     formData.message = ""; // Reset input
   }
 
-  if (!formData.technologies) {
-    errors.technologies = "Technologies is required";
+  if (!formData.industry) {
+    errors.industry = "Industry is required";
     isValid = false;
   }
 
@@ -560,7 +569,7 @@ const handleSubmit = async () => {
     email: formData.email,
     country_code: selectedCountry.value.code,
     phone: formData.phone,
-    technologies: formData.technologies,
+    industry: formData.industry,
     requirements: formData.message,
   };
 
@@ -617,7 +626,7 @@ const handleOtpVerified = () => {
   emit("refreshUser");
   // Reset form
   Object.keys(formData).forEach((key) => (formData[key] = ""));
-  selectedTechnologies.value = [];
+  selectedIndustries.value = [];
   profileImg.value = "";
   // Show success toast instead of inline message
   toast.showToast({
@@ -645,7 +654,7 @@ const onImageChange = (event) => {
 };
 
 const handleChange = (event) => {
-  formData.technologies = event.toString();
+  formData.industry = event.toString();
 };
 const capitalizeFirstLetter = (event) => {
   // const inputValue = event.target.value;

@@ -67,7 +67,7 @@
       <p class="text-gray-600 mb-6 text-lg lg:text-xl text-center lg:text-left">
          We believe in rewarding loyalty. This event encourages engagement and gives every participant an opportunity to benefit from attractive discounts and prizes.
       </p>
-      <div class="flex justify-center lg:justify-start gap-8 mb-6">
+      <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8 mb-6">
         <div class="text-center lg:text-left">
           <div class="text-3xl lg:text-5xl font-bold text-indigo-600">
             <!-- {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
@@ -83,12 +83,8 @@
           <div class="text-2xl lg:text-3xl font-bold text-indigo-600">50+</div>
           <div class="text-gray-500 text-lg lg:text-xl">Industry Covered</div>
         </div> -->
-      </div>
-      <div
-        class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 relative"
-      >
         <div
-          class="flex items-center relative justify-center md:justify-end"
+          class="flex items-center relative justify-center"
           v-if="fromResult != 'Result'"
         >
           <button
@@ -101,13 +97,21 @@
           </button>
 
           <button
-            class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap ml-2 md:ml-0"
+            class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap"
             @click="scrollToContactSection"
             style="margin-left: -2em"
           >
             {{ fromResult != "Result" ? "Participate Now" : "Result" }}
           </button>
         </div>
+      </div>
+      
+      <!-- Winner Benefits Note -->
+      <div class="mt-4 w-full">
+        <p class="text-base sm:text-lg text-white bg-[#7ccf00] rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
+          Winners will receive a discount code plus a free project consultation.
+        </p>
+      </div>
         <!-- <div class="flex">
           <button
             class="flex items-center pl-1 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium w-full sm:w-auto"
@@ -132,52 +136,11 @@
           alt="Signature"
           class="h-8 w-20 mt-3 sm:mt-0 sm:ml-8"
         /> -->
-      </div>
     </div>
-    </div>
-    
-    <!-- Winner Benefits Note -->
-    <div class="flex justify-center px-4 sm:px-8 lg:px-16 mt-8 lg:mt-12 w-full">
-      <div class="relative max-w-3xl w-full">
-        <!-- Decorative elements -->
-        <div class="absolute -top-2 -left-2 w-6 h-6 bg-lime-400 rounded-full opacity-60 animate-pulse"></div>
-        <div class="absolute -top-1 -right-3 w-4 h-4 bg-indigo-400 rounded-full opacity-60 animate-pulse" style="animation-delay: 0.5s;"></div>
-        <div class="absolute -bottom-2 left-1/4 w-5 h-5 bg-lime-300 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
-        
-        <!-- Main card -->
-        <div class="relative bg-gradient-to-br from-white via-indigo-50/30 to-lime-50/40 border-2 border-lime-400 rounded-2xl shadow-xl p-6 sm:p-8 backdrop-blur-sm overflow-hidden">
-          <!-- Animated background pattern -->
-          <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-0 left-0 w-32 h-32 bg-indigo-500 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-40 h-40 bg-lime-400 rounded-full blur-3xl"></div>
-          </div>
-          
-          <!-- Content -->
-          <div class="relative z-10">
-            <div class="flex items-center justify-center gap-3">
-              <div class="flex-shrink-0">
-                <div class="relative">
-                  <div class="w-8 h-8 bg-gradient-to-br from-lime-400 to-lime-600 rounded-full flex items-center justify-center shadow-lg">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </div>
-                  <div class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
-                </div>
-              </div>
-              <div class="flex-1 text-center">
-                <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  Winners will receive a <span class="font-semibold text-indigo-600">discount code</span> plus a <span class="font-semibold text-indigo-600">free project consultation</span>.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <div class="text-center px-4 my-8 lg:my-16">
+  <div class="text-center ">
     <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
       -- Our Services & Development
     </h3>
