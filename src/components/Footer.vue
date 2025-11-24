@@ -1,6 +1,6 @@
 <template>
   <!-- Trust Bar -->
-  <section class="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+  <section class="relative overflow-hidden py-8 sm:py-12 lg:py-16">
     <!-- Solid very light pastel blue/periwinkle background -->
     <div class="absolute inset-0 bg-blue-50/60"></div>
     

@@ -1,6 +1,6 @@
 <template>
   <section id="contact-section" class="w-full">
-    <div class="text-center p-4">
+    <div class="text-center pt-8 pb-4 sm:pb-8 sm:pt-12 lg:pt-16">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold">
         <span class="text-indigo-600">Register!</span>
       </h2>
@@ -8,7 +8,7 @@
   </section>
 
   <section
-    class="flex flex-col lg:flex-row w-full min-h-[600px] my-4 md:my-6 lg:my-10 px-4 md:px-8 lg:px-32"
+    class="flex flex-col lg:flex-row w-full min-h-[600px]  pb-8 sm:pb-12 lg:pb-16 px-4 md:px-8 lg:px-32"
   >
     <div
       class="bg-indigo-600 p-4 md:p-8 lg:p-16 w-full rounded-2xl bg-cover bg-center bg-no-repeat"
@@ -289,7 +289,7 @@
 
       <!-- Consultation Offer Text -->
       <div class="text-center mt-4 md:mt-6 w-full">
-        <p class="inline-block text-base sm:text-lg text-white bg-indigo-600 rounded-[17px] px-4 md:px-6 py-2 md:py-2.5">
+        <p class="inline-block text-sm sm:text-base text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
           Every participant receives a free project consultation worth $99.
         </p>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <section class="py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-32">
+  <section class="py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-32 bg-white">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       <!-- Education Card -->
       <div class="bg-white shadow-lg rounded-lg p-4 sm:p-5 lg:p-6">
@@ -99,59 +99,49 @@
     </div>
 
     <!-- Exclusive Perks Section -->
-    <div class="mt-8 sm:mt-10 lg:mt-12">
-      <!-- Background with gradient -->
-      <div class="relative bg-gradient-to-br from-indigo-50 via-purple-50 to-indigo-50 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
-        <!-- Decorative background pattern -->
-        <div class="absolute inset-0 opacity-5">
-          <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-400 rounded-full blur-3xl"></div>
-          <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-400 rounded-full blur-3xl"></div>
+    <div class="mt-4 sm:mt-6 lg:mt-8">
+      <div class="bg-white shadow-lg rounded-lg p-4 sm:p-5 lg:p-6">
+        <!-- Title -->
+        <div class="text-center mb-4 sm:mb-6">
+          <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
+            Exclusive Perks for Participants
+          </h3>
+          <!-- <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div> -->
         </div>
-        
-        <!-- Content -->
-        <div class="relative z-10 bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl m-2 sm:m-3 p-6 sm:p-8 lg:p-12">
-          <!-- Title -->
-          <div class="text-center mb-8 sm:mb-10">
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-700 mb-2">
-              Exclusive Perks for Participants
-            </h3>
-            <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
-          </div>
 
-          <!-- Perks Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <!-- Perk 1: Priority Onboarding -->
-            <div 
-              class="perk-card group flex flex-col items-center text-center relative"
-              v-for="(perk, index) in perks"
-              :key="perk.title"
-            >
-              <!-- Icon Container with Animation -->
-              <div class="relative mb-4 sm:mb-5">
-                <!-- Glow effect -->
-                <div class="absolute inset-0 bg-indigo-400 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                <!-- Icon circle -->
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                  <div class="absolute inset-0 rounded-full bg-white/20 blur-sm"></div>
-                  <div class="relative z-10 text-white">
-                    <component :is="perk.icon" class="w-8 h-8 sm:w-10 sm:h-10" />
-                  </div>
+        <!-- Perks Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <!-- Perk 1: Priority Onboarding -->
+          <div 
+            class="perk-card group flex flex-col items-center text-center relative"
+            v-for="(perk, index) in perks"
+            :key="perk.title"
+          >
+            <!-- Icon Container with Animation -->
+            <div class="relative mb-2 sm:mb-3">
+              <!-- Glow effect -->
+              <div class="absolute inset-0 bg-indigo-400 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+              <!-- Icon circle -->
+              <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <div class="absolute inset-0 rounded-full bg-white/20 blur-sm"></div>
+                <div class="relative z-10 text-white">
+                  <component :is="perk.icon" class="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <!-- Pulse animation -->
-                <div class="absolute inset-0 rounded-full border-2 border-indigo-400 animate-ping opacity-0 group-hover:opacity-75"></div>
               </div>
-              
-              <!-- Text -->
-              <p class="text-sm sm:text-base font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors duration-300 leading-tight">
-                {{ perk.title }}
-              </p>
-              
-              <!-- Divider (only on desktop, between items) -->
-              <div 
-                v-if="index < perks.length - 1"
-                class="hidden lg:block absolute top-1/2 -right-4 w-px h-16 bg-gradient-to-b from-transparent via-gray-300 to-transparent transform -translate-y-1/2"
-              ></div>
+              <!-- Pulse animation -->
+              <div class="absolute inset-0 rounded-full border-2 border-indigo-400 animate-ping opacity-0 group-hover:opacity-75"></div>
             </div>
+            
+            <!-- Text -->
+            <p class="text-sm sm:text-base font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors duration-300 leading-tight">
+              {{ perk.title }}
+            </p>
+            
+            <!-- Divider (only on desktop, between items) -->
+            <div 
+              v-if="index < perks.length - 1"
+              class="hidden lg:block absolute top-1/2 -right-4 w-px h-12 bg-gradient-to-b from-transparent via-gray-300 to-transparent transform -translate-y-1/2"
+            ></div>
           </div>
         </div>
       </div>

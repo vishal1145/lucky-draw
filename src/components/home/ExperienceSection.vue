@@ -67,48 +67,48 @@
       <p class="text-gray-600 mb-6 text-lg lg:text-xl text-center lg:text-left">
          We believe in rewarding loyalty. This event encourages engagement and gives every participant an opportunity to benefit from attractive discounts and prizes.
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8 mb-6">
-        <div class="text-center lg:text-left">
-          <div class="text-3xl lg:text-5xl font-bold text-indigo-600">
+      <div class="flex flex-col justify-center lg:justify-start mb-6">
+        <div class="flex flex-row items-center justify-center lg:justify-start gap-0 mb-0">
+          <div class="text-3xl lg:text-5xl font-bold text-indigo-600 leading-none text-center lg:text-left">
             <!-- {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
             }} -->
             100+
             <!-- <sup>+</sup> -->
           </div>
-          <div class="text-gray-500 text-lg font-bold lg:text-xl">
-             Participants Expected
+          <div
+            class="flex items-center relative justify-center ml-3 sm:ml-4"
+            v-if="fromResult != 'Result'"
+          >
+            <button
+              class="flex items-center pl-2 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
+            >
+              <div
+                class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600"
+                v-html="icons.arrowDown"
+              ></div>
+            </button>
+
+            <button
+              class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap"
+              @click="scrollToContactSection"
+              style="margin-left: -2em"
+            >
+              {{ fromResult != "Result" ? "Participate Now" : "Result" }}
+            </button>
           </div>
+        </div>
+        <div class="text-gray-500 text-lg font-bold lg:text-xl text-center lg:text-left">
+          Participants Expected
         </div>
         <!-- <div class="text-center lg:text-left">
           <div class="text-2xl lg:text-3xl font-bold text-indigo-600">50+</div>
           <div class="text-gray-500 text-lg lg:text-xl">Industry Covered</div>
         </div> -->
-        <div
-          class="flex items-center relative justify-center"
-          v-if="fromResult != 'Result'"
-        >
-          <button
-            class="flex items-center pl-2 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
-          >
-            <div
-              class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600"
-              v-html="icons.arrowDown"
-            ></div>
-          </button>
-
-          <button
-            class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap"
-            @click="scrollToContactSection"
-            style="margin-left: -2em"
-          >
-            {{ fromResult != "Result" ? "Participate Now" : "Result" }}
-          </button>
-        </div>
       </div>
       
       <!-- Winner Benefits Note -->
       <div class="mt-4 w-full">
-        <p class="text-base sm:text-lg text-white bg-[#7ccf00] rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
+        <p class="text-sm sm:text-base text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
           Winners will receive a discount code plus a free project consultation.
         </p>
       </div>
@@ -140,7 +140,7 @@
     </div>
   </section>
 
-  <div class="text-center ">
+  <div class="text-center pt-10 lg:pt-20 bg-white">
     <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
       -- Our Services & Development
     </h3>
