@@ -9,12 +9,12 @@
       <!-- Icon and Heading Section -->
       <div class="flex flex-col items-center justify-center mb-6">
         <!-- 3D Shield Icon with Globe -->
-        <div class="flex-shrink-0 mb-8">
-          <div class="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
+        <div class="flex-shrink-0">
+          <div class="relative inline-block shield-wrapper">
             <!-- 3D Shield - positioned slightly left of center -->
-            <div class="relative z-10 shield-container -translate-x-4">
+            <div class="relative z-10 shield-container">
               <!-- Main shield SVG with glossy translucent glass effect -->
-              <svg class="relative z-10 w-48 h-52 sm:w-56 sm:h-60 lg:w-64 lg:h-68 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="relative z-10 w-32 h-36 sm:w-40 sm:h-44 lg:w-48 lg:h-52 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <!-- Main gradient: light purple top to purple-600 bottom (matching Get Started button) -->
                   <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -68,8 +68,8 @@
             </div>
             
             <!-- Clear glass-like Globe Icon overlapping right edge of shield -->
-            <div class="absolute right-4 top-1/2 z-20 globe-container">
-              <svg class="w-20 h-20 sm:w-24 sm:h-24 globe-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 z-20 globe-container">
+              <svg class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 globe-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <!-- Translucent white/very light blue frosted glass globe -->
                   <radialGradient id="globeGradient" cx="50%" cy="50%">
@@ -431,28 +431,46 @@ const shareOnFacebook = () => {
   background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
+/* Shield wrapper - fits exactly to icon size */
+.shield-wrapper {
+  display: inline-block;
+  line-height: 0;
+  width: fit-content;
+  height: fit-content;
+}
+
 /* Shield container */
 .shield-container {
   position: relative;
   filter: drop-shadow(0 8px 16px rgba(147, 51, 234, 0.3)) drop-shadow(0 4px 8px rgba(99, 102, 241, 0.25));
+  display: inline-block;
+  line-height: 0;
+  width: fit-content;
+  height: fit-content;
 }
 
 /* Shield SVG styling - glossy translucent glass effect */
 .shield-svg {
   filter: brightness(1.15) contrast(1.2) saturate(1.1);
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 /* Globe container */
 .globe-container {
   position: absolute;
-  transform: translate(0, -50%);
   filter: drop-shadow(0 4px 8px rgba(148, 163, 184, 0.3));
+  line-height: 0;
 }
 
 /* Globe SVG styling - translucent frosted glass watermark style */
 .globe-svg {
   opacity: 0.9;
   filter: brightness(1.2) contrast(1.1);
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 /* Hide scrollbar */
