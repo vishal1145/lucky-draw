@@ -1,57 +1,263 @@
 <template>
   <!-- Trust Bar -->
   <section class="relative overflow-hidden py-16 sm:py-20 lg:py-24">
-    <!-- Animated background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50/80 to-indigo-50"></div>
-    
-    <!-- Decorative floating elements -->
-    <div class="absolute top-10 left-10 w-20 h-20 bg-indigo-200/40 rounded-full blur-2xl animate-pulse"></div>
-    <div class="absolute bottom-10 right-10 w-32 h-32 bg-purple-200/40 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-indigo-300/30 rounded-full blur-xl animate-pulse" style="animation-delay: 0.5s;"></div>
-    
-    <!-- Pattern overlay -->
-    <div class="absolute inset-0 opacity-5 pattern-dots"></div>
+    <!-- Solid very light pastel blue/periwinkle background -->
+    <div class="absolute inset-0 bg-blue-50/60"></div>
     
     <!-- Main content container -->
-    <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-        <!-- Enhanced Trust Badge/Icon with animations -->
-        <div class="flex-shrink-0 group">
-          <div class="relative">
-            <!-- Outer glow ring -->
-            <div class="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 animate-pulse"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <!-- Icon and Heading Section -->
+      <div class="flex flex-col items-center justify-center mb-6">
+        <!-- 3D Shield Icon with Globe -->
+        <div class="flex-shrink-0 mb-8">
+          <div class="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
+            <!-- 3D Shield - positioned slightly left of center -->
+            <div class="relative z-10 shield-container -translate-x-4">
+              <!-- Main shield SVG with glossy translucent glass effect -->
+              <svg class="relative z-10 w-48 h-52 sm:w-56 sm:h-60 lg:w-64 lg:h-68 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Main gradient: light purple top to purple-600 bottom (matching Get Started button) -->
+                  <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
+                    <stop offset="30%" style="stop-color:#a78bfa;stop-opacity:1" />
+                    <stop offset="60%" style="stop-color:#9333ea;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+                  </linearGradient>
+                  <!-- Soft glossy highlight -->
+                  <linearGradient id="shieldHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+                    <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                    <stop offset="60%" style="stop-color:transparent;stop-opacity:0" />
+                  </linearGradient>
+                  <!-- Checkmark gradient -->
+                  <linearGradient id="checkmarkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+                    <stop offset="50%" style="stop-color:#e9d5ff;stop-opacity:0.9" />
+                    <stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:0.85" />
+                  </linearGradient>
+                  <!-- Drop shadow filter -->
+                  <filter id="shieldDropShadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                    <feOffset dx="0" dy="3" result="offsetblur"/>
+                    <feComponentTransfer>
+                      <feFuncA type="linear" slope="0.3"/>
+                    </feComponentTransfer>
+                    <feMerge>
+                      <feMergeNode/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                
+                <!-- Shield base shape with translucent glass effect -->
+                <path d="M14 2.5C14 2.5 21.2 6 21.8 6.4L22.2 6.8V13.2C22.2 17.8 18.8 21.2 14 22.6C9.2 21.2 5.8 17.8 5.8 13.2V6.8L6.2 6.4C6.8 6 14 2.5 14 2.5Z" 
+                      fill="url(#shieldGradient)" 
+                      filter="url(#shieldDropShadow)"/>
+                
+                <!-- Glass-like glossy highlight overlay -->
+                <path d="M14 2.5C14 2.5 21.2 6 21.8 6.4L22.2 6.8V13.2C22.2 17.8 18.8 21.2 14 22.6C9.2 21.2 5.8 17.8 5.8 13.2V6.8L6.2 6.4C6.8 6 14 2.5 14 2.5Z" 
+                      fill="url(#shieldHighlight)"/>
+                
+                <!-- Large checkmark with same translucent gradient purple-blue -->
+                <path d="M9 14L11.5 16.5L19 9" 
+                      stroke="url(#checkmarkGradient)" 
+                      stroke-width="4" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round"/>
+              </svg>
+            </div>
             
-            <!-- Middle ring with animation -->
-            <div class="absolute inset-0 -inset-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300 animate-spin-slow"></div>
-            
-            <!-- Icon container with enhanced gradient -->
-            <div class="relative bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-600 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <!-- Inner shine effect -->
-              <div class="absolute inset-0 rounded-full bg-white/20 blur-sm"></div>
-              <div class="absolute top-2 left-2 w-8 h-8 bg-white/30 rounded-full blur-md"></div>
-              
-              <!-- Shield with checkmark -->
-              <svg class="relative z-10 w-10 h-10 sm:w-12 sm:h-12 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            <!-- Clear glass-like Globe Icon overlapping right edge of shield -->
+            <div class="absolute right-4 top-1/2 z-20 globe-container">
+              <svg class="w-20 h-20 sm:w-24 sm:h-24 globe-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Translucent white/very light blue frosted glass globe -->
+                  <radialGradient id="globeGradient" cx="50%" cy="50%">
+                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+                    <stop offset="50%" style="stop-color:#e0f2fe;stop-opacity:0.5" />
+                    <stop offset="100%" style="stop-color:#dbeafe;stop-opacity:0.4" />
+                  </radialGradient>
+                  <!-- Frosted glass reflection -->
+                  <radialGradient id="globeReflection" cx="35%" cy="35%">
+                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.7" />
+                    <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
+                  </radialGradient>
+                </defs>
+                <!-- Globe circle - translucent frosted glass -->
+                <circle cx="50" cy="50" r="45" fill="url(#globeGradient)" stroke="#cbd5e1" stroke-width="1.5" stroke-opacity="0.4"/>
+                <!-- Frosted glass reflection -->
+                <circle cx="50" cy="50" r="45" fill="url(#globeReflection)"/>
+                <!-- Faint continent outlines -->
+                <path d="M20 25 Q25 20 30 25 Q32 30 35 28 Q38 32 40 30 Q42 35 45 33 Q48 38 50 36 Q52 40 55 38 Q58 42 60 40" 
+                      stroke="#94a3b8" 
+                      stroke-width="1.5" 
+                      stroke-opacity="0.5" 
+                      fill="none"/>
+                <path d="M35 48 Q38 45 40 50 Q42 55 45 53 Q48 58 50 56 Q52 60 55 58 Q58 62 60 60 Q62 65 65 63" 
+                      stroke="#94a3b8" 
+                      stroke-width="1.5" 
+                      stroke-opacity="0.5" 
+                      fill="none"/>
+                <path d="M48 35 Q50 30 55 35 Q58 40 60 38" 
+                      stroke="#94a3b8" 
+                      stroke-width="1.5" 
+                      stroke-opacity="0.5" 
+                      fill="none"/>
+                <path d="M50 42 Q52 40 54 45 Q56 50 58 48 Q60 52 62 50" 
+                      stroke="#94a3b8" 
+                      stroke-width="1.5" 
+                      stroke-opacity="0.5" 
+                      fill="none"/>
+                <path d="M62 28 Q65 25 68 28 Q70 32 72 30" 
+                      stroke="#94a3b8" 
+                      stroke-width="1.5" 
+                      stroke-opacity="0.5" 
+                      fill="none"/>
               </svg>
             </div>
           </div>
         </div>
         
-        <!-- Enhanced Trust Text with better typography -->
-        <div class="text-center sm:text-left flex-1">
-          <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
-            <span class="text-gray-800">Trusted by founders & businesses in </span>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 font-extrabold animate-gradient">
-              46 U.S. states
-            </span>
+        <!-- Trust Text -->
+        <div class="text-center mb-3">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            Trusted by founders & businesses
+          </h2>
+        </div>
+        
+        <!-- Subheading -->
+        <div class="text-center mb-12">
+          <p class="text-base sm:text-lg md:text-xl text-gray-600">
+            Partner with us to grow your business
           </p>
         </div>
       </div>
       
-      <!-- Decorative bottom accent -->
-      <div class="mt-12 flex justify-center">
-        <div class="h-1 w-32 bg-gradient-to-r from-transparent via-indigo-400 to-transparent rounded-full"></div>
+      <!-- Partner Logos Carousel -->
+      <div class="mb-12">
+        <div class="relative flex items-center justify-center">
+          <!-- Left Navigation Button -->
+          <button 
+            @click="scrollCarousel('left')"
+            class="absolute left-0 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
+            aria-label="Previous partners"
+          >
+            <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <!-- Logos Container -->
+          <div class="flex-1 overflow-hidden mx-12 sm:mx-16">
+            <div 
+              ref="carouselRef"
+              class="flex items-center overflow-x-auto scrollbar-hide"
+              style="scroll-behavior: smooth;"
+            >
+              <!-- Shopify -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[130px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/shopify.svg" 
+                  alt="Shopify" 
+                  class="h-10 sm:h-12 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.shopify = true"
+                  @error="handleImageError($event, 'shopify')"
+                />
+                <span v-show="!imageLoaded.shopify" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">shopify</span>
+              </div>
+              
+              <!-- Slack -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[110px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/slack.svg" 
+                  alt="Slack" 
+                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.slack = true"
+                  @error="handleImageError($event, 'slack')"
+                />
+                <span v-show="!imageLoaded.slack" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Slack</span>
+              </div>
+              
+              <!-- Adobe -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[110px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/adobe.svg" 
+                  alt="Adobe" 
+                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.adobe = true"
+                  @error="handleImageError($event, 'adobe')"
+                />
+                <span v-show="!imageLoaded.adobe" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Adobe</span>
+              </div>
+              
+              <!-- Salesforce -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[150px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/salesforce.svg" 
+                  alt="Salesforce" 
+                  class="h-10 sm:h-12 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.salesforce = true"
+                  @error="handleImageError($event, 'salesforce')"
+                />
+                <span v-show="!imageLoaded.salesforce" class="text-gray-500 text-xs sm:text-sm font-semibold lowercase ml-2">salesforce</span>
+              </div>
+              
+              <!-- Microsoft -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[130px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/microsoft.svg" 
+                  alt="Microsoft" 
+                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.microsoft = true"
+                  @error="handleImageError($event, 'microsoft')"
+                />
+                <span v-show="!imageLoaded.microsoft" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Microsoft</span>
+              </div>
+              
+              <!-- Google -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[110px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/google.svg" 
+                  alt="Google" 
+                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.google = true"
+                  @error="handleImageError($event, 'google')"
+                />
+                <span v-show="!imageLoaded.google" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Google</span>
+              </div>
+              
+              <!-- AWS -->
+              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[150px]">
+                <img 
+                  src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/amazonaws.svg" 
+                  alt="AWS" 
+                  class="h-10 sm:h-12 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  @load="imageLoaded.aws = true"
+                  @error="handleImageError($event, 'aws')"
+                />
+                <span v-show="!imageLoaded.aws" class="text-gray-500 text-xs sm:text-sm font-semibold lowercase ml-2">aws</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Navigation Button -->
+          <button 
+            @click="scrollCarousel('right')"
+            class="absolute right-0 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
+            aria-label="Next partners"
+          >
+            <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Get Started Button -->
+      <div class="flex justify-center">
+        <button @click="handleGetStarted" class="get-started-btn px-8 py-3 sm:px-10 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-200 text-base sm:text-lg">
+          Get Started
+        </button>
       </div>
     </div>
   </section>
@@ -93,7 +299,49 @@
 </template>
 
 <script setup>
+import { ref, reactive } from 'vue';
 import { socialIcons } from "@/assets/icons/socialIcons";
+
+const carouselRef = ref(null);
+
+// Track which images have loaded successfully - start as false so text shows initially
+const imageLoaded = reactive({
+  shopify: false,
+  slack: false,
+  adobe: false,
+  salesforce: false,
+  microsoft: false,
+  google: false,
+  aws: false
+});
+
+// Handle image loading errors
+const handleImageError = (event, logoName) => {
+  imageLoaded[logoName] = false;
+  // Keep the image hidden but show text fallback
+  if (event.target) {
+    event.target.style.display = 'none';
+  }
+};
+
+const scrollCarousel = (direction) => {
+  if (!carouselRef.value) return;
+  const scrollAmount = 200;
+  const currentScroll = carouselRef.value.scrollLeft || 0;
+  const newScroll = direction === 'left' 
+    ? currentScroll - scrollAmount 
+    : currentScroll + scrollAmount;
+  
+  carouselRef.value.scrollTo({
+    left: newScroll,
+    behavior: 'smooth'
+  });
+};
+
+// Redirect to Algofolks website
+const handleGetStarted = () => {
+  window.open('https://algofolks.com/', '_blank');
+};
 
 const currentURL = encodeURIComponent(window.location.href);
 const message = encodeURIComponent("Check this and register now!");
@@ -178,35 +426,52 @@ const shareOnFacebook = () => {
 </script>
 
 <style scoped>
-.pattern-dots {
-  background-image: radial-gradient(circle, #6366f1 1px, transparent 1px);
-  background-size: 20px 20px;
+/* Radial gradient utility for background */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Shield container */
+.shield-container {
+  position: relative;
+  filter: drop-shadow(0 8px 16px rgba(147, 51, 234, 0.3)) drop-shadow(0 4px 8px rgba(99, 102, 241, 0.25));
 }
 
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
+/* Shield SVG styling - glossy translucent glass effect */
+.shield-svg {
+  filter: brightness(1.15) contrast(1.2) saturate(1.1);
 }
 
-@keyframes gradient {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+/* Globe container */
+.globe-container {
+  position: absolute;
+  transform: translate(0, -50%);
+  filter: drop-shadow(0 4px 8px rgba(148, 163, 184, 0.3));
 }
 
-.animate-gradient {
-  background-size: 200% auto;
-  animation: gradient 3s ease infinite;
+/* Globe SVG styling - translucent frosted glass watermark style */
+.globe-svg {
+  opacity: 0.9;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Get Started Button - soft shadow */
+.get-started-btn {
+  box-shadow: 0 2px 6px rgba(147, 51, 234, 0.2);
+}
+
+.get-started-btn:hover {
+  box-shadow: 0 4px 8px rgba(147, 51, 234, 0.25);
 }
 </style>
+
