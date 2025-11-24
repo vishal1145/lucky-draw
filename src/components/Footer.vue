@@ -7,9 +7,9 @@
     <!-- Main content container -->
     <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
       <!-- Icon and Heading Section -->
-      <div class="flex flex-col items-center justify-center mb-6">
+      <div class="flex flex-col items-center justify-center mb-3">
         <!-- 3D Shield Icon with Globe -->
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 mb-2">
           <div class="relative inline-block shield-wrapper">
             <!-- 3D Shield - positioned slightly left of center -->
             <div class="relative z-10 shield-container">
@@ -119,14 +119,14 @@
         </div>
         
         <!-- Trust Text -->
-        <div class="text-center mb-3">
+        <div class="text-center mb-2">
           <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
             Trusted by founders & businesses
           </h2>
         </div>
         
         <!-- Subheading -->
-        <div class="text-center mb-12">
+        <div class="text-center mb-6">
           <p class="text-base sm:text-lg md:text-xl text-gray-600">
             Partner with us to grow your business
           </p>
@@ -134,7 +134,7 @@
       </div>
       
       <!-- Partner Logos Carousel -->
-      <div class="mb-12">
+      <div class="mb-6">
         <div class="relative flex items-center justify-center">
           <!-- Left Navigation Button -->
           <button 
