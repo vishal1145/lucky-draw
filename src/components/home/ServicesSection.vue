@@ -25,7 +25,7 @@
 
         <!-- Button section -->
         <div class="flex items-center gap-3 justify-center md:justify-end animate-fade-in">
-          <button
+          <!-- <button
             class="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/20 hover:border-white/40"
             @click="scrollToContactSection"
           >
@@ -34,7 +34,7 @@
               v-html="icons.arrowDown"
             ></div>
             <span>Scroll</span>
-          </button>
+          </button> -->
 
           <button
             class="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-lime-500 to-green-500 text-white rounded-full font-semibold hover:from-lime-600 hover:to-green-600 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"

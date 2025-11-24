@@ -120,7 +120,7 @@
         
         <!-- Trust Text -->
         <div class="text-center mb-2">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
             Trusted by founders & businesses
           </h2>
         </div>

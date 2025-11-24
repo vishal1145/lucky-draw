@@ -100,7 +100,7 @@
 
     <!-- Exclusive Perks Section -->
     <div class="mt-4 sm:mt-6 lg:mt-8">
-      <div class="bg-white shadow-lg rounded-lg p-4 sm:p-5 lg:p-6">
+      <div class="bg-white p-4 sm:p-5 lg:p-6">
         <!-- Title -->
         <div class="text-center mb-4 sm:mb-6">
           <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">

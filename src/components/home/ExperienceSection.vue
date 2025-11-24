@@ -80,21 +80,21 @@
             v-if="fromResult != 'Result'"
           >
             <button
-              class="flex items-center pl-2 pr-10 py-2 bg-indigo-500 text-white rounded-full font-medium"
+              class="flex items-center pl-2 pr-4 py-2 bg-indigo-500 text-white rounded-full font-medium"
             >
               <div
-                class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600"
+                class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600 cursor-pointer" @click="scrollToContactSection"
                 v-html="icons.arrowDown"
               ></div>
             </button>
 
-            <button
-              class="flex items-center px-6 py-2.5 bg-lime-500 text-white cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap"
+            <!-- <button
+              class="flex items-center px-6 py-2.5 bg-white text-gray-600 cursor-pointer rounded-full font-medium hover:bg-lime-600 whitespace-nowrap"
               @click="scrollToContactSection"
               style="margin-left: -2em"
             >
               {{ fromResult != "Result" ? "Participate Now" : "Result" }}
-            </button>
+            </button> -->
           </div>
         </div>
         <div class="text-gray-500 text-lg font-bold lg:text-xl text-center lg:text-left">
