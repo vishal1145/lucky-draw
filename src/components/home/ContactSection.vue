@@ -289,7 +289,7 @@
 
       <!-- Consultation Offer Text -->
       <div class="text-center mt-4 md:mt-6 w-full">
-        <p class="inline-block text-sm sm:text-base text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
+        <p class="inline-block text-xs text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
           Every participant receives a free project consultation worth $99.
         </p>
       </div>

@@ -108,7 +108,7 @@
       
       <!-- Winner Benefits Note -->
       <div class="mt-4 w-fit">
-        <p class="text-sm sm:text-base text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
+        <p class="text-xs text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
           Winners will receive a discount code plus a free project consultation.
         </p>
       </div>
