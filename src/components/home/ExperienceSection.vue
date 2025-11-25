@@ -80,7 +80,7 @@
             v-if="fromResult != 'Result'"
           >
             <button
-              class="flex items-center pl-2 pr-4 py-2 bg-indigo-500 text-white rounded-full font-medium"
+              class="flex items-center justify-center w-10 h-10 bg-indigo-500 text-white rounded-full font-medium"
             >
               <div
                 class="w-7 h-7 rounded-full bg-white border-2 border-white flex items-center justify-center text-xs text-gray-600 cursor-pointer" @click="scrollToContactSection"
@@ -107,7 +107,7 @@
       </div>
       
       <!-- Winner Benefits Note -->
-      <div class="mt-4 w-full">
+      <div class="mt-4 w-fit">
         <p class="text-sm sm:text-base text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
           Winners will receive a discount code plus a free project consultation.
         </p>

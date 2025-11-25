@@ -100,25 +100,24 @@
 
     <!-- Exclusive Perks Section -->
     <div class="mt-4 sm:mt-6 lg:mt-8">
-      <div class="bg-white p-4 sm:p-5 lg:p-6">
+      <div class="max-w-3xl mx-auto bg-white p-3 sm:p-4 lg:p-5">
         <!-- Title -->
-        <div class="text-center mb-4 sm:mb-6">
+        <div class="text-center mb-3 sm:mb-4">
           <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
             Exclusive Perks for Participants
           </h3>
-          <!-- <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div> -->
         </div>
 
         <!-- Perks Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 sm:gap-0 lg:gap-0">
           <!-- Perk 1: Priority Onboarding -->
           <div 
-            class="perk-card group flex flex-col items-center text-center relative"
+            class="perk-card group flex flex-col items-center text-center relative px-2 sm:px-3"
             v-for="(perk, index) in perks"
             :key="perk.title"
           >
             <!-- Icon Container with Animation -->
-            <div class="relative mb-2 sm:mb-3">
+            <div class="relative mb-1.5 sm:mb-2">
               <!-- Glow effect -->
               <div class="absolute inset-0 bg-indigo-400 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
               <!-- Icon circle -->
@@ -133,14 +132,14 @@
             </div>
             
             <!-- Text -->
-            <p class="text-sm sm:text-base font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors duration-300 leading-tight">
+            <p class="text-xs sm:text-sm font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors duration-300 leading-tight">
               {{ perk.title }}
             </p>
             
             <!-- Divider (only on desktop, between items) -->
             <div 
               v-if="index < perks.length - 1"
-              class="hidden lg:block absolute top-1/2 -right-4 w-px h-12 bg-gradient-to-b from-transparent via-gray-300 to-transparent transform -translate-y-1/2"
+              class="hidden lg:block absolute top-1/2 -right-0 w-px h-10 bg-gradient-to-b from-transparent via-gray-300 to-transparent transform -translate-y-1/2"
             ></div>
           </div>
         </div>

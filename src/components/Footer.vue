@@ -120,14 +120,14 @@
         
         <!-- Trust Text -->
         <div class="text-center mb-2">
-          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+          <h2 class="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-gray-900 leading-tight">
             Trusted by founders & businesses
           </h2>
         </div>
         
         <!-- Subheading -->
         <div class="text-center mb-6">
-          <p class="text-base sm:text-lg md:text-xl text-gray-600">
+          <p class="text-sm sm:text-base md:text-base text-gray-600">
             Partner with us to grow your business
           </p>
         </div>
@@ -139,7 +139,7 @@
           <!-- Left Navigation Button -->
           <button 
             @click="scrollCarousel('left')"
-            class="absolute left-0 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
+            class="absolute left-4 sm:left-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
             aria-label="Previous partners"
           >
             <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,94 +148,94 @@
           </button>
           
           <!-- Logos Container -->
-          <div class="flex-1 overflow-hidden mx-12 sm:mx-16">
+          <div class="flex-1 overflow-hidden mx-0 sm:mx-0">
             <div 
               ref="carouselRef"
-              class="flex items-center overflow-x-auto scrollbar-hide"
+              class="flex items-center justify-center overflow-x-auto scrollbar-hide gap-4 sm:gap-6"
               style="scroll-behavior: smooth;"
             >
               <!-- Shopify -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[130px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/shopify.svg" 
                   alt="Shopify" 
-                  class="h-10 sm:h-12 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.shopify = true"
                   @error="handleImageError($event, 'shopify')"
                 />
-                <span v-show="!imageLoaded.shopify" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">shopify</span>
+                <span v-show="!imageLoaded.shopify" class="text-gray-500 text-xs sm:text-sm font-semibold ml-2">shopify</span>
               </div>
               
               <!-- Slack -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[110px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/slack.svg" 
                   alt="Slack" 
-                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.slack = true"
                   @error="handleImageError($event, 'slack')"
                 />
-                <span v-show="!imageLoaded.slack" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Slack</span>
+                <span v-show="!imageLoaded.slack" class="text-gray-500 text-xs sm:text-sm font-semibold ml-2">Slack</span>
               </div>
               
               <!-- Adobe -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[110px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/adobe.svg" 
                   alt="Adobe" 
-                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.adobe = true"
                   @error="handleImageError($event, 'adobe')"
                 />
-                <span v-show="!imageLoaded.adobe" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Adobe</span>
+                <span v-show="!imageLoaded.adobe" class="text-gray-500 text-xs sm:text-sm font-semibold ml-2">Adobe</span>
               </div>
               
               <!-- Salesforce -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[150px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/salesforce.svg" 
                   alt="Salesforce" 
-                  class="h-10 sm:h-12 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.salesforce = true"
                   @error="handleImageError($event, 'salesforce')"
                 />
-                <span v-show="!imageLoaded.salesforce" class="text-gray-500 text-xs sm:text-sm font-semibold lowercase ml-2">salesforce</span>
+                <span v-show="!imageLoaded.salesforce" class="text-gray-500 text-xs sm:text-xs font-semibold lowercase ml-2">salesforce</span>
               </div>
               
               <!-- Microsoft -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[130px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/microsoft.svg" 
                   alt="Microsoft" 
-                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.microsoft = true"
                   @error="handleImageError($event, 'microsoft')"
                 />
-                <span v-show="!imageLoaded.microsoft" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Microsoft</span>
+                <span v-show="!imageLoaded.microsoft" class="text-gray-500 text-xs sm:text-sm font-semibold ml-2">Microsoft</span>
               </div>
               
               <!-- Google -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[110px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/google.svg" 
                   alt="Google" 
-                  class="h-12 sm:h-14 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.google = true"
                   @error="handleImageError($event, 'google')"
                 />
-                <span v-show="!imageLoaded.google" class="text-gray-500 text-sm sm:text-base font-semibold ml-2">Google</span>
+                <span v-show="!imageLoaded.google" class="text-gray-500 text-xs sm:text-sm font-semibold ml-2">Google</span>
               </div>
               
               <!-- AWS -->
-              <div class="flex-shrink-0 flex items-center justify-center h-14 sm:h-16 min-w-[150px]">
+              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/amazonaws.svg" 
                   alt="AWS" 
-                  class="h-10 sm:h-12 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.aws = true"
                   @error="handleImageError($event, 'aws')"
                 />
-                <span v-show="!imageLoaded.aws" class="text-gray-500 text-xs sm:text-sm font-semibold lowercase ml-2">aws</span>
+                <span v-show="!imageLoaded.aws" class="text-gray-500 text-xs sm:text-xs font-semibold lowercase ml-2">aws</span>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@
           <!-- Right Navigation Button -->
           <button 
             @click="scrollCarousel('right')"
-            class="absolute right-0 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
+            class="absolute right-4 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
             aria-label="Next partners"
           >
             <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -255,14 +255,14 @@
       
       <!-- Get Started Button -->
       <div class="flex justify-center">
-        <button @click="handleGetStarted" class="get-started-btn px-8 py-3 sm:px-10 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-200 text-base sm:text-lg">
+        <button @click="handleGetStarted" class="get-started-btn px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-full transition-all duration-200 text-base sm:text-lg">
           Get Started
         </button>
       </div>
     </div>
   </section>
 
-  <footer class="text-zinc-950 py-8 sm:py-12 lg:py-16">
+  <footer class="text-zinc-950 py-4">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Navigation Links -->
       <!-- <div class="mb-8 sm:mb-10 lg:mb-12">
