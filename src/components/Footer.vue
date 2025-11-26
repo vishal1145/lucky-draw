@@ -74,7 +74,7 @@
         </div>
         
         <!-- Subheading -->
-        <div class="text-center mb-4 sm:mb-5 md:mb-6">
+        <div class="text-center mb-8 sm:mb-10 md:mb-14">
           <p class="text-xs sm:text-sm md:text-base text-gray-600 px-4 sm:px-2">
             We've delivered 100+ projects for startups, SMEs, and enterprise clients across the globe.
 
@@ -83,7 +83,7 @@
       </div>
       
       <!-- Partner Logos Carousel -->
-      <div class="mb-5 sm:mb-6 md:mb-12">
+      <div class="mb-8 sm:mb-10 md:mb-14">
         <div class="relative flex items-center justify-center px-10 sm:px-12 md:px-0">
           <!-- Left Navigation Button -->
           <button 
