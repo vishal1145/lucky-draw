@@ -149,11 +149,11 @@
       <!-- Button section - Centered below cards -->
       <div class="flex justify-center items-center mt-12 md:mt-16 animate-fade-in">
         <button
-          class="group flex items-center gap-3 px-6 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-lime-500 to-green-500 text-white rounded-full font-semibold hover:from-lime-600 hover:to-green-600 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-base sm:text-lg md:text-xl lg:text-2xl"
+          class="participate-button px-12 sm:px-16 md:px-24  py-4 text-white rounded-full cursor-pointer flex items-center justify-center gap-4 bg-gradient-to-r from-lime-500 to-green-500 font-semibold hover:from-lime-600 hover:to-green-600 text-lg sm:text-xl md:text-2xl lg:text-3xl"
           @click="scrollToContactSection"
         >
           <span>{{ fromResult != "Result" ? "Participate Now" : "View Results" }}</span>
-          <svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </button>
@@ -307,5 +307,10 @@ const scrollToContactSection = () => {
 /* Smooth transitions for all interactive elements */
 * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Participate button with thick white border */
+.participate-button {
+  border: 8px solid white;
 }
 </style>

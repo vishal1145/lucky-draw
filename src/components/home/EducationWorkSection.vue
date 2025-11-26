@@ -117,7 +117,7 @@
             :key="perk.title"
           >
             <!-- Icon Container with Animation -->
-            <div class="relative mb-4 sm:mb-5">
+            <div class="relative mb-4 sm:mb-6 md:mb-8">
               <!-- Icon circle -->
               <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 flex items-center justify-center shadow-lg">
                 <div class="relative z-10 text-gray-800">
