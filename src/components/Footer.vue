@@ -1,18 +1,18 @@
 <template>
   <!-- Trust Bar -->
-  <section class="relative overflow-hidden py-8 sm:py-12 lg:py-16">
+  <section class="relative overflow-hidden py-6 sm:py-10 md:py-12 lg:py-16">
     <!-- Solid very light pastel blue/periwinkle background -->
     <div class="absolute inset-0 bg-blue-50/60"></div>
     
     <!-- Main content container -->
-    <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
       <!-- Icon and Heading Section -->
-      <div class="flex flex-col items-center justify-center mb-3">
+      <div class="flex flex-col items-center justify-center mb-2 sm:mb-3">
         <!-- Shield Icon with Checkmark -->
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 mb-2 sm:mb-0">
           <div class="shield-container">
             <!-- Shield SVG with checkmark -->
-            <svg class="w-24 h-28 sm:w-28 sm:h-32 lg:w-32 lg:h-36 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 lg:w-32 lg:h-36 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <!-- Main gradient: light purple top to purple-600 bottom (matching Get Started button) -->
                 <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -67,31 +67,31 @@
         </div>
         
         <!-- Trust Text -->
-        <div class="text-center mb-2">
-          <h2 class="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-gray-900 leading-tight">
+        <div class="text-center mb-2 sm:mb-2">
+          <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight px-2">
             Trusted by founders & businesses
           </h2>
         </div>
         
         <!-- Subheading -->
-        <div class="text-center mb-6">
-          <p class="text-sm sm:text-base md:text-base text-gray-600">
-            We’ve delivered 100+ projects for startups, SMEs, and enterprise clients across the globe.
+        <div class="text-center mb-4 sm:mb-5 md:mb-6">
+          <p class="text-xs sm:text-sm md:text-base text-gray-600 px-4 sm:px-2">
+            We've delivered 100+ projects for startups, SMEs, and enterprise clients across the globe.
 
           </p>
         </div>
       </div>
       
       <!-- Partner Logos Carousel -->
-      <div class="mb-6 md:mb-12">
-        <div class="relative flex items-center justify-center">
+      <div class="mb-5 sm:mb-6 md:mb-12">
+        <div class="relative flex items-center justify-center px-10 sm:px-12 md:px-0">
           <!-- Left Navigation Button -->
           <button 
             @click="scrollCarousel('left')"
-            class="absolute left-4 sm:left-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
+            class="absolute left-0 sm:left-2 md:left-4 lg:left-6 z-10 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
             aria-label="Previous partners"
           >
-            <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -100,15 +100,15 @@
           <div class="flex-1 overflow-hidden mx-0 sm:mx-0">
             <div 
               ref="carouselRef"
-              class="flex items-center justify-center overflow-x-auto scrollbar-hide gap-4 sm:gap-6"
+              class="flex items-center justify-center overflow-x-auto scrollbar-hide gap-3 sm:gap-4 md:gap-6"
               style="scroll-behavior: smooth;"
             >
               <!-- Shopify -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/shopify.svg" 
                   alt="Shopify" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.shopify = true"
                   @error="handleImageError($event, 'shopify')"
                 />
@@ -116,11 +116,11 @@
               </div>
               
               <!-- Slack -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/slack.svg" 
                   alt="Slack" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.slack = true"
                   @error="handleImageError($event, 'slack')"
                 />
@@ -128,11 +128,11 @@
               </div>
               
               <!-- Adobe -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/adobe.svg" 
                   alt="Adobe" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.adobe = true"
                   @error="handleImageError($event, 'adobe')"
                 />
@@ -140,11 +140,11 @@
               </div>
               
               <!-- Salesforce -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/salesforce.svg" 
                   alt="Salesforce" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.salesforce = true"
                   @error="handleImageError($event, 'salesforce')"
                 />
@@ -152,11 +152,11 @@
               </div>
               
               <!-- Microsoft -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/microsoft.svg" 
                   alt="Microsoft" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.microsoft = true"
                   @error="handleImageError($event, 'microsoft')"
                 />
@@ -164,11 +164,11 @@
               </div>
               
               <!-- Google -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/google.svg" 
                   alt="Google" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.google = true"
                   @error="handleImageError($event, 'google')"
                 />
@@ -176,11 +176,11 @@
               </div>
               
               <!-- AWS -->
-              <div class="flex-shrink-0 flex items-center justify-center h-10 sm:h-12">
+              <div class="flex-shrink-0 flex items-center justify-center h-8 sm:h-10 md:h-12">
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/amazonaws.svg" 
                   alt="AWS" 
-                  class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.aws = true"
                   @error="handleImageError($event, 'aws')"
                 />
@@ -192,10 +192,10 @@
           <!-- Right Navigation Button -->
           <button 
             @click="scrollCarousel('right')"
-            class="absolute right-4 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
+            class="absolute right-0 sm:right-2 md:right-4 lg:right-6 z-10 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center border border-gray-200"
             aria-label="Next partners"
           >
-            <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -203,16 +203,16 @@
       </div>
       
       <!-- Get Started Button -->
-      <div class="flex justify-center">
-        <button @click="handleGetStarted" class="get-started-btn px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-full transition-all duration-200 text-base sm:text-lg">
+      <div class="flex justify-center px-4">
+        <button @click="handleGetStarted" class="get-started-btn px-6 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-full transition-all duration-200 text-sm sm:text-base md:text-lg">
           Get Started
         </button>
       </div>
     </div>
   </section>
 
-  <footer class="text-zinc-950 py-4">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <footer class="text-zinc-950 py-3 sm:py-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
       <!-- Navigation Links -->
       <!-- <div class="mb-8 sm:mb-10 lg:mb-12">
         <nav class="flex flex-col sm:flex-row justify-center items-center">
@@ -240,7 +240,7 @@
       </div> -->
 
       <!-- Copyright -->
-      <div class="text-center text-xs sm:text-sm text-gray-600 px-4">
+      <div class="text-center text-xs sm:text-sm text-gray-600 px-2 sm:px-4">
         © 2025 Algofolks PVT LTD, Inc. All rights reserved.
       </div>
     </div>
@@ -275,7 +275,10 @@ const handleImageError = (event, logoName) => {
 
 const scrollCarousel = (direction) => {
   if (!carouselRef.value) return;
-  const scrollAmount = 200;
+  // Responsive scroll amount based on screen size
+  const isMobile = window.innerWidth < 640;
+  const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024;
+  const scrollAmount = isMobile ? 150 : isTablet ? 180 : 200;
   const currentScroll = carouselRef.value.scrollLeft || 0;
   const newScroll = direction === 'left' 
     ? currentScroll - scrollAmount 

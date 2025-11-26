@@ -2,14 +2,14 @@
   <div class="flex relative flex-col items-center justify-center px-4 lg:px-8">
     <!-- Client Count -->
     <div
-      class="flex items-start flex-col justify-start absolute left-4 sm:left-8 md:left-16 lg:left-32 bottom-17 sm:bottom-10 z-30"
+      class="flex items-start flex-col justify-start absolute left-4 sm:left-8 md:left-16 lg:left-32 bottom-17 sm:bottom-10 md:bottom-10 z-30"
     >
-      <h1 class="text-2xl sm:text-4xl font-bold text-indigo-600 p-0 m-0">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-600 p-0 m-0">
         <!-- {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
         }}<sup>+</sup> -->
         100+
       </h1>
-      <h4 class="font-bold p-0 m-0 text-sm sm:text-xl text-gray-500 mb-2">
+      <h4 class="font-bold p-0 m-0 text-sm sm:text-lg md:text-xl text-gray-500 mb-2">
         Participants Expected
       </h4>
       <div class="flex -space-x-2">
@@ -17,13 +17,13 @@
           <template v-if="i.image_url">
             <img
               :src="i.image_url"
-              class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white shadow-sm"
+              class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white shadow-sm"
               alt="Client"
             />
           </template>
           <template v-else>
             <div
-              class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-indigo-600 border-2 border-white flex items-center justify-center text-xs text-white"
+              class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-indigo-600 border-2 border-white flex items-center justify-center text-xs text-white"
             >
               {{ i.name ? i.name.charAt(0) : "+" }}
             </div>
@@ -32,29 +32,29 @@
         <div
           v-if="fromResult != 'Result'"
           @click="scrollToContactSection"
-          class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 border-2 border-white cursor-pointer flex items-center justify-center text-xs text-gray-600"
+          class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gray-100 border-2 border-white cursor-pointer flex items-center justify-center text-xs text-gray-600"
         >
           +
         </div>
       </div>
     </div>
 
-    <div class="absolute top-2 right-4 sm:right-8 lg:right-32 z-50">
+    <div class="absolute top-2 right-4 sm:right-8 md:right-16 lg:right-32 z-50">
       <img
         @click="redirectToAlgoFolks"
         src="/src/assets/Images/logo.png"
         alt="Logo"
-        class="h-12 sm:h-16 lg:h-20 w-auto rounded-full cursor-pointer"
+        class="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-full cursor-pointer"
       />
     </div>
 
     <!-- Header Text -->
     <div class="absolute top-3 text-center w-full px-4">
-      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
         I'm <span class="text-indigo-600 underline decoration-2">AlgoFolks</span>,
       </h1>
       <h2
-        class="text-xl sm:text-4xl lg:text-5xl text-gray-800 font-bold tracking-widest"
+        class="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-800 font-bold tracking-widest"
       >
         Celebrating Customer Loyalty
       </h2>
@@ -63,14 +63,14 @@
     </div>
 
     <!-- Main Content Container -->
-    <div class="w-full text-center flex justify-center mt-24 sm:mt-16">
+    <div class="w-full text-center flex justify-center mt-24 sm:mt-20 md:mt-16">
       <!-- Profile Image Section -->
       <div
-        class="relative w-full relative-height sm:w-[470px] h-[500px] sm:h-[570px] flex justify-center"
+        class="relative w-full relative-height sm:w-[400px] md:w-[470px] h-[500px] sm:h-[520px] md:h-[570px] flex justify-center"
       >
         <!-- Background Shape -->
         <div
-          class="absolute bottom-0 w-[200px] sm:w-[280px] -left-6 sm:-left-10 h-[200px] sm:h-[250px] bg-indigo-600 rounded-2xl relativre hidden sm:block"
+          class="absolute bottom-0 w-[200px] sm:w-[250px] md:w-[280px] -left-6 sm:-left-8 md:-left-10 h-[200px] sm:h-[230px] md:h-[250px] bg-indigo-600 rounded-2xl relativre hidden sm:block"
           style="transform: rotate(77deg)"
         ></div>
 
@@ -78,26 +78,26 @@
         <img
           :src="profileImage"
           alt="Jenny"
-          class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[360px] h-[400px] sm:h-[500px] object-cover object-top rounded-t-2xl"
+          class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[320px] md:w-[360px] h-[400px] sm:h-[450px] md:h-[500px] object-cover object-top rounded-t-2xl"
         />
 
         <div
-          class="absolute bottom-0 w-[200px] sm:w-[280px] -right-8 sm:-right-12 h-[200px] sm:h-[250px] bg-sky-50 z-10 rounded-2xl relative-second hidden sm:block"
+          class="absolute bottom-0 w-[200px] sm:w-[250px] md:w-[280px] -right-8 sm:-right-10 md:-right-12 h-[200px] sm:h-[230px] md:h-[250px] bg-sky-50 z-10 rounded-2xl relative-second hidden sm:block"
           style="transform: rotate(-77deg)"
         ></div>
 
         <div
-          class="flex flex-col for-button sm:flex-row bg-white justify-center gap-2 sm:gap-4 absolute -bottom-20 sm:bottom-4 z-30 p-2 rounded-full w-full sm:w-auto"
+          class="flex flex-col for-button md:flex-row bg-white justify-center gap-2 md:gap-4 absolute -bottom-20 md:bottom-4 z-30 p-2 rounded-full w-full md:w-auto"
         >
           <button
-            class="px-1 sm:px-4 py-2.5 btn-padding bg-indigo-600 text-white rounded-full cursor-pointer flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors"
+            class="px-1 md:px-4 py-2.5 btn-padding bg-indigo-600 text-white rounded-full cursor-pointer flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors"
             @click="scrollToContactSection"
           >
             <div class="flex flex-col items-center">
-              <span class="whitespace-nowrap">
+              <span class="whitespace-nowrap text-xs md:text-base">
                 {{ fromResult != "Result" ? "Participate Now — Get Rewards + Discounts on Services" : "Result" }}
               </span>
-              <span v-if="fromResult != 'Result'" class="text-[10px] sm:text-xs text-white/80 mt-0.5">
+              <span v-if="fromResult != 'Result'" class="text-[10px] md:text-xs text-white/80 mt-0.5">
                 Free participation. Limited entries.
               </span>
             </div>
@@ -107,9 +107,9 @@
             ></div> -->
           </button>
           <button
-            class="px-4 py-2.5 bg-white btn-padding border-2 border-[#25D366] text-gray-800 rounded-full hover:border-[#20BA5A] hover:bg-green-50 transition-colors"
+            class="hidden md:flex px-4 py-2.5 bg-white btn-padding border-2 border-[#25D366] text-gray-800 rounded-full hover:border-[#20BA5A] hover:bg-green-50 transition-colors"
           >
-            <div class="flex justify-center space-x-3 sm:space-x-6">
+            <div class="flex justify-center space-x-3 md:space-x-6">
               <div
                 @click="shareOnWhatsApp"
                 class="hover:text-gray-300 transition-colors cursor-pointer"
@@ -353,6 +353,13 @@ button {
   img.absolute {
     width: 80%;
     height: 350px;
+  }
+}
+
+/* Tablet styles - same as desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .relative-height {
+    height: 570px;
   }
 }
 

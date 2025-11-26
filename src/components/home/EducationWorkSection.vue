@@ -113,14 +113,14 @@
           <!-- Perk 1: Priority Onboarding -->
           <div 
             class="perk-card flex flex-col items-center text-center relative px-2 sm:px-3"
-            v-for="(perk, index) in perks"
+            v-for="perk in perks"
             :key="perk.title"
           >
             <!-- Icon Container with Animation -->
             <div class="relative mb-1.5 sm:mb-2">
               <!-- Icon circle -->
               <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 flex items-center justify-center shadow-lg">
-                <div class="relative z-10 text-black">
+                <div class="relative z-10 text-gray-800">
                   <component :is="perk.icon" class="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
               </div>

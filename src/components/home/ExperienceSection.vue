@@ -6,7 +6,7 @@
       <!-- Left Section (Experience Box) -->
       <div class="w-full lg:w-1/2 flex flex-col">
       <div
-        class="bg-indigo-600 left-container text-indigo-100 w-full h-72 sm:h-98 rounded-lg relative mb-8 lg:mb-0"
+        class="bg-indigo-600 left-container text-indigo-100 w-full h-72 sm:h-98 rounded-lg relative mb-8 lg:mb-0 mx-auto"
       >
         <div
           class="transform -rotate-90 text-2xl sm:text-4xl font-semibold absolute left-12 bottom-0 top-0 ans-date-size"
@@ -107,7 +107,7 @@
       </div>
       
       <!-- Winner Benefits Note -->
-      <div class="mt-4 w-fit">
+      <div class="mt-4 w-fit mx-auto lg:mx-0 badge-container">
         <p class="text-xs text-white bg-indigo-600 rounded-[17px] pl-[13px] leading-relaxed py-1 pr-4">
           Winners will receive a discount code plus a free project consultation.
         </p>
@@ -183,9 +183,18 @@ const scrollToContactSection = () => {
 
 <style>
 @media (min-width: 600px) and (max-width: 1023px) {
-  /* Styles for screens between 0 and 503px */
+  /* Styles for medium screens */
   .left-container {
     width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Center badge on tablet screens */
+  .badge-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
   }
 }
 @media (max-width: 640px) {
