@@ -62,7 +62,7 @@
         Who is <span class="text-indigo-600">Jenny Alexander?</span>
       </h2> -->
       <h2 class="text-3xl lg:text-5xl font-bold mb-4 text-center lg:text-left">
-        Why We’re <span class="text-indigo-600">Organizing </span>This?
+        Why We’re <span class="text-indigo-600">Organizing This</span>?
       </h2>
       <p class="text-gray-600 mb-6 text-lg lg:text-xl text-center lg:text-left">
          We believe in rewarding loyalty. This event encourages engagement and gives every participant an opportunity to benefit from attractive discounts and prizes.
@@ -145,7 +145,7 @@
       -- Our Services & Development
     </h3>
     <h2 class="text-3xl lg:text-5xl font-bold">
-      What <span class="text-indigo-600">You Can Use Your Reward Credits For</span>
+      What You Can Use Your <span class="text-indigo-600">Reward Credits</span> For
     </h2>
   </div>
 

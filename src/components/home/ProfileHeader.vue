@@ -4,12 +4,13 @@
     <div
       class="flex items-start flex-col justify-start absolute left-4 sm:left-8 md:left-16 lg:left-32 bottom-17 sm:bottom-10 z-30"
     >
-      <h1 class="text-2xl sm:text-4xl font-bold text-gray-500 p-0 m-0">
-        {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
-        }}<sup>+</sup>
+      <h1 class="text-2xl sm:text-4xl font-bold text-indigo-600 p-0 m-0">
+        <!-- {{ noOfUser.toString().length === 1 ? `0${noOfUser}` : noOfUser
+        }}<sup>+</sup> -->
+        100+
       </h1>
-      <h4 class="font-semibold p-0 m-0 text-sm sm:text-xl text-gray-400 mb-2">
-        Registered
+      <h4 class="font-bold p-0 m-0 text-sm sm:text-xl text-gray-500 mb-2">
+        Participants Expected
       </h4>
       <div class="flex -space-x-2">
         <div v-for="i in allUserRegistered.splice(0, 3)" :key="i">

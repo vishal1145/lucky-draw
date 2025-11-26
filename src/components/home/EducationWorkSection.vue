@@ -102,8 +102,8 @@
     <div class="mt-4 sm:mt-6 lg:mt-8">
       <div class="max-w-3xl mx-auto bg-white p-3 sm:p-4 lg:p-5">
         <!-- Title -->
-        <div class="text-center mb-3 sm:mb-4">
-          <h3 class="text-xl lg:text-2xl font-semibold text-gray-500 mb-2">
+        <div class="text-center mt-[3rem] mb-[3rem]">
+          <h3 class="text-xl lg:text-2xl font-semibold text-gray-500">
             Exclusive Perks for Participants
           </h3>
         </div>
@@ -112,35 +112,24 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 sm:gap-0 lg:gap-0">
           <!-- Perk 1: Priority Onboarding -->
           <div 
-            class="perk-card group flex flex-col items-center text-center relative px-2 sm:px-3"
+            class="perk-card flex flex-col items-center text-center relative px-2 sm:px-3"
             v-for="(perk, index) in perks"
             :key="perk.title"
           >
             <!-- Icon Container with Animation -->
             <div class="relative mb-1.5 sm:mb-2">
-              <!-- Glow effect -->
-              <div class="absolute inset-0 bg-indigo-400 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
               <!-- Icon circle -->
-              <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <div class="absolute inset-0 rounded-full bg-white/20 blur-sm"></div>
-                <div class="relative z-10 text-white">
+              <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 flex items-center justify-center shadow-lg">
+                <div class="relative z-10 text-black">
                   <component :is="perk.icon" class="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
               </div>
-              <!-- Pulse animation -->
-              <div class="absolute inset-0 rounded-full border-2 border-indigo-400 animate-ping opacity-0 group-hover:opacity-75"></div>
             </div>
             
             <!-- Text -->
-            <p class="text-xs sm:text-sm font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors duration-300 leading-tight">
+            <p class="text-[14px] font-normal text-gray-800 leading-tight">
               {{ perk.title }}
             </p>
-            
-            <!-- Divider (only on desktop, between items) -->
-            <div 
-              v-if="index < perks.length - 1"
-              class="hidden lg:block absolute top-1/2 -right-0 w-px h-10 bg-gradient-to-b from-transparent via-gray-300 to-transparent transform -translate-y-1/2"
-            ></div>
           </div>
         </div>
       </div>
@@ -274,7 +263,6 @@ const perks = [
 .perk-card {
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .perk-card:nth-child(1) {
@@ -302,30 +290,6 @@ const perks = [
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Hover effects for perk cards */
-.perk-card:hover {
-  transform: translateY(-4px);
-}
-
-/* Icon container hover animation */
-.perk-card:hover > div > div:last-child {
-  animation: iconPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes iconPulse {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.05) rotate(3deg);
-  }
-}
-
-/* Smooth transitions for all elements */
-.perk-card * {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Responsive adjustments */

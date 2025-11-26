@@ -18,7 +18,7 @@
         LET'S WORK TOGETHER
       </h2>
       <p class="text-indigo-200 mb-4 md:mb-8 text-center text-sm md:text-base">
-        Fill out the form below to start a conversation
+       Fill out the form below to start a conversation about your next project.
       </p>
 
       <!-- Contact Form -->
@@ -569,7 +569,7 @@ const handleSubmit = async () => {
     email: formData.email,
     country_code: selectedCountry.value.code,
     phone: formData.phone,
-    industry: formData.industry,
+    technologies: formData.industry,
     requirements: formData.message,
   };
 

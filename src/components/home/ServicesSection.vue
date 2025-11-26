@@ -8,7 +8,7 @@
     <div class="relative z-10">
       <!-- Header section -->
       <div
-        class="flex flex-col md:flex-row justify-between items-center mb-12 md:mb-16"
+        class="mb-12 md:mb-16"
       >
         <!-- Title section -->
         <div class="text-white text-center md:text-left mb-8 md:mb-0 animate-fade-in">
@@ -21,30 +21,6 @@
           <p class="text-indigo-200 mt-3 text-sm md:text-base max-w-md">
             Every participation increases your chance to win project credits you can use on Algofolks services.
           </p>
-        </div>
-
-        <!-- Button section -->
-        <div class="flex items-center gap-3 justify-center md:justify-end animate-fade-in">
-          <!-- <button
-            class="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/20 hover:border-white/40"
-            @click="scrollToContactSection"
-          >
-            <div
-              class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs text-white group-hover:bg-white/30 transition-colors"
-              v-html="icons.arrowDown"
-            ></div>
-            <span>Scroll</span>
-          </button> -->
-
-          <button
-            class="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-lime-500 to-green-500 text-white rounded-full font-semibold hover:from-lime-600 hover:to-green-600 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            @click="scrollToContactSection"
-          >
-            <span>{{ fromResult != "Result" ? "Participate Now" : "View Results" }}</span>
-            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -93,7 +69,7 @@
 
           <!-- Credit Usage Info -->
           <p class="text-sm md:text-base text-indigo-200/80 mb-6 leading-relaxed relative z-10 italic">
-            Credit can be used on any web, mobile, or AI development project.
+            {{service.caption}}
           </p>
 
           <!-- Winner Section Divider -->
@@ -153,7 +129,7 @@
           </div>
 
           <!-- Participate Button -->
-          <div
+          <!-- <div
             v-if="fromResult != 'Result'"
             class="relative z-10 mt-6"
           >
@@ -166,8 +142,21 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </button>
-          </div>
+          </div> -->
         </div>
+      </div>
+
+      <!-- Button section - Centered below cards -->
+      <div class="flex justify-center items-center mt-12 md:mt-16 animate-fade-in">
+        <button
+          class="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-lime-500 to-green-500 text-white rounded-full font-semibold hover:from-lime-600 hover:to-green-600 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          @click="scrollToContactSection"
+        >
+          <span>{{ fromResult != "Result" ? "Participate Now" : "View Results" }}</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -189,18 +178,21 @@ const props = defineProps({
 const services = ref([
   {
     title: "$1,000",
-    description: "Congrats! Exclusive Highest Discount on Your Project Deal",
+    description: "Exclusive Highest Discount on Your Project",
+    caption:"Use this credit on any web, mobile, AI, or custom development project.",
     icon: first_win,
   },
   {
     title: "$500",
     description:
-      "Congratulations! Special Discount for Your Innovative Project",
+      " Special Discount for Your Next Innovative Project",
+      caption:"Valid for all development and design services.",
     icon: sec_winner,
   },
   {
     title: "$251",
-    description: "Congratulations! Great Savings on Your Upcoming Project",
+    description: "Great Savings on Your Upcoming Project",
+    caption:" Can be used toward any Algofolks service.",
     icon: third_win,
   },
 ]);

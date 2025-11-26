@@ -8,113 +8,61 @@
     <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
       <!-- Icon and Heading Section -->
       <div class="flex flex-col items-center justify-center mb-3">
-        <!-- 3D Shield Icon with Globe -->
-        <div class="flex-shrink-0 mb-2">
-          <div class="relative inline-block shield-wrapper">
-            <!-- 3D Shield - positioned slightly left of center -->
-            <div class="relative z-10 shield-container">
-              <!-- Main shield SVG with glossy translucent glass effect -->
-              <svg class="relative z-10 w-32 h-36 sm:w-40 sm:h-44 lg:w-48 lg:h-52 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <!-- Main gradient: light purple top to purple-600 bottom (matching Get Started button) -->
-                  <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
-                    <stop offset="30%" style="stop-color:#a78bfa;stop-opacity:1" />
-                    <stop offset="60%" style="stop-color:#9333ea;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
-                  </linearGradient>
-                  <!-- Soft glossy highlight -->
-                  <linearGradient id="shieldHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
-                    <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.3" />
-                    <stop offset="60%" style="stop-color:transparent;stop-opacity:0" />
-                  </linearGradient>
-                  <!-- Checkmark gradient -->
-                  <linearGradient id="checkmarkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
-                    <stop offset="50%" style="stop-color:#e9d5ff;stop-opacity:0.9" />
-                    <stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:0.85" />
-                  </linearGradient>
-                  <!-- Drop shadow filter -->
-                  <filter id="shieldDropShadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-                    <feOffset dx="0" dy="3" result="offsetblur"/>
-                    <feComponentTransfer>
-                      <feFuncA type="linear" slope="0.3"/>
-                    </feComponentTransfer>
-                    <feMerge>
-                      <feMergeNode/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
-                
-                <!-- Shield base shape with translucent glass effect -->
-                <path d="M14 2.5C14 2.5 21.2 6 21.8 6.4L22.2 6.8V13.2C22.2 17.8 18.8 21.2 14 22.6C9.2 21.2 5.8 17.8 5.8 13.2V6.8L6.2 6.4C6.8 6 14 2.5 14 2.5Z" 
-                      fill="url(#shieldGradient)" 
-                      filter="url(#shieldDropShadow)"/>
-                
-                <!-- Glass-like glossy highlight overlay -->
-                <path d="M14 2.5C14 2.5 21.2 6 21.8 6.4L22.2 6.8V13.2C22.2 17.8 18.8 21.2 14 22.6C9.2 21.2 5.8 17.8 5.8 13.2V6.8L6.2 6.4C6.8 6 14 2.5 14 2.5Z" 
-                      fill="url(#shieldHighlight)"/>
-                
-                <!-- Large checkmark with same translucent gradient purple-blue -->
-                <path d="M9 14L11.5 16.5L19 9" 
-                      stroke="url(#checkmarkGradient)" 
-                      stroke-width="4" 
-                      stroke-linecap="round" 
-                      stroke-linejoin="round"/>
-              </svg>
-            </div>
-            
-            <!-- Clear glass-like Globe Icon overlapping right edge of shield -->
-            <div class="absolute right-0 top-1/2 -translate-y-1/2 z-20 globe-container">
-              <svg class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 globe-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <!-- Translucent white/very light blue frosted glass globe -->
-                  <radialGradient id="globeGradient" cx="50%" cy="50%">
-                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
-                    <stop offset="50%" style="stop-color:#e0f2fe;stop-opacity:0.5" />
-                    <stop offset="100%" style="stop-color:#dbeafe;stop-opacity:0.4" />
-                  </radialGradient>
-                  <!-- Frosted glass reflection -->
-                  <radialGradient id="globeReflection" cx="35%" cy="35%">
-                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.7" />
-                    <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
-                  </radialGradient>
-                </defs>
-                <!-- Globe circle - translucent frosted glass -->
-                <circle cx="50" cy="50" r="45" fill="url(#globeGradient)" stroke="#cbd5e1" stroke-width="1.5" stroke-opacity="0.4"/>
-                <!-- Frosted glass reflection -->
-                <circle cx="50" cy="50" r="45" fill="url(#globeReflection)"/>
-                <!-- Faint continent outlines -->
-                <path d="M20 25 Q25 20 30 25 Q32 30 35 28 Q38 32 40 30 Q42 35 45 33 Q48 38 50 36 Q52 40 55 38 Q58 42 60 40" 
-                      stroke="#94a3b8" 
-                      stroke-width="1.5" 
-                      stroke-opacity="0.5" 
-                      fill="none"/>
-                <path d="M35 48 Q38 45 40 50 Q42 55 45 53 Q48 58 50 56 Q52 60 55 58 Q58 62 60 60 Q62 65 65 63" 
-                      stroke="#94a3b8" 
-                      stroke-width="1.5" 
-                      stroke-opacity="0.5" 
-                      fill="none"/>
-                <path d="M48 35 Q50 30 55 35 Q58 40 60 38" 
-                      stroke="#94a3b8" 
-                      stroke-width="1.5" 
-                      stroke-opacity="0.5" 
-                      fill="none"/>
-                <path d="M50 42 Q52 40 54 45 Q56 50 58 48 Q60 52 62 50" 
-                      stroke="#94a3b8" 
-                      stroke-width="1.5" 
-                      stroke-opacity="0.5" 
-                      fill="none"/>
-                <path d="M62 28 Q65 25 68 28 Q70 32 72 30" 
-                      stroke="#94a3b8" 
-                      stroke-width="1.5" 
-                      stroke-opacity="0.5" 
-                      fill="none"/>
-              </svg>
-            </div>
+        <!-- Shield Icon with Checkmark -->
+        <div class="flex-shrink-0">
+          <div class="shield-container">
+            <!-- Shield SVG with checkmark -->
+            <svg class="w-24 h-28 sm:w-28 sm:h-32 lg:w-32 lg:h-36 shield-svg" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Main gradient: light purple top to purple-600 bottom (matching Get Started button) -->
+                <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
+                  <stop offset="30%" style="stop-color:#a78bfa;stop-opacity:1" />
+                  <stop offset="60%" style="stop-color:#9333ea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+                </linearGradient>
+                <!-- Soft glossy highlight -->
+                <linearGradient id="shieldHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+                  <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                  <stop offset="60%" style="stop-color:transparent;stop-opacity:0" />
+                </linearGradient>
+                <!-- Checkmark gradient -->
+                <linearGradient id="checkmarkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+                  <stop offset="50%" style="stop-color:#e9d5ff;stop-opacity:0.9" />
+                  <stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:0.85" />
+                </linearGradient>
+                <!-- Drop shadow filter -->
+                <filter id="shieldDropShadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                  <feOffset dx="0" dy="3" result="offsetblur"/>
+                  <feComponentTransfer>
+                    <feFuncA type="linear" slope="0.3"/>
+                  </feComponentTransfer>
+                  <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <!-- Shield base shape with translucent glass effect -->
+              <path d="M14 2.5C14 2.5 21.2 6 21.8 6.4L22.2 6.8V13.2C22.2 17.8 18.8 21.2 14 22.6C9.2 21.2 5.8 17.8 5.8 13.2V6.8L6.2 6.4C6.8 6 14 2.5 14 2.5Z" 
+                    fill="url(#shieldGradient)" 
+                    filter="url(#shieldDropShadow)"/>
+              
+              <!-- Glass-like glossy highlight overlay -->
+              <path d="M14 2.5C14 2.5 21.2 6 21.8 6.4L22.2 6.8V13.2C22.2 17.8 18.8 21.2 14 22.6C9.2 21.2 5.8 17.8 5.8 13.2V6.8L6.2 6.4C6.8 6 14 2.5 14 2.5Z" 
+                    fill="url(#shieldHighlight)"/>
+              
+              <!-- Large checkmark with same translucent gradient purple-blue -->
+              <path d="M9 14L11.5 16.5L19 9" 
+                    stroke="url(#checkmarkGradient)" 
+                    stroke-width="4" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+            </svg>
           </div>
         </div>
         
@@ -128,13 +76,14 @@
         <!-- Subheading -->
         <div class="text-center mb-6">
           <p class="text-sm sm:text-base md:text-base text-gray-600">
-            Partner with us to grow your business
+            We’ve delivered 100+ projects for startups, SMEs, and enterprise clients across the globe.
+
           </p>
         </div>
       </div>
       
       <!-- Partner Logos Carousel -->
-      <div class="mb-6">
+      <div class="mb-6 md:mb-12">
         <div class="relative flex items-center justify-center">
           <!-- Left Navigation Button -->
           <button 
@@ -431,43 +380,18 @@ const shareOnFacebook = () => {
   background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
-/* Shield wrapper - fits exactly to icon size */
-.shield-wrapper {
-  display: inline-block;
-  line-height: 0;
-  width: fit-content;
-  height: fit-content;
-}
-
 /* Shield container */
 .shield-container {
-  position: relative;
-  filter: drop-shadow(0 8px 16px rgba(147, 51, 234, 0.3)) drop-shadow(0 4px 8px rgba(99, 102, 241, 0.25));
   display: inline-block;
+  filter: drop-shadow(0 8px 16px rgba(147, 51, 234, 0.3)) drop-shadow(0 4px 8px rgba(99, 102, 241, 0.25));
   line-height: 0;
-  width: fit-content;
-  height: fit-content;
+  margin: 0;
+  padding: 0;
 }
 
 /* Shield SVG styling - glossy translucent glass effect */
 .shield-svg {
   filter: brightness(1.15) contrast(1.2) saturate(1.1);
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-/* Globe container */
-.globe-container {
-  position: absolute;
-  filter: drop-shadow(0 4px 8px rgba(148, 163, 184, 0.3));
-  line-height: 0;
-}
-
-/* Globe SVG styling - translucent frosted glass watermark style */
-.globe-svg {
-  opacity: 0.9;
-  filter: brightness(1.2) contrast(1.1);
   display: block;
   margin: 0;
   padding: 0;
