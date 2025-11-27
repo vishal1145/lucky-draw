@@ -17,7 +17,7 @@
         <!-- WhatsApp Button -->
         <button
           @click="shareOnWhatsApp"
-          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20BA5A] flex items-center justify-center transition-colors shadow-md hover:shadow-lg border-2 border-white relative z-10"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20BA5A] flex items-center justify-center transition-colors shadow-md hover:shadow-lg border-2 border-white relative z-10 cursor-pointer"
           title="Share on WhatsApp"
         >
           <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@
         <!-- Instagram Button -->
         <button
           @click="shareOnInstagram"
-          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] hover:from-[#6B2A95] hover:via-[#E01A1A] hover:to-[#E59E3A] flex items-center justify-center transition-all shadow-md hover:shadow-lg border-2 border-white relative z-20"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] hover:from-[#6B2A95] hover:via-[#E01A1A] hover:to-[#E59E3A] flex items-center justify-center transition-all shadow-md hover:shadow-lg border-2 border-white relative z-20 cursor-pointer"
           title="Share on Instagram"
         >
           <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="white" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@
         <!-- Facebook Button -->
         <button
           @click="shareOnFacebook"
-          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1877F2] hover:bg-[#166FE5] flex items-center justify-center transition-colors shadow-md hover:shadow-lg border-2 border-white relative z-30"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1877F2] hover:bg-[#166FE5] flex items-center justify-center transition-colors shadow-md hover:shadow-lg border-2 border-white relative z-30 cursor-pointer"
           title="Share on Facebook"
         >
           <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="white" viewBox="0 0 24 24">
