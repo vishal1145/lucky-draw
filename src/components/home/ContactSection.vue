@@ -323,6 +323,7 @@ window.Quill = Quill;
 // import { contactService } from "@/api/services/contactService";
 import OtpVerificationModal from "../OtpVerificationModal.vue";
 import { useToast } from "@/composables/useToast";
+import { useMixpanel } from "@/composables/useMixpanel";
 
 // Get app instance to access global properties
 const app = getCurrentInstance();
@@ -391,6 +392,7 @@ const startDateOptions = [
 const emit = defineEmits(["refreshUser"]);
 
 const toast = useToast();
+const { track } = useMixpanel();
 const tempId = ref("");
 const profileImg = ref("");
 
@@ -558,6 +560,12 @@ const stripHtml = (html) => {
 
 const handleSubmit = async () => {
   if (!validateForm()) return;
+
+  // Track form submission
+  track("Form Submitted", {
+    form_location: "ContactSection",
+    form_type: "Registration"
+  });
 
   // Format phone number with country code
   const fullPhoneNumber = `${selectedCountry.value.code}${formData.phone}`;

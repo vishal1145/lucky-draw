@@ -225,6 +225,7 @@ import { ref, onMounted } from "vue";
 import { icons } from "@/assets/icons";
 import profileImage from "@/assets/Images/profile_img-removebg-preview.png";
 import { useRouter } from "vue-router";
+import { useMixpanel } from "@/composables/useMixpanel";
 
 const props = defineProps({
   noOfUser: String,
@@ -235,6 +236,7 @@ const currentURL = encodeURIComponent(window.location.href);
 const message = encodeURIComponent("Check this and register now!");
 const router = useRouter();
 const loading = ref(false);
+const { track } = useMixpanel();
 
 const skills = [
   "App Design",
@@ -253,6 +255,14 @@ const skills = [
 const repeatedSkills = [...skills]; // Adjust the number of repetitions as needed
 
 const scrollToContactSection = () => {
+  // Track participate button click
+  if (props.fromResult !== "Result") {
+    track("Participate Button Clicked", {
+      button_location: "ProfileHeader",
+      button_text: "Participate Now — Get Rewards + Discounts on Services"
+    });
+  }
+  
   let contactSection = "";
   if (props.fromResult !== "Result") {
     contactSection = document.getElementById("contact-section");

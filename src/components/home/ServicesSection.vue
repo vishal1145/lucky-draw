@@ -169,11 +169,14 @@ import first_win from "@/assets/Images/first_win.png";
 import sec_winner from "@/assets/Images/sec_winner.png";
 import third_win from "@/assets/Images/third_win.png";
 import profileImage from "@/assets/Images/profile.png";
+import { useMixpanel } from "@/composables/useMixpanel";
 
 const props = defineProps({
   fromResult: String,
   selectedWinners: Array,
 });
+
+const { track } = useMixpanel();
 
 const services = ref([
   {
@@ -207,6 +210,14 @@ onMounted(() => {
 });
 
 const scrollToContactSection = () => {
+  // Track participate button click
+  if (props.fromResult !== "Result") {
+    track("Participate Button Clicked", {
+      button_location: "ServicesSection",
+      button_text: "Participate Now"
+    });
+  }
+  
   let contactSection = "";
   if (props.fromResult !== "Result") {
     contactSection = document.getElementById("contact-section");
