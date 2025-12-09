@@ -178,8 +178,11 @@ const router = useRouter();
 const { track } = useMixpanel();
 const confettiItems = ref([]);
 
-const currentURL = encodeURIComponent(window.location.origin);
-const message = encodeURIComponent("Check this out! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉");
+// Use full URL so shares include the exact Thank You page
+const currentURL = encodeURIComponent(window.location.href);
+const message = encodeURIComponent(
+  "Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉"
+);
 
 // Function to push event to GTM dataLayer
 const pushToDataLayer = (eventName, eventData = {}) => {
@@ -265,13 +268,19 @@ const shareOnWhatsApp = () => {
   track("WhatsApp Share Clicked", {
     page: "ThankYou"
   });
-  
-  const whatsappMessage = `Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉 Check it out: ${currentURL}`;
-  const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(whatsappMessage)}`;
 
-  const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener");
+  const shareUrl = decodeURIComponent(currentURL);
+  const whatsappMessage = `Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉 Check it out: ${shareUrl}`;
 
-  if (!whatsappWindow || !whatsappWindow.closed || typeof whatsappWindow.closed == "undefined") {
+  // Open WhatsApp (universal link) to avoid blank tabs
+  const whatsappUniversal = `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
+  window.open(whatsappUniversal, "_blank", "noopener");
+
+  // Try native app; if blocked, fall back to WhatsApp Web
+  const whatsappScheme = `whatsapp://send?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappWindow = window.open(whatsappScheme, "_blank", "noopener");
+
+  if (!whatsappWindow || whatsappWindow.closed === undefined || whatsappWindow.closed) {
     const whatsappWebUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappWebUrl, "_blank", "noopener");
   }
