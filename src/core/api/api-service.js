@@ -91,7 +91,8 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'https://be-lucky-draw.onrender.com/api/';
+// Backend API base url (matches the cURL the user shared)
+const BASE_URL = 'https://lucky-draw.fly.dev/api/';
 
 class ApiService {
   constructor() {

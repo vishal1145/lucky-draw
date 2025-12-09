@@ -638,14 +638,14 @@ const handleSubmit = async () => {
       requestData
     );
     if (!response.error) {
-      showOtpModal.value = true;
       toast.showToast({
-        message: "OTP sent successfully!",
+        message: response.message || "Registration successful!",
         type: "success",
         duration: 3000,
       });
 
-      tempId.value = response.temp_id.toString();
+      tempId.value = response.temp_id?.toString?.() || "";
+      handleOtpVerified();
     } else {
       toast.showToast({
         message: response.error || "Something went wrong",
