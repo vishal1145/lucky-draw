@@ -103,7 +103,27 @@
 
           <!-- Name, Email, and Phone Section -->
           <div class="flex flex-col justify-between gap-4 md:gap-6 flex-1 w-full">
-            <!-- Row 1: Name and Email -->
+            <!-- Row 1: Company Name (Full Width) -->
+            <div class="w-full">
+              <input
+                type="text"
+                maxlength="50"
+                v-model="formData.companyName"
+                @input="capitalizeCompanyName"
+                placeholder="Company Name"
+                :class="[
+                  'w-full px-3 md:px-4 py-2 md:py-3 bg-indigo-500/30 text-white placeholder-indigo-300 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base',
+                  errors.companyName ? 'ring-2 ring-red-400' : 'focus:ring-white',
+                ]"
+              />
+              <span
+                v-if="errors.companyName"
+                class="text-xs md:text-sm text-red-300 mt-1 block"
+                >{{ errors.companyName }}</span
+              >
+            </div>
+
+            <!-- Row 2: Name and Email -->
             <div class="flex flex-col md:flex-row gap-4 md:gap-6">
               <!-- Name Input -->
               <div class="flex-1">
@@ -143,10 +163,14 @@
                   class="text-xs md:text-sm text-red-300 mt-1 block"
                   >{{ errors.email }}</span
                 >
+                <!-- Email Verification Warning -->
+                <p class="text-xs md:text-sm text-yellow-300 mt-2 font-medium">
+                  ⚠️ Winner notification and Service Credit Codes are sent via email. Invalid emails forfeit the prize.
+                </p>
               </div>
             </div>
 
-            <!-- Row 2: Phone Input with Country Code -->
+            <!-- Row 3: Phone Input with Country Code -->
             <div>
               <div class="flex gap-4 md:gap-6">
                 <!-- Country Selector -->
@@ -208,7 +232,7 @@
           </div>
         </div>
 
-        <!-- Row 3: Industry (Full Width) -->
+        <!-- Row 4: Industry (Full Width) -->
         <div class="w-full">
           <multiselect
             :class="[
@@ -324,6 +348,7 @@ window.Quill = Quill;
 import OtpVerificationModal from "../OtpVerificationModal.vue";
 import { useToast } from "@/composables/useToast";
 import { useMixpanel } from "@/composables/useMixpanel";
+import { useRouter } from "vue-router";
 
 // Get app instance to access global properties
 const app = getCurrentInstance();
@@ -353,6 +378,7 @@ const formData = reactive({
   name: "",
   phone: "",
   email: "",
+  companyName: "",
   message: "",
   industry: "",
   projectDescription: "",
@@ -363,6 +389,7 @@ const errors = reactive({
   name: "",
   phone: "",
   email: "",
+  companyName: "",
   message: "",
   industry: "",
 });
@@ -393,6 +420,7 @@ const emit = defineEmits(["refreshUser"]);
 
 const toast = useToast();
 const { track } = useMixpanel();
+const router = useRouter();
 const tempId = ref("");
 const profileImg = ref("");
 
@@ -510,6 +538,12 @@ const validateForm = () => {
   // Reset errors
   Object.keys(errors).forEach((key) => (errors[key] = ""));
 
+  // Company Name validation (mandatory)
+  if (!formData.companyName.trim()) {
+    errors.companyName = "Company Name is required";
+    isValid = false;
+  }
+
   // Name validation
   if (!formData.name.trim()) {
     errors.name = "Name is required";
@@ -575,6 +609,7 @@ const handleSubmit = async () => {
   const requestData = {
     name: formData.name,
     email: formData.email,
+    company_name: formData.companyName,
     country_code: selectedCountry.value.code,
     phone: formData.phone,
     technologies: formData.industry,
@@ -636,12 +671,17 @@ const handleOtpVerified = () => {
   Object.keys(formData).forEach((key) => (formData[key] = ""));
   selectedIndustries.value = [];
   profileImg.value = "";
-  // Show success toast instead of inline message
-  toast.showToast({
-    message: "Thank you! You Registered successfully.",
-    type: "success",
-    duration: 3000,
+  
+  // Track successful registration
+  track("Registration Completed", {
+    form_location: "ContactSection",
+    form_type: "Registration"
   });
+  
+  // Redirect to thank you page
+  setTimeout(() => {
+    router.push("/giveaway/thank-you");
+  }, 500);
 };
 
 const handleImageClick = () => {
@@ -671,6 +711,12 @@ const capitalizeFirstLetter = (event) => {
   inputValue = inputValue.replace(/\s+/g, " "); // Replace multiple spaces with a single space
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); // Capitalize first letter
   formData.name = inputValue;
+};
+
+const capitalizeCompanyName = (event) => {
+  let inputValue = event.target.value.trimStart(); // Remove leading spaces
+  inputValue = inputValue.replace(/\s+/g, " "); // Replace multiple spaces with a single space
+  formData.companyName = inputValue;
 };
 </script>
 
