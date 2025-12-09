@@ -178,8 +178,9 @@ const router = useRouter();
 const { track } = useMixpanel();
 const confettiItems = ref([]);
 
-// Use full URL so shares include the exact Thank You page
-const currentURL = encodeURIComponent(window.location.href);
+// Always share the campaign URL
+const SHARE_URL = "https://algofolks.com/celebrate-customer-loyalty/";
+const currentURL = encodeURIComponent(SHARE_URL);
 const message = encodeURIComponent(
   "Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉"
 );
@@ -269,19 +270,29 @@ const shareOnWhatsApp = () => {
     page: "ThankYou"
   });
 
-  const shareUrl = decodeURIComponent(currentURL);
-  const whatsappMessage = `Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉 Check it out: ${shareUrl}`;
+  // Match the sharing behavior used on ProfileHeader
+  const whatsappURL = `https://wa.me/?text=${message} ${currentURL}`;
+  window.open(whatsappURL, "_blank");
 
-  // Open WhatsApp (universal link) to avoid blank tabs
-  const whatsappUniversal = `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(whatsappUniversal, "_blank", "noopener");
+  const whatsappMessage = `Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉 Check it out: ${SHARE_URL}`;
+  const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
 
-  // Try native app; if blocked, fall back to WhatsApp Web
-  const whatsappScheme = `whatsapp://send?text=${encodeURIComponent(whatsappMessage)}`;
-  const whatsappWindow = window.open(whatsappScheme, "_blank", "noopener");
+  // Open WhatsApp with the message
+  const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener");
 
-  if (!whatsappWindow || whatsappWindow.closed === undefined || whatsappWindow.closed) {
-    const whatsappWebUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+  // If opening WhatsApp using URI scheme fails, open WhatsApp Web
+  if (
+    !whatsappWindow ||
+    !whatsappWindow.closed ||
+    typeof whatsappWindow.closed == "undefined"
+  ) {
+    const whatsappWebUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    // Open WhatsApp Web in a new tab
     window.open(whatsappWebUrl, "_blank", "noopener");
   }
 };
@@ -292,6 +303,9 @@ const shareOnInstagram = () => {
     page: "ThankYou"
   });
   
+  // Copy the campaign link so the user can paste it into their post/story
+  navigator.clipboard?.writeText(SHARE_URL);
+
   const instagramUrl = "https://www.instagram.com/direct/inbox/";
   window.open(instagramUrl, "_blank", "noopener");
 };
