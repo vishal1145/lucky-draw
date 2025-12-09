@@ -181,6 +181,16 @@ const confettiItems = ref([]);
 const currentURL = encodeURIComponent(window.location.origin);
 const message = encodeURIComponent("Check this out! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉");
 
+// Function to push event to GTM dataLayer
+const pushToDataLayer = (eventName, eventData = {}) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: eventName,
+      ...eventData
+    });
+  }
+};
+
 // Start confetti animation on mount
 onMounted(() => {
   startParty();
@@ -191,6 +201,20 @@ onMounted(() => {
   // Track page view
   track("Thank You Page Viewed", {
     page: "ThankYou"
+  });
+  
+  // Fire sign_up_complete event for GTM/GA4
+  pushToDataLayer('sign_up_complete', {
+    page_path: '/giveaway/thank-you',
+    page_title: 'Thank You - Registration Complete',
+    event_category: 'engagement',
+    event_label: 'sign_up_complete'
+  });
+  
+  // Also track via Mixpanel for consistency
+  track("sign_up_complete", {
+    page: "ThankYou",
+    page_path: "/giveaway/thank-you"
   });
 });
 
