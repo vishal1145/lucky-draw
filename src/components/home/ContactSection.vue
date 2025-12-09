@@ -680,7 +680,7 @@ const handleOtpVerified = () => {
   
   // Redirect to thank you page
   setTimeout(() => {
-    router.push("/giveaway/thank-you");
+    router.push("/thank-you");
   }, 500);
 };
 

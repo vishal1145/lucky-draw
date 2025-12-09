@@ -29,7 +29,7 @@ const router = createRouter({
       component: ResultAnnounce
     },
     {
-      path: '/giveaway/thank-you',
+      path: '/thank-you',
       name: 'thank-you',
       component: ThankYou
     }

@@ -205,7 +205,7 @@ onMounted(() => {
   
   // Fire sign_up_complete event for GTM/GA4
   pushToDataLayer('sign_up_complete', {
-    page_path: '/giveaway/thank-you',
+    page_path: '/thank-you',
     page_title: 'Thank You - Registration Complete',
     event_category: 'engagement',
     event_label: 'sign_up_complete'
@@ -214,7 +214,7 @@ onMounted(() => {
   // Also track via Mixpanel for consistency
   track("sign_up_complete", {
     page: "ThankYou",
-    page_path: "/giveaway/thank-you"
+    page_path: "/thank-you"
   });
 });
 
