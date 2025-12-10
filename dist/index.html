@@ -45,22 +45,33 @@
         {
           "@type": "Event",
           "name": "AlgoFolks Client Loyalty Event & Service Credit Giveaway",
+          "url": "https://algofolks.com/celebrate-customer-loyalty",
           "startDate": "2025-12-25T09:00:00+05:30",
           "endDate": "2025-12-25T18:00:00+05:30",
           "eventStatus": "https://schema.org/EventScheduled",
           "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-          "location": {
-            "@type": "VirtualLocation",
-            "url": "https://algofolks.com/celebrate-customer-loyalty"
-          },
+          "location": [
+            {
+              "@type": "VirtualLocation",
+              "url": "https://algofolks.com/celebrate-customer-loyalty"
+            },
+            {
+              "@type": "Place",
+              "name": "AlgoFolks (Online Event)",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN"
+              }
+            }
+          ],
           "image": [
-            "https://algofolks.com/path-to-your-hero-image.jpg"
+            "https://algofolks.com/celebrate-customer-loyalty/lucky-draw-hero.png"
           ],
           "description": "Exclusive year-end event for business founders. Participants are eligible for up to $1,100 in Software Service Credits. Guaranteed $99 credit for all verified B2B registrants.",
           "offers": {
             "@type": "Offer",
             "url": "https://algofolks.com/celebrate-customer-loyalty",
-            "price": "0",
+            "price": 0,
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock",
             "validFrom": "2025-12-01T00:00:00+05:30"
@@ -69,6 +80,10 @@
             "@type": "Organization",
             "name": "AlgoFolks",
             "url": "https://algofolks.com"
+          },
+          "performer": {
+            "@type": "Organization",
+            "name": "AlgoFolks"
           }
         },
         {
