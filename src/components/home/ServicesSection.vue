@@ -152,7 +152,7 @@
           class="participate-button px-12 sm:px-16 md:px-24  py-4 text-white rounded-full cursor-pointer flex items-center justify-center gap-4 bg-gradient-to-r from-lime-500 to-green-500 font-semibold hover:from-lime-600 hover:to-green-600 text-lg sm:text-xl md:text-2xl lg:text-3xl"
           @click="scrollToContactSection"
         >
-          <span>{{ fromResult != "Result" ? "Participate Now" : "View Results" }}</span>
+          <span>{{ fromResult != "Result" ? "Apply Now" : "View Results" }}</span>
           <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
@@ -214,7 +214,7 @@ const scrollToContactSection = () => {
   if (props.fromResult !== "Result") {
     track("Participate Button Clicked", {
       button_location: "ServicesSection",
-      button_text: "Participate Now"
+      button_text: "Apply Now"
     });
   }
   

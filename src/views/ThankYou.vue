@@ -79,8 +79,8 @@
               </svg>
             </div>
             <div>
-              <h4 class="font-semibold text-gray-800 mb-1 text-base sm:text-lg">Stay Tuned</h4>
-              <p class="text-gray-600 text-sm sm:text-base">We'll notify you about the lucky draw results and exciting updates.</p>
+              <h4 class="font-semibold text-gray-800 mb-1 text-base sm:text-lg">Check Your Email</h4>
+              <p class="text-gray-600 text-sm sm:text-base">We have sent a confirmation email with your entry details.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
@@ -90,8 +90,8 @@
               </svg>
             </div>
             <div>
-              <h4 class="font-semibold text-gray-800 mb-1 text-base sm:text-lg">Free Consultation</h4>
-              <p class="text-gray-600 text-sm sm:text-base">Claim your free project consultation worth $99 at any time.</p>
+              <h4 class="font-semibold text-gray-800 mb-1 text-base sm:text-lg">Claim Your $99 Credit</h4>
+              <p class="text-gray-600 text-sm sm:text-base">Your guaranteed consultation credit is active. You can use it immediately to speak with a solutions architect.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
@@ -101,8 +101,8 @@
               </svg>
             </div>
             <div>
-              <h4 class="font-semibold text-gray-800 mb-1 text-base sm:text-lg">Share & Win More</h4>
-              <p class="text-gray-600 text-sm sm:text-base">Share with friends to increase your chances of winning amazing rewards.</p>
+              <h4 class="font-semibold text-gray-800 mb-1 text-base sm:text-lg">Refer a Founder</h4>
+              <p class="text-gray-600 text-sm sm:text-base">Know other business owners who need software scaling? Share this event to help them.</p>
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@
           @click="goToHome"
           class="flex-1 px-6 sm:px-8 py-3 sm:py-4 bg-indigo-600 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-indigo-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
         >
-          Back to Home
+          Book Consultation Now
         </button>
         <button
           @click="shareOnWhatsApp"
@@ -254,10 +254,11 @@ const applyDynamicStyles = () => {
 };
 
 const goToHome = () => {
-  track("Back to Home Clicked", {
+  track("Book Consultation Now Clicked", {
     page: "ThankYou"
   });
-  router.push("/");
+  // Open Calendly booking in a new tab to keep this page available
+  window.open("https://calendly.com/algofolks/30min", "_blank", "noopener");
 };
 
 const redirectToAlgoFolks = () => {

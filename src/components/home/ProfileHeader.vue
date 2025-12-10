@@ -130,7 +130,7 @@
           >
             <div class="flex flex-col items-center">
               <span class="whitespace-nowrap text-xs md:text-base">
-                {{ fromResult != "Result" ? "Participate Now — Get Rewards + Discounts on Services" : "Result" }}
+                {{ fromResult != "Result" ? "Apply Now — Get Rewards + Discounts on Services" : "Result" }}
               </span>
               <span v-if="fromResult != 'Result'" class="text-[10px] md:text-xs text-white/80 mt-0.5">
                 Free participation. Limited entries.
@@ -259,7 +259,7 @@ const scrollToContactSection = () => {
   if (props.fromResult !== "Result") {
     track("Participate Button Clicked", {
       button_location: "ProfileHeader",
-      button_text: "Participate Now — Get Rewards + Discounts on Services"
+      button_text: "Apply Now — Get Rewards + Discounts on Services"
     });
   }
   
