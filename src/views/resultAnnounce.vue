@@ -26,14 +26,17 @@
 </template>
 
 <script setup>
-import ProfileHeader from "../components/home/ProfileHeader.vue";
-import ServicesSection from "../components/home/ServicesSection.vue";
-import ExperienceSection from "../components/home/ExperienceSection.vue";
-import EducationWorkSection from "@/components/home/EducationWorkSection.vue";
-import Footer from "@/components/Footer.vue";
-import moment from "moment";
-
+// Lazy load components for better code splitting and performance
+import { defineAsyncComponent } from "vue";
 import { ref, reactive, onMounted } from "vue";
+import { parseDate, formatDay, formatMonthYear } from "@/utils/dateUtils";
+
+// Lazy load heavy components
+const ProfileHeader = defineAsyncComponent(() => import("../components/home/ProfileHeader.vue"));
+const ServicesSection = defineAsyncComponent(() => import("../components/home/ServicesSection.vue"));
+const ExperienceSection = defineAsyncComponent(() => import("../components/home/ExperienceSection.vue"));
+const EducationWorkSection = defineAsyncComponent(() => import("@/components/home/EducationWorkSection.vue"));
+const Footer = defineAsyncComponent(() => import("@/components/Footer.vue"));
 import { useToast } from "@/composables/useToast";
 import apiService from "@/core/api/api-service";
 // import toast from "@/utils/toast"; // Import toast service
@@ -90,13 +93,10 @@ const getAnnounceDate = async () => {
     if (!response.isError) {
       var responseData = response.data.find((item) => item.status == "active");
 
-      const date = moment(
-        responseData.announcement_date,
-        "YYYY-MM-DD HH:mm:ss"
-      );
+      const date = parseDate(responseData.announcement_date);
 
-      getAnnouncementDays.value = date.format("D"); // 21
-      getAnnouncementData.value = date.format("MMM YYYY");
+      getAnnouncementDays.value = formatDay(date); // 21
+      getAnnouncementData.value = formatMonthYear(date);
     } else {
       toast.showToast({
         message: "Error fetching announce date",

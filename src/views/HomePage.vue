@@ -32,14 +32,18 @@
 </template>
 
 <script setup>
-import ProfileHeader from "../components/home/ProfileHeader.vue";
-import ServicesSection from "../components/home/ServicesSection.vue";
-import ExperienceSection from "../components/home/ExperienceSection.vue";
-import EducationWorkSection from "@/components/home/EducationWorkSection.vue";
-import ContactSection from "@/components/home/ContactSection.vue";
-import Footer from "@/components/Footer.vue";
-import moment from "moment";
+// Lazy load components for better code splitting and performance
+import { defineAsyncComponent } from "vue";
 import { useRouter } from "vue-router";
+import { parseDate, formatDay, formatMonthYear, isBefore } from "@/utils/dateUtils";
+
+// Lazy load heavy components
+const ProfileHeader = defineAsyncComponent(() => import("../components/home/ProfileHeader.vue"));
+const ServicesSection = defineAsyncComponent(() => import("../components/home/ServicesSection.vue"));
+const ExperienceSection = defineAsyncComponent(() => import("../components/home/ExperienceSection.vue"));
+const EducationWorkSection = defineAsyncComponent(() => import("@/components/home/EducationWorkSection.vue"));
+const ContactSection = defineAsyncComponent(() => import("@/components/home/ContactSection.vue"));
+const Footer = defineAsyncComponent(() => import("@/components/Footer.vue"));
 
 import { ref, onMounted } from "vue";
 import { useToast } from "@/composables/useToast";
@@ -99,20 +103,17 @@ const getAnnounceDate = async () => {
     if (response.status == "success") {
       var responseData = response.data.find((item) => item.status == "active");
 
-      const date = moment(
-        responseData.announcement_date,
-        "YYYY-MM-DD HH:mm:ss"
-      );
-      const now = moment();
-      if (date.isBefore(now)) {
+      const date = parseDate(responseData.announcement_date);
+      const now = new Date();
+      if (isBefore(date, now)) {
         router.push("/announce-result");
         console.log("Expired");
       } else {
         console.log("Not Expired");
       }
 
-      getAnnouncementDays.value = date.format("D"); // 21
-      getAnnouncementData.value = date.format("MMM YYYY");
+      getAnnouncementDays.value = formatDay(date); // 21
+      getAnnouncementData.value = formatMonthYear(date);
     } else {
       toast.showToast({
         message: "Error fetching announce date",

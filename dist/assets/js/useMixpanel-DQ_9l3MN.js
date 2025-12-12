@@ -1,0 +1,1 @@
+import{m as t}from"./index-BL4i5wsh.js";function g(){return{track:(e,r={})=>{t.track(e,r)},identify:e=>{t.identify(e)},setUserProperties:e=>{t.setUserProperties(e)},trackPageView:(e,r={})=>{t.trackPageView(e,r)},reset:()=>{t.reset()},register:e=>{t.register(e)}}}export{g as u};

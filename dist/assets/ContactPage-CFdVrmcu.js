@@ -1,1 +1,0 @@
-import{c as e,a,o}from"./vue-vendor-LEbdYMba.js";const c={class:"min-h-screen p-8"},i={__name:"ContactPage",setup(n){return(s,t)=>(o(),e("div",c,t[0]||(t[0]=[a("h1",{class:"text-4xl font-bold mb-6"},"Contact Us",-1),a("p",{class:"text-gray-600"}," This is the contact page content. You can add a contact form or contact information here. ",-1)])))}};export{i as default};

@@ -51,6 +51,8 @@
                     :src="service.icon"
                     alt="Prize Icon"
                     loading="lazy"
+                    width="80"
+                    height="80"
                     class="w-full h-full object-contain"
                   />
                 </div>
@@ -100,6 +102,8 @@
                     :src="service.selectedWinner.image"
                     alt="Winner"
                     loading="lazy"
+                    width="96"
+                    height="96"
                     class="w-full h-full object-cover"
                   />
                 </div>
@@ -111,6 +115,8 @@
                     :src="profileImage"
                     alt="Default Profile"
                     loading="lazy"
+                    width="96"
+                    height="96"
                     class="w-full h-full object-cover rounded-full opacity-50"
                   />
                 </div>

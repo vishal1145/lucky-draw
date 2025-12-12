@@ -35,11 +35,37 @@ export default defineConfig({
     // Optimize chunk splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Separate vendor chunks for better caching
-          'vue-vendor': ['vue', 'vue-router'],
-          'ui-vendor': ['vue-multiselect', 'vue3-quill', 'quill'],
-          'utils-vendor': ['axios', 'moment', 'libphonenumber-js', 'mixpanel-browser'],
+          if (id.includes('node_modules')) {
+            if (id.includes('vue') || id.includes('vue-router')) {
+              return 'vue-vendor';
+            }
+            if (id.includes('vue-multiselect') || id.includes('vue3-quill') || id.includes('quill')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('axios') || id.includes('libphonenumber-js') || id.includes('mixpanel-browser')) {
+              return 'utils-vendor';
+            }
+            // Split other large node_modules into separate chunks
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          }
+        },
+        // Optimize chunk file names for better caching
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`;
+          }
+          if (/woff2?|eot|ttf|otf/i.test(ext)) {
+            return `assets/fonts/[name]-[hash][extname]`;
+          }
+          return `assets/[ext]/[name]-[hash][extname]`;
         },
       },
     },
@@ -49,6 +75,10 @@ export default defineConfig({
     sourcemap: process.env.NODE_ENV === 'development',
     // Optimize asset handling
     assetsInlineLimit: 4096, // Inline assets smaller than 4kb
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Optimize asset file names
+    reportCompressedSize: false, // Disable compressed size reporting for faster builds
   },
   // Optimize dependencies
   optimizeDeps: {

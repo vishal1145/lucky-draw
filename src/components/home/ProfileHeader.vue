@@ -52,6 +52,9 @@
           <template v-if="i.image_url">
             <img
               :src="i.image_url"
+              width="40"
+              height="40"
+              loading="lazy"
               class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white shadow-sm"
               alt="Client"
             />
@@ -80,6 +83,8 @@
         src="/src/assets/Images/logo.png"
         alt="Logo"
         loading="eager"
+        width="80"
+        height="80"
         class="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-full cursor-pointer"
       />
     </div>
@@ -116,6 +121,8 @@
           alt="Jenny"
           loading="eager"
           fetchpriority="high"
+          width="360"
+          height="500"
           class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[320px] md:w-[360px] h-[400px] sm:h-[450px] md:h-[500px] object-cover object-top rounded-t-2xl"
         />
 
