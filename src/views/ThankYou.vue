@@ -16,6 +16,7 @@
         @click="redirectToAlgoFolks"
         src="/src/assets/Images/logo.png"
         alt="Logo"
+        loading="eager"
         class="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-full cursor-pointer hover:scale-105 transition-transform"
       />
     </div>
@@ -213,12 +214,20 @@ onMounted(() => {
 });
 
 const startParty = () => {
-  confettiItems.value = Array.from({ length: 300 }, (_, index) => index);
-  applyDynamicStyles();
+  // Reduce confetti count for better performance (150 for mobile, 200 for desktop)
+  const isMobile = window.innerWidth < 768;
+  const confettiCount = isMobile ? 150 : 200;
+  confettiItems.value = Array.from({ length: confettiCount }, (_, index) => index);
+  
+  // Use requestAnimationFrame for better performance
+  requestAnimationFrame(() => {
+    applyDynamicStyles();
+  });
 };
 
 const applyDynamicStyles = () => {
-  setTimeout(() => {
+  // Use requestAnimationFrame for better performance
+  requestAnimationFrame(() => {
     const confettiSpans = document.querySelectorAll(".confetti > span");
     confettiSpans.forEach((span) => {
       const shape = `calc((Math.random() - 0.5) * 60vw)`;
@@ -236,7 +245,7 @@ const applyDynamicStyles = () => {
       span.style.setProperty("--offsetZ", offsetZ);
       span.style.setProperty("--spin", spin);
     });
-  }, 100);
+  });
   
   setTimeout(() => {
     confettiItems.value = [];
@@ -365,6 +374,8 @@ const shareOnFacebook = () => {
   --max-spin: 10;
 
   position: absolute;
+  will-change: transform, opacity; /* GPU acceleration */
+  transform: translateZ(0); /* Force hardware acceleration */
   width: 25px;
   aspect-ratio: 1;
   background-color: hsl(var(--hue), 100%, 50%);

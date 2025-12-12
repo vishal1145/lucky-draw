@@ -108,6 +108,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/shopify.svg" 
                   alt="Shopify" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.shopify = true"
                   @error="handleImageError($event, 'shopify')"
@@ -120,6 +121,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/slack.svg" 
                   alt="Slack" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.slack = true"
                   @error="handleImageError($event, 'slack')"
@@ -132,6 +134,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/adobe.svg" 
                   alt="Adobe" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.adobe = true"
                   @error="handleImageError($event, 'adobe')"
@@ -144,6 +147,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/salesforce.svg" 
                   alt="Salesforce" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.salesforce = true"
                   @error="handleImageError($event, 'salesforce')"
@@ -156,6 +160,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/microsoft.svg" 
                   alt="Microsoft" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.microsoft = true"
                   @error="handleImageError($event, 'microsoft')"
@@ -168,6 +173,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/google.svg" 
                   alt="Google" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.google = true"
                   @error="handleImageError($event, 'google')"
@@ -180,6 +186,7 @@
                 <img 
                   src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/amazonaws.svg" 
                   alt="AWS" 
+                  loading="lazy"
                   class="h-6 sm:h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
                   @load="imageLoaded.aws = true"
                   @error="handleImageError($event, 'aws')"

@@ -1,0 +1,1 @@
+import{m as t}from"./index-CdpGV6zN.js";const g="/celebrate-customer-loyalty/assets/logo-DibfNEO4.png";function f(){return{track:(e,r={})=>{t.track(e,r)},identify:e=>{t.identify(e)},setUserProperties:e=>{t.setUserProperties(e)},trackPageView:(e,r={})=>{t.trackPageView(e,r)},reset:()=>{t.reset()},register:e=>{t.register(e)}}}export{g as _,f as u};

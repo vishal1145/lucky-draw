@@ -41,7 +41,7 @@ import Footer from "@/components/Footer.vue";
 import moment from "moment";
 import { useRouter } from "vue-router";
 
-import { ref, reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useToast } from "@/composables/useToast";
 import apiService from "@/core/api/api-service";
 // import toast from "@/utils/toast"; // Import toast service
@@ -56,10 +56,7 @@ const confettiItems = ref([]);
 const allUserRegistered = ref([]);
 const loading = ref(false); // Loader state
 
-const tostData = reactive({
-  message: "",
-  error: "",
-});
+// Removed unused tostData for cleaner code
 
 const refreshUserData = () => {
   startParty();
@@ -135,34 +132,43 @@ const getAnnounceDate = async () => {
   }
 };
 const startParty = () => {
-  confettiItems.value = Array.from({ length: 300 }, (_, index) => index);
+  // Reduce confetti count for better performance (150 for mobile, 200 for desktop)
+  const isMobile = window.innerWidth < 768;
+  const confettiCount = isMobile ? 150 : 200;
+  confettiItems.value = Array.from({ length: confettiCount }, (_, index) => index);
 
-  applyDynamicStyles();
+  // Use requestAnimationFrame for better performance
+  requestAnimationFrame(() => {
+    applyDynamicStyles();
+  });
 };
 
 const applyDynamicStyles = () => {
   const confettiSpans = document.querySelectorAll(".confetti > span");
 
-  confettiSpans.forEach((span) => {
-    const shape = `calc((Math.random() - 0.5) * 60vw)`;
-    const confettiSize = `${Math.random() * (20 - 5) + 5}px`;
-    const hue = Math.random() * 360;
-    const offsetY = `${(Math.random() - 0.5) * 100}vh`;
-    const offsetX = `${(Math.random() - 0.5) * 100}vw`;
-    const offsetZ = `${(Math.random() - 0.5) * 50}px`;
-    const spin = `${Math.random() * 30}turn`;
-    span.style.setProperty("--shape", shape);
-    span.style.setProperty("--confetti-size", confettiSize);
-    span.style.setProperty("--hue", hue);
-    span.style.setProperty("--offsetY", offsetY);
-    span.style.setProperty("--offsetX", offsetX);
-    span.style.setProperty("--offsetZ", offsetZ);
-    span.style.setProperty("--spin", spin);
+  // Batch DOM updates using requestAnimationFrame
+  requestAnimationFrame(() => {
+    confettiSpans.forEach((span) => {
+      const shape = `calc((Math.random() - 0.5) * 60vw)`;
+      const confettiSize = `${Math.random() * (20 - 5) + 5}px`;
+      const hue = Math.random() * 360;
+      const offsetY = `${(Math.random() - 0.5) * 100}vh`;
+      const offsetX = `${(Math.random() - 0.5) * 100}vw`;
+      const offsetZ = `${(Math.random() - 0.5) * 50}px`;
+      const spin = `${Math.random() * 30}turn`;
+      span.style.setProperty("--shape", shape);
+      span.style.setProperty("--confetti-size", confettiSize);
+      span.style.setProperty("--hue", hue);
+      span.style.setProperty("--offsetY", offsetY);
+      span.style.setProperty("--offsetX", offsetX);
+      span.style.setProperty("--offsetZ", offsetZ);
+      span.style.setProperty("--spin", spin);
+    });
   });
+  
   setTimeout(() => {
     confettiItems.value = [];
   }, 5000);
-  // Remove the semicolon here
 };
 
 // Call API on page load
@@ -177,7 +183,8 @@ onMounted(() => {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+/* Inter font is preloaded in index.html for better performance */
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"); */
 
 .loader-overlay {
   position: fixed;
@@ -245,6 +252,8 @@ onMounted(() => {
   --max-spin: 10;
 
   position: absolute;
+  will-change: transform, opacity; /* GPU acceleration */
+  transform: translateZ(0); /* Force hardware acceleration */
 
   width: 25px;
   aspect-ratio: 1;

@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '../views/HomePage.vue'
-import AboutPage from '../views/AboutPage.vue'
-import ContactPage from '../views/ContactPage.vue'
-import ResultAnnounce from '../views/resultAnnounce.vue'
-import ThankYou from '../views/ThankYou.vue'
+
+// Lazy load routes for better code splitting and performance
+const HomePage = () => import('../views/HomePage.vue')
+const AboutPage = () => import('../views/AboutPage.vue')
+const ContactPage = () => import('../views/ContactPage.vue')
+const ResultAnnounce = () => import('../views/resultAnnounce.vue')
+const ThankYou = () => import('../views/ThankYou.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

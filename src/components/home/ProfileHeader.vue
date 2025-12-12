@@ -79,6 +79,7 @@
         @click="redirectToAlgoFolks"
         src="/src/assets/Images/logo.png"
         alt="Logo"
+        loading="eager"
         class="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-full cursor-pointer"
       />
     </div>
@@ -113,6 +114,8 @@
         <img
           :src="profileImage"
           alt="Jenny"
+          loading="eager"
+          fetchpriority="high"
           class="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[280px] sm:w-[320px] md:w-[360px] h-[400px] sm:h-[450px] md:h-[500px] object-cover object-top rounded-t-2xl"
         />
 
@@ -328,7 +331,8 @@ const redirectToAlgoFolks = () => {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+/* Inter font is preloaded in index.html for better performance */
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"); */
 
 .grayscale {
   filter: grayscale(100%) contrast(1.1);
