@@ -165,9 +165,9 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
 import { icons } from "@/assets/icons";
-import first_win from "@/assets/Images/first_win.png";
-import sec_winner from "@/assets/Images/sec_winner.png";
-import third_win from "@/assets/Images/third_win.png";
+import first_win from "@/assets/Images/first_win.webp";
+import sec_winner from "@/assets/Images/sec_winner.webp";
+import third_win from "@/assets/Images/third_win.webp";
 import profileImage from "@/assets/Images/profile.png";
 import { useMixpanel } from "@/composables/useMixpanel";
 

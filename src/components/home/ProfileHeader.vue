@@ -77,7 +77,7 @@
     <div class="absolute top-2 right-4 sm:right-8 md:right-16 lg:right-32 z-50">
       <img
         @click="redirectToAlgoFolks"
-        src="/src/assets/Images/logo.png"
+        src="/src/assets/Images/logo.webp"
         alt="Logo"
         class="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-full cursor-pointer"
       />
@@ -223,7 +223,7 @@
 import { socialIcons } from "@/assets/icons/socialIcons";
 import { ref, onMounted } from "vue";
 import { icons } from "@/assets/icons";
-import profileImage from "@/assets/Images/profile_img-removebg-preview.png";
+import profileImage from "@/assets/Images/profile_img-removebg-preview.webp";
 import { useRouter } from "vue-router";
 import { useMixpanel } from "@/composables/useMixpanel";
 

@@ -336,7 +336,7 @@ import { ref, reactive, defineEmits, onMounted, getCurrentInstance } from "vue";
 import Multiselect from "vue-multiselect";
 import { quillEditor } from "vue3-quill";
 import "quill/dist/quill.snow.css";
-import bgImage from "@/assets/Images/gradient_bg.png";
+import bgImage from "@/assets/Images/gradient_bg.webp";
 import Quill from "quill"; // Manually import Quill
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 // import "quill/dist/quill.snow.css";
