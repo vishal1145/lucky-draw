@@ -175,13 +175,42 @@ const message = encodeURIComponent(
   "Hey! I just registered for an exclusive giveaway and got a free consultation worth $99! 🎉"
 );
 
-// Function to push event to GTM dataLayer
-const pushToDataLayer = (eventName, eventData = {}) => {
-  if (typeof window !== 'undefined' && window.dataLayer) {
-    window.dataLayer.push({
-      event: eventName,
-      ...eventData
-    });
+// Function to track GA4 events using gtag with retry mechanism
+const trackGA4 = (eventName, eventParams = {}) => {
+  if (typeof window === 'undefined') return;
+  
+  // Function to actually send the event
+  const sendEvent = () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+      console.log('GA4 Event sent:', eventName, eventParams);
+    } else if (window.dataLayer) {
+      // Fallback to dataLayer if gtag is not available yet
+      window.dataLayer.push({
+        event: eventName,
+        ...eventParams
+      });
+      console.log('GA4 Event pushed to dataLayer:', eventName, eventParams);
+    }
+  };
+  
+  // Try to send immediately
+  if (typeof window.gtag === 'function' || window.dataLayer) {
+    sendEvent();
+  } else {
+    // If gtag is not loaded yet, wait a bit and retry
+    let retries = 0;
+    const maxRetries = 10;
+    const checkGtag = setInterval(() => {
+      retries++;
+      if (typeof window.gtag === 'function' || window.dataLayer) {
+        clearInterval(checkGtag);
+        sendEvent();
+      } else if (retries >= maxRetries) {
+        clearInterval(checkGtag);
+        console.warn('GA4 gtag not available after retries:', eventName);
+      }
+    }, 100);
   }
 };
 
@@ -197,13 +226,21 @@ onMounted(() => {
     page: "ThankYou"
   });
   
-  // Fire sign_up_complete event for GTM/GA4
-  pushToDataLayer('sign_up_complete', {
-    page_path: '/thank-you',
-    page_title: 'Thank You - Registration Complete',
-    event_category: 'engagement',
-    event_label: 'sign_up_complete'
-  });
+  // Track page view in GA4 (using nextTick to ensure gtag is loaded)
+  setTimeout(() => {
+    trackGA4('page_view', {
+      page_title: 'Thank You - Registration Complete',
+      page_location: window.location.href,
+      page_path: '/thank-you'
+    });
+    
+    // Fire sign_up_complete event for GA4 (standard GA4 event name)
+    trackGA4('sign_up_complete', {
+      method: 'form_submission',
+      page_path: '/thank-you',
+      page_title: 'Thank You - Registration Complete'
+    });
+  }, 500);
   
   // Also track via Mixpanel for consistency
   track("sign_up_complete", {
@@ -247,11 +284,30 @@ const goToHome = () => {
   track("Book Consultation Now Clicked", {
     page: "ThankYou"
   });
+  
+  // Track in GA4
+  trackGA4('click', {
+    event_category: 'engagement',
+    event_label: 'book_consultation',
+    button_location: 'thank_you_page',
+    page_path: '/thank-you',
+    page_title: 'Thank You - Registration Complete'
+  });
+  
   // Open Calendly booking in a new tab to keep this page available
   window.open("https://calendly.com/algofolks/30min", "_blank", "noopener");
 };
 
 const redirectToAlgoFolks = () => {
+  // Track logo click in GA4
+  trackGA4('click', {
+    event_category: 'navigation',
+    event_label: 'logo_click',
+    destination_url: 'https://algofolks.com/',
+    page_path: '/thank-you',
+    page_title: 'Thank You - Registration Complete'
+  });
+  
   window.open("https://algofolks.com/", "_blank");
 };
 
@@ -259,6 +315,15 @@ const redirectToAlgoFolks = () => {
 const shareOnWhatsApp = () => {
   track("WhatsApp Share Clicked", {
     page: "ThankYou"
+  });
+
+  // Track in GA4 (using standard share event)
+  trackGA4('share', {
+    method: 'WhatsApp',
+    content_type: 'page',
+    item_id: 'thank_you_page',
+    page_path: '/thank-you',
+    page_title: 'Thank You - Registration Complete'
   });
 
   // Match the sharing behavior used on ProfileHeader
@@ -294,6 +359,15 @@ const shareOnInstagram = () => {
     page: "ThankYou"
   });
   
+  // Track in GA4 (using standard share event)
+  trackGA4('share', {
+    method: 'Instagram',
+    content_type: 'page',
+    item_id: 'thank_you_page',
+    page_path: '/thank-you',
+    page_title: 'Thank You - Registration Complete'
+  });
+  
   // Copy the campaign link so the user can paste it into their post/story
   navigator.clipboard?.writeText(SHARE_URL);
 
@@ -305,6 +379,15 @@ const shareOnInstagram = () => {
 const shareOnFacebook = () => {
   track("Facebook Share Clicked", {
     page: "ThankYou"
+  });
+  
+  // Track in GA4 (using standard share event)
+  trackGA4('share', {
+    method: 'Facebook',
+    content_type: 'page',
+    item_id: 'thank_you_page',
+    page_path: '/thank-you',
+    page_title: 'Thank You - Registration Complete'
   });
   
   const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;

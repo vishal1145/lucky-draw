@@ -420,6 +420,45 @@ const emit = defineEmits(["refreshUser"]);
 
 const toast = useToast();
 const { track } = useMixpanel();
+
+// Function to track GA4 events using gtag with retry mechanism
+const trackGA4 = (eventName, eventParams = {}) => {
+  if (typeof window === 'undefined') return;
+  
+  // Function to actually send the event
+  const sendEvent = () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+      console.log('GA4 Event sent:', eventName, eventParams);
+    } else if (window.dataLayer) {
+      // Fallback to dataLayer if gtag is not available yet
+      window.dataLayer.push({
+        event: eventName,
+        ...eventParams
+      });
+      console.log('GA4 Event pushed to dataLayer:', eventName, eventParams);
+    }
+  };
+  
+  // Try to send immediately
+  if (typeof window.gtag === 'function' || window.dataLayer) {
+    sendEvent();
+  } else {
+    // If gtag is not loaded yet, wait a bit and retry
+    let retries = 0;
+    const maxRetries = 10;
+    const checkGtag = setInterval(() => {
+      retries++;
+      if (typeof window.gtag === 'function' || window.dataLayer) {
+        clearInterval(checkGtag);
+        sendEvent();
+      } else if (retries >= maxRetries) {
+        clearInterval(checkGtag);
+        console.warn('GA4 gtag not available after retries:', eventName);
+      }
+    }, 100);
+  }
+};
 const router = useRouter();
 const tempId = ref("");
 const profileImg = ref("");
@@ -601,6 +640,15 @@ const handleSubmit = async () => {
     form_type: "Registration"
   });
 
+  // Track form_start event in GA4
+  trackGA4('form_start', {
+    form_id: 'registration_form',
+    form_name: 'Registration Form',
+    form_location: 'ContactSection',
+    page_path: window.location.pathname,
+    page_title: document.title
+  });
+
   // Format phone number with country code
   const fullPhoneNumber = `${selectedCountry.value.code}${formData.phone}`;
 
@@ -645,6 +693,18 @@ const handleSubmit = async () => {
       });
 
       tempId.value = response.temp_id?.toString?.() || "";
+      
+      // Track generate_lead event in GA4 (standard GA4 event for successful form submission)
+      trackGA4('generate_lead', {
+        currency: 'USD',
+        value: 99,
+        form_id: 'registration_form',
+        form_name: 'Registration Form',
+        form_location: 'ContactSection',
+        page_path: window.location.pathname,
+        page_title: document.title
+      });
+      
       handleOtpVerified();
     } else {
       toast.showToast({
