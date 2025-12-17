@@ -553,6 +553,10 @@ const validatePhone = (phone) => {
   return phoneNumber.length >= minLength;
 };
 const validatePhoneNumber = () => {
+  if (!formData.phone) {
+    errors.phone = "";
+    return;
+  }
   let phone = formData.phone.replace(/\D/g, ""); // Remove non-numeric characters
 
   // Limit to 10 digits
@@ -589,13 +593,12 @@ const validateForm = () => {
     isValid = false;
   }
 
-  // Phone validation
-  if (!formData.phone.trim()) {
-    errors.phone = "Phone number is required";
-    isValid = false;
-  } else if (formData.phone.length < 10) {
-    errors.phone = "Please enter a valid phone number";
-    isValid = false;
+  // Phone validation (Optional)
+  if (formData.phone && formData.phone.trim()) {
+    if (formData.phone.length < 10) {
+      errors.phone = "Please enter a valid phone number";
+      isValid = false;
+    }
   }
 
   // Email validation
@@ -619,10 +622,11 @@ const validateForm = () => {
     formData.message = ""; // Reset input
   }
 
-  if (!formData.industry) {
-    errors.industry = "Industry is required";
-    isValid = false;
-  }
+  // Industry validation (Optional now)
+  // if (!formData.industry) {
+  //   errors.industry = "Industry is required";
+  //   isValid = false;
+  // }
 
   return isValid;
 };
